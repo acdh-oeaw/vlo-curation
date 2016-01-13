@@ -1,0 +1,273 @@
+----------------------------
+General upgrade instructions
+----------------------------
+
+Quick overview of the upgrade steps (for details see DEPLOY-README)
+
+- Unpack the VLO distribution tarball
+
+- Go to the 'war' directory
+- Run the 'unpack-wars.sh' script in that directory
+  (OR execute the following steps manually:
+	- Unzip the vlo-solr-#.##.war in a new 'solr' directory
+	- Unzip the vlo-web-app-#.##.war in a new 'vlo' directory
+	- Recursively assign ownership of the entire unpacked distribution to the
+	appropriate user, i.e. 'vlouser' on catalog.clarin.eu)
+
+- In the 'config' directory, inspect VloConfig.xml and the data roots 
+configuration file that is included into this file by means of XInclude. It is
+advised to perform a diff between the old and new versions of these files.
+Depending on configuration preferences, you may want to copy settings from the
+old configuration to the new one.
+
+- Stop the Tomcat or at least the VLO web app and Solr applications
+- Replace the 'current' symlink with a link to location of the new VLO directory
+
+- If needed, flush the Solr index (by removing the data directory's content)
+- In 'bin', run the importer using the updated configuration file:
+    ./vlo_solr_importer.sh -c ../config/VloConfig.xml
+
+--------------------------
+Upgrading from 3.2 to 3.3
+--------------------------
+* Take note of the change in VloConfig.xml which moves the data roots definition
+out of VloConfig.xml by means of XInclude. The configuration file now gets
+prepared for deployment environments at build time, so it is no longer necessary
+to copy over old configuration values in all cases.
+
+* Decide whether hierarchies should be indexed and displayed, and set the new
+'processHierarchies' configuration element accordingly (true/false). This 
+governs the behaviour of both the importer (will simply skip the 'update 
+hierarchies' step if set to false) and the front end (will not display hierarchy
+related UI components).
+
+* In the context fragment for the VLO web application, ADD the following 
+attribute to the <Context> root element:
+
+   sessionCookiePath="/"
+
+and, if set, REMOVE any "crossContext" parameter.
+ 
+---------------------------
+Upgrading from 3.1 to 3.2
+---------------------------
+* Take note of the following changes in VloConfig.xml:
+
+- 'facetConceptsFile' now defines the location of the facet/concept mapping 
+definition on disk; to use the default bundled definition, leave it empty. 
+Before this used to have the value '/facetConcepts.xml' which will no longer be
+valid - it can safely be replaced with either the empty string or 
+'facetConcepts.xml' to use the file in the same directory as VloConfig.xml.
+
+- 'languageLinkPrefix' element has been REPLACED by 'languageLinkTemplate';
+remove the former and add the following to existing configurations:
+
+	<languageLinkTemplate>https://infra.clarin.eu/content/language_info/data/{}.html</languageLinkTemplate>
+
+- 'languageNameVariantsUrl' and 'licenseAvailabilityMapUrl' are now required
+mapping configuration elements. So the following should normally be added:
+
+    <languageNameVariantsUrl>/LanguageNameVariantsMap.xml</languageNameVariantsUrl>   
+    <licenseAvailabilityMapUrl>/LicenseAvailabilityMap.xml</licenseAvailabilityMapUrl>
+
+- optional 'showResultScores' element, defaults to false. Should be false except
+when debugging result ranking.
+
+- The facet field 'availability' is now available
+
+* Be aware that the default maximum heap space of the importer has been
+increased from 2GB to 3GB (by means of a change in bin/vlo_solr_importer.sh).
+
+---------------------------
+Upgrading from 3.0.x to 3.1
+---------------------------
+
+* (For stable version) Update the external service running at <http://infra.clarin.eu/
+service/language/info.php> to select the 'languageCode' facet using ISO639-3 language 
+codes, e.g. <http://catalog.clarin.eu/vlo/search?fq=languageCode:code:nep> for 'nep'. 
+Contact Sander Maijers <sander@clarin.eu> for more information.
+
+* Take note of the following changes in VloConfig.xml:
+- 'imdiBrowserUrl' element has been removed
+- 'organisationNamesUrl' element has been added (should normally have 
+'/OrganisationControlledVocabulary.xml' as its value)
+- the 'language' facet has been replaced with 'languageCode'; the latter replaces the
+former in the 'facetField', 'simpleSearchFacetField' and 'searchResultField' elements
+
+* Flush the solr index (remove the data directory) and run a new import or copy the
+beta index over if it is based on a recent 3.1 import.
+
+---------------------------
+Upgrading from 3.0 to 3.0.1
+---------------------------
+
+No additional actions required, the existing Solr index can be kept
+
+---------------------------
+Upgrading from 2.18 to 3.0
+---------------------------
+
+* In version 3.0, the context parameters for the VLO web application have changed, see
+the file META-INF/context.xml for examples. The following parameters are now being
+processed:	
+
+- eu.carlin.cmdi.vlo.config.location
+	Optional but recommended. Should point to the location of VloConfig.xml that
+	should be used. Replaces The previously available parameter 'externalConfig', which is
+	no longer supported.
+
+- eu.carlin.cmdi.vlo.solr.serverUrl
+	Optional. Configures the base URL of the SOLR instance to connect to.
+	Usage is not recommended, instead configure the Solr URL via VloConfig.xml (see 
+	below).
+
+* New options have been added to the shared VLO configuration file VloConfig.xml 
+(in vlo-3.0/config):
+
+- The 'length' attributes in list elements can be removed
+
+- The Solr endpoint has changed because it is now multicore. Change for example:
+
+	<solrUrl>http://localhost:8084/vlo_solr/</solrUrl>
+    
+into
+
+	<solrUrl>http://localhost:8084/vlo_solr/core0/</solrUrl>
+
+This also applies to the eu.carlin.cmdi.vlo.solr.serverUrl context parameter (see above).
+
+- The following elements should be added:
+
+	<!-- begin added in 3.0 -->
+
+	<collectionFacet>collection</collectionFacet> 
+
+	<simpleSearchFacetFields>
+		<simpleSearchFacetField>language</simpleSearchFacetField>
+		<simpleSearchFacetField>resourceClass</simpleSearchFacetField>
+		<simpleSearchFacetField>genre</simpleSearchFacetField>
+		<simpleSearchFacetField>nationalProject</simpleSearchFacetField>
+	</simpleSearchFacetFields>
+
+	<!-- Fields shown in expanded search results on the search page -->
+	<searchResultFields>
+		<searchResultField>name</searchResultField>
+		<searchResultField>country</searchResultField>
+		<searchResultField>languages</searchResultField>
+		<searchResultField>modality</searchResultField>
+		<searchResultField>subject</searchResultField>
+		<searchResultField>genre</searchResultField>
+		<searchResultField>organisation</searchResultField>
+		<searchResultField>collection</searchResultField>
+		<searchResultField>nationalProject</searchResultField>
+	</searchResultFields>
+
+	<!-- Fields ignored in the record page -->
+	<ignoredFields>
+		<ignoredField>format</ignoredField>
+	</ignoredFields>
+
+	<!-- Fields shown as technical fields in the record page -->
+	<technicalFields>
+		<technicalField>id</technicalField>
+		<technicalField>dataProvider</technicalField>
+		<technicalField>metadataSource</technicalField>
+		<technicalField>_landingPageRef</technicalField>
+		<technicalField>_searchPageRef</technicalField>
+		<technicalField>_contentSearchRef</technicalField>
+		<technicalField>_lastSeen</technicalField>
+		<technicalField>_componentProfile</technicalField>
+	</technicalFields>
+
+	<!-- end added in 3.0 -->
+
+- The element 'facetfield' should be replaced with new values:
+
+	<!-- begin changed in 3.0 -->
+
+	<facetFields>
+		<facetField>language</facetField>
+		<facetField>resourceClass</facetField>
+		<facetField>continent</facetField>
+		<facetField>country</facetField>
+		<facetField>modality</facetField>
+		<facetField>genre</facetField>
+		<facetField>subject</facetField>
+		<facetField>format</facetField>
+		<facetField>organisation</facetField>
+		<facetField>nationalProject</facetField>
+		<facetField>keywords</facetField>
+		<facetField>dataProvider</facetField>
+	</facetFields>
+
+	<!-- end changed in 3.0 -->
+
+* The location of the Solr index data directory is now governed through a java system
+property 'solr.data.dir'. Add the following to ${catalina.home}/bin/setenv.sh:
+
+	export JAVA_OPTS="$JAVA_OPTS -Dsolr.data.dir=/lat/webapps/vlo/solr/data-beta"
+
+Substitute the directory with the actual desired location of the index data. The
+parent directory has to exist and should be writable by the Tomcat user.
+
+---------------------------
+Upgrading from 2.17 to 2.18
+---------------------------
+
+* In version 2.18 of the VLO, the URL mapping has been changed. To prevent
+existing references and bookmarks from breaking, add rewrite rules to the
+HTTP server to achieve the following mappings:
+
+[TODO: Define actual mod_rewrite rules and document here]
+
+- {vlobase}/?wicket:bookmarkablePage=:eu.clarin.cmdi.vlo.pages.ShowResultPage&docId={docId}
+	-> {vlobase}/record?docId={docId}
+
+- {vlobase}/?wicket:bookmarkablePage=:eu.clarin.cmdi.vlo.pages.ShowAllFacetValuesPage&selectedFacet={facet}
+	-> {vlobase}/values/{facet}
+
+In both case all additional GET parameters SHOULD be kept.
+
+Next to the URL mapping, the XML parameter file has undergone some changes:
+
+    <!-- Sets the maximum number of page instances which will be stored in the application scoped second level cache for faster retrieval -->
+    <pagesInApplicationCache>40</pagesInApplicationCache>
+    
+    <!-- Sets the maximum size (in KILOBYTES) of the File where page instances per session are stored. -->
+    <sessionCacheSize>10000</sessionCacheSize>
+
+Has been added to tune the Wicket page cache. The first parameter allows you
+to set the size of the application wide cache holding pages. The second parameter
+denotes the size of the cache (in kilobytes) associated with a session. The values
+listed above are the Wicket defaults.
+
+Other changes in the parameter file:
+- maxFileSize and use MaxFileSize have been integrated into one parameter:
+  
+  maxFileSize
+
+  If equal to 0, no upper limit to the size of metadata input files will be 
+  applied.
+
+- maxDaysToLife has been renamed into maxDaysInSolr
+
+- VloHomeLink has been renamed into homeUrl
+
+- helpUrl has been added; a link to a help page.
+
+- The facetConceptsFile parameter, referencing the facetConcepts.xml file, 
+  has been added also. This is part of the effort of making parameterised 
+  instantiation of the VLO possible.
+
+- Also, the facetOverviewLength parameter has been added. This parameter controls
+  the listing of facets on the search page.
+
+- Similar to 'useMaxFileSize' the expectReverseProxy parameter has been removed
+
+Finally, 
+
+    <cqlEndpointFilter>http://cqlservlet.mpi.nl/</cqlEndpointFilter>
+    
+    <cqlEndpointAlternative>http://cqlservlet.mpi.nl/</cqlEndpointAlternative>
+
+add the possibility of creating a filter for endpoints.

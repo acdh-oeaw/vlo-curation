@@ -1,8 +1,8 @@
 package eu.clarin.cmdi.vlo.importer;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.InputStream;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -10,7 +10,6 @@ import org.slf4j.LoggerFactory;
 
 import eu.clarin.cmdi.vlo.normalization.NormalizationService;
 import eu.clarin.cmdi.vlo.normalization.NormalizationVocabulary;
-import eu.clarin.cmdi.vlo.normalization.VocabularyEntry;
 import eu.clarin.cmdi.vlo.pojo.VariantsMap;
 import eu.clarin.cmdi.vlo.transformers.VariantsMapMarshaller;
 
@@ -30,15 +29,16 @@ public abstract class PostProcessorsWithVocabularyMap implements PostProcessor, 
 
 	private NormalizationVocabulary vocabulary;
 
-	public String normalize(String value) {
-		return normalize(value, value);
-	}
-
-	public String normalize(String value, String fallBackValue) {
+	public List<String> normalize(String value) {
 		if (vocabulary == null)
 			initVocabulary();
 
-		return vocabulary.normalize(value, fallBackValue);
+		return vocabulary.normalize(value);
+	}
+
+	public List<String> normalize(String value, String fallBackValue) {
+		List<String> normalizedVals = normalize(value);
+		return normalizedVals != null? normalizedVals : Arrays.asList(fallBackValue);
 	}
 
 	public Map<String, String> getCrossMappings(String value) {

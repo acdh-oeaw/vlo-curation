@@ -1,11 +1,16 @@
 package eu.clarin.cmdi.vlo.normalization;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+/**
+ * @author dostojic
+ *
+ */
 public class NormalizationVocabulary implements NormalizationService {
 
 	private Map<String, Integer> normalizationMap = null;
@@ -35,15 +40,10 @@ public class NormalizationVocabulary implements NormalizationService {
 			}
 		}
 	}
-
-	public String normalize(String value) {
-		return normalize(value, value);
-	}
-
-	public String normalize(String value, String fallbackResult) {
+	
+	public List<String> normalize(String value) {
 		VocabularyEntry hit = getEntry(value);
-		return (hit != null) ? hit.getNormalizedValue() : fallbackResult;
-
+		return (hit != null) ? hit.getNormalizedValue() : null;
 	}
 
 	public Map<String, String> getCrossMappings(String value) {

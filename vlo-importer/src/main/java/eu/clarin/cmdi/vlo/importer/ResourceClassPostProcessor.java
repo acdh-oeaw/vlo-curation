@@ -1,11 +1,7 @@
 package eu.clarin.cmdi.vlo.importer;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
-import eu.clarin.cmdi.vlo.Plural2Singular;
 import eu.clarin.cmdi.vlo.StringUtils;
 
 public class ResourceClassPostProcessor extends PostProcessorsWithVocabularyMap {
@@ -29,9 +25,8 @@ public class ResourceClassPostProcessor extends PostProcessorsWithVocabularyMap 
            result = StringUtils.capitalizeFirstLetter(value);
         }
 		
-        result = normalize(value);
-            
-		return Arrays.asList(result);
+        //return modified value in case that value is not in vocabulary
+        return normalize(result, result);
     }
 
 	@Override

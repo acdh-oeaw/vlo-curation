@@ -207,6 +207,8 @@ public class CSVTransformer implements CSV2XMLTransformer, XML2CSVTransformer {
         	    	
         	while ((line = br.readLine()) != null) {
         		csvRowCnt++;
+        		if(line.trim().isEmpty() || line.startsWith("//"))
+        			continue;
         		while(!remarksExists && line.charAt(line.length() - 1) != '\t'){//line must end with a tab, otherwise means that value contains line break -> &#xA;
         			_logger.debug("line {} contains line break!", csvRowCnt);
         			line += "\n" + br.readLine();
@@ -220,9 +222,13 @@ public class CSVTransformer implements CSV2XMLTransformer, XML2CSVTransformer {
         		}
         		
         		String normalizedVal = regExpresionExists? tokens[3] : tokens[2];
+				//strip qoutes
+				if((normalizedVal.startsWith("\"") || normalizedVal.startsWith("'")) && (normalizedVal.endsWith("\"") || normalizedVal.endsWith("'")) && normalizedVal.length() > 1){
+					normalizedVal = normalizedVal.substring(1, normalizedVal.length() - 1);
+				}
         		
         		if(normalizedVal.isEmpty())
-        			throw new RuntimeException("Normalized value (the 4th column) is mandatory");    		
+        			throw new RuntimeException("Normalized value (the 4th column) is mandatory. You can comment the line with //");    		
         		    		
         		Variant var = null;
         		
@@ -252,7 +258,7 @@ public class CSVTransformer implements CSV2XMLTransformer, XML2CSVTransformer {
         		
         		Mapping mapping = processedNormalizedVals.get(normalizedVal);
         		if(mapping == null){
-        			mapping = new Mapping();
+        			mapping = new Mapping();        			
         			mapping.setValue(normalizedVal);
         			processedNormalizedVals.put(normalizedVal, mapping);
         			_logger.debug("new mapping was found, normalized value is {}", mapping.getValue());

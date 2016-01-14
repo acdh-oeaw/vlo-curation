@@ -1,13 +1,9 @@
 package eu.clarin.cmdi.vlo.importer;
 
-import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 public class OrganisationPostProcessor extends PostProcessorsWithVocabularyMap{
-
-
-	 private static Map<String, String> organisationNamesMap = null;
 	 
     /**
      * Splits values for organisation facet at delimiter ';' and replaces
@@ -21,13 +17,17 @@ public class OrganisationPostProcessor extends PostProcessorsWithVocabularyMap{
     @Override
     public List<String> process(String value) {
         String[] splitArray = normalizeInputString(value).split(";");
-        for (int i = 0; i < splitArray.length; i++) {
-        	String normalizedVal = normalize(splitArray[i], null);
-        	if(normalizedVal != null)
-               	splitArray[i] = normalizedVal;
+        List<String> result = new LinkedList<>();
+        for (int i = 0; i < splitArray.length; i++) {        	
+        	List<String> normalizedVals = normalize(splitArray[i]);
+        	if(normalizedVals != null){
+        		for(String normalizedVal: normalizedVals)
+        			if(normalizedVal != null)//skip nulls
+        				result.add(normalizedVal);
+        	}
         }
         
-        return Arrays.asList(splitArray);
+        return result;
     }
     
 	@Override
@@ -42,9 +42,4 @@ public class OrganisationPostProcessor extends PostProcessorsWithVocabularyMap{
     private String normalizeVariant(String key) {
         return key.toLowerCase().replaceAll("-", " ");
     }
-
-
-	
-    
-    
 }

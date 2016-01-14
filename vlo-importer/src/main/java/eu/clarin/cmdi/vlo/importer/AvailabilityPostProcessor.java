@@ -1,8 +1,6 @@
 package eu.clarin.cmdi.vlo.importer;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  *
@@ -15,12 +13,8 @@ public class AvailabilityPostProcessor extends PostProcessorsWithVocabularyMap {
     
 
     @Override
-    public List<String> process(final String value) {
-        List<String> resultList = new ArrayList<String>();
-        
-        resultList.add(normalize(value, value.length() > MAX_LENGTH? OTHER_VALUE : value.trim()));
-
-        return resultList;
+    public List<String> process(final String value) {  
+        return normalize(value, value.length() > MAX_LENGTH? OTHER_VALUE : value.trim());
     }
 
 

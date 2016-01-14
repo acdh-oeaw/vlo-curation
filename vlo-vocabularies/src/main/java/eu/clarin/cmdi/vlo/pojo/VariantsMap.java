@@ -1,6 +1,7 @@
 package eu.clarin.cmdi.vlo.pojo;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -70,12 +71,17 @@ public class VariantsMap{
 		boolean containsRegEx = false;
 		
 		for(Mapping m: mappings)
-			if(m.getVariants() != null)
+			if(m.getVariants() != null){
+				List<String> normalizedValues = new LinkedList<String>();
+				for(String v: m.getValue().split(";"))
+					normalizedValues.add(v.trim());
+				
 				for(Variant v: m.getVariants()){					
-					listOfEntries.add(new VocabularyEntry(v.getValue().trim(), m.getValue().trim(), v.isRegExp(), v.getCrossMappings()));
+					listOfEntries.add(new VocabularyEntry(v.getValue().trim(),normalizedValues, v.isRegExp(), v.getCrossMappings()));
 					if(v.isRegExp())
 						containsRegEx = true;
 				}
+			}
 
 		return new NormalizationVocabulary(listOfEntries.toArray(new VocabularyEntry[0]), containsRegEx); 
 		

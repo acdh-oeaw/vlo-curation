@@ -455,12 +455,12 @@
    <field name="profileName" type="string" indexed="true" stored="true" multiValued="false"/>
    <field name="profileId" type="string" indexed="true" stored="true" multiValued="false"/>
    
-   <field name="originalResourceClass" type="string" indexed="true" stored="true" multiValued="true" />
-   <field name="originalLanguageCode" type="string" indexed="true" stored="true" multiValued="true" />
-   <field name="originalCountry" type="string" indexed="true" stored="true" multiValued="true" />
-   <field name="originalAvailability" type="string" indexed="true" stored="true" multiValued="true" />
-   <field name="originalOrganisation" type="string" indexed="true" stored="true" multiValued="true" />
-   <field name="originalNationalProject" type="string" indexed="true" stored="true" multiValued="true" />
+   <field name="resourceClassOrig" type="string" indexed="true" stored="true" multiValued="true" />
+   <field name="languageOrig" type="string" indexed="true" stored="true" multiValued="true" />
+   <field name="countryOrig" type="string" indexed="true" stored="true" multiValued="true" />
+   <field name="availabilityOrig" type="string" indexed="true" stored="true" multiValued="true" />
+   <field name="organisationOrig" type="string" indexed="true" stored="true" multiValued="true" />
+   <field name="natProjectOrig" type="string" indexed="true" stored="true" multiValued="true" />
    
    
    <!-- Field _version_ for update log (needed for partial updates) -->
@@ -469,7 +469,12 @@
    <!-- Field for autocompletion (suggester) -->
    <field name="_suggester" type="textauto" indexed="true" stored="false" multiValued="true"/>
    <copyField source="text" dest="_suggester"/>
- </fields>
+
+
+  <!-- Concepts -->
+  <dynamicField name="c-*" type="string" indexed="true" stored="true"  multiValued="true" />
+ 
+</fields>
 
  <uniqueKey>id</uniqueKey>
  <defaultSearchField>text</defaultSearchField>

@@ -1,16 +1,16 @@
 <VloConfig>
     
-    <deleteAllFirst>${vloconfig.deleteAllFirst}</deleteAllFirst>
+    <deleteAllFirst>false</deleteAllFirst>
     
-    <maxDaysInSolr>${vloconfig.maxDaysInSolr}</maxDaysInSolr>
+    <maxDaysInSolr>0</maxDaysInSolr>
     
-    <solrUrl>${vloconfig.solrUrl}</solrUrl>
+    <solrUrl>http://localhost:9080/vlo-solr/core0/</solrUrl>
     
-    <homeUrl>${vloconfig.homeUrl}</homeUrl>
+    <homeUrl>http://www.clarin.eu/vlo</homeUrl>
     
-    <helpUrl>${vloconfig.helpUrl}</helpUrl>
+    <helpUrl>http://www.clarin.eu/vlo</helpUrl>
     
-    <xi:include href="${vloconfig.dataRootsFile}" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
+    <xi:include href="dataroots-minerva.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
     
     <!-- Sets the maximum number of page instances which will be stored in the application scoped second level cache for faster retrieval -->
     <pagesInApplicationCache>40</pagesInApplicationCache>
@@ -66,7 +66,7 @@
         <facetField>languageOrig</facetField>
         <facetField>collection</facetField>
         <facetField>resourceClass</facetField>
-		<facetField>resourceClassOrig</facetField>
+	<facetField>resourceClassOrig</facetField>
         <facetField>country</facetField>
         <facetField>countryOrig</facetField>
         <facetField>modality</facetField>
@@ -78,13 +78,17 @@
         <facetField>availability</facetField>
         <facetField>availabilityOrig</facetField>
         <facetField>license</facetField>
+	<facetField>c-availability</facetField>
+	<facetField>c-license</facetField>
+	<facetField>c-license_type</facetField>
+	<facetField>c-licence_type</facetField>
         <facetField>nationalProject</facetField>
         <facetField>natProjectOrig</facetField>
         <facetField>keywords</facetField>
         <facetField>dataProvider</facetField>
-		<facetField>temporalCoverage</facetField>
+	<facetField>temporalCoverage</facetField>
         <facetField>_componentProfile</facetField>
-		<facetField>profileId</facetField>
+	<facetField>profileId</facetField>
     </facetFields>
             
     <simpleSearchFacetFields>
@@ -98,7 +102,7 @@
     <!-- Fields shown in expanded search results on the search page -->
     <searchResultFields>
     	<searchResultField>country</searchResultField>
-		<searchResultField>resourceClassOrig</searchResultField>
+	<searchResultField>resourceClassOrig</searchResultField>
         <searchResultField>name</searchResultField>
         <searchResultField>country</searchResultField>
         <searchResultField>languageCode</searchResultField>
@@ -108,8 +112,8 @@
         <searchResultField>organization</searchResultField>
         <searchResultField>collection</searchResultField>
         <searchResultField>nationalProject</searchResultField>
-		<searchResultField>_componentProfile</searchResultField>
-		<searchResultField>profileId</searchResultField>
+	<searchResultField>_componentProfile</searchResultField>
+	<searchResultField>profileId</searchResultField>
     </searchResultFields>
     
     <!-- Fields ignored in the record page -->
@@ -166,5 +170,5 @@
     
     <processHierarchies>true</processHierarchies>
     
-    <useCrossMapping>false</useCrossMapping>
+    <useCrossMapping>true</useCrossMapping>
 </VloConfig>

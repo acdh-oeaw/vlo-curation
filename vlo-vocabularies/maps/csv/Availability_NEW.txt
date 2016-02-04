@@ -1,0 +1,241 @@
+AVAILABILITY	COUNT	NORMALIZED_VALUE	REMARKS																		
+Apache 2.0		"PUB;BY"	Free																		
+Apache		PUB;BY	Free																		
+ApacheLicence_2.0		PUB;BY	Free																		
+Apache Licence 2.0		PUB;BY	Free																		
+Apache-Licence		PUB;BY	Free																		
+attribution		BY	Free																		
+Available to all		PUB	Free																		
+Available to public		PUB	Free																		
+BSD-style		PUB;BY	Free																		
+BSD		PUB;BY	Free																		
+BSD or CC-BY-3.0		PUB;BY	Free																		
+CC BY-SA 3.0		PUB;BY;SA	Free																		
+CC-BY-SA		PUB;BY;SA	Free																		
+CC-BY		PUB;BY	Free																		
+CC-ZERO		PUB	Free																		
+CLARIN_PUB		PUB	Free																		
+CLARIN-PUB		PUB	Free																		
+free by CLARIN Service Provider federation		ACA	Free																		
+"free; Distributed as a dissertation - ""Lexikalische Polygenese im Konzeptbereich KOPF"""		PUB	Free																		
+free		PUB	Free																		
+"free; Free for academic use."		ACA	Free																		
+"free; Free for research purposes."		ACA	Free																		
+freely available		PUB	Free																		
+freely usable		PUB	Free																		
+Free		PUB	Free																		
+GFDL		PUB;BY;SA	Free																		
+GNU GPL 3		PUB;BY;SA	Free																		
+GNU GPL		PUB;BY;SA	Free																		
+GNU GPL v2		PUB;BY;SA	Free																		
+GNU GPL v3		PUB;BY;SA	Free																		
+GNU GPL		PUB;BY;SA	Free																		
+GPL		PUB;BY;SA	Free																		
+GPL v2		PUB;BY;SA	Free																		
+GNU Public License		PUB;BY;SA	Free																		
+informLicensor		INF	Free																		
+LGPL for Linguistic Resources		PUB;BY	Free																		
+LGPL		PUB;BY	Free																		
+open 2009		PUB	Free																		
+open access		PUB	Free																		
+Open Access		PUB	Free																		
+Open aceess		PUB	Free																		
+open		PUB	Free																		
+openly available		PUB	Free																		
+open to all		PUB	Free																		
+Princeton_Wordnet		PUB	Free																		
+PUB		PUB	Free																		
+public		PUB	Free																		
+redeposit		DEP	Free																		
+shareAlike		SA	Free																		
+academic access		ACA	Free for academic use																		
+academic		ACA	Free for academic use																		
+academic-nonCommercialUse		"ACA;NC"	Free for academic use																		
+academic - available for academic use		ACA	Free for academic use																		
+ACA		ACA	Free for academic use																		
+available to researcher/annotator		ACA	Free for academic use																		
+Binnen de kaders van de Gedragscode voor gebruik van persoonsgegevens in wetenschappelijk onderzoek van de VSNU (Vereniging van Samenwerkende Nederlandse Universiteiten) vrij beschikbaar voor dialectologisch, fonetisch, historisch of ander onderzoek. Onderzoekers wordt gevraagd bij publicatie als bron deze website te vermelden. Neem voor andersoortig gebruik contact op met het Meertens Instituut.		ACA	Free for academic use																		
+CC BY-NC 3.0 DE		PUB;BY;NC	Free for academic use																		
+CC BY-NC 3.0		PUB;BY;NC	Free for academic use																		
+CC BY-NC 4.0		PUB;BY;NC	Free for academic use																		
+CC BY-NC-SA 3.0		PUB;BY;NC;SA	Free for academic use																		
+CC-BY-NC		PUB;BY;NC	Free for academic use																		
+CC - BY - NC		PUB;BY;NC	Free for academic use																		
+CC-BY-NC-SA		PUB;BY;NC;SA	Free for academic use																		
+CC-by-nc-sa		PUB;BY;NC;SA	Free for academic use																		
+CLARIN ACA		ACA	Free for academic use																		
+CLARIN_ACA		ACA	Free for academic use																		
+CLARIN-ACA		ACA	Free for academic use																		
+CLARIN_ACA-NC		ACA;NC	Free for academic use																		
+disponible para indÃ­genas e investigadores		ACA	Free for academic use																		
+disponible para indígenas e investigadores		ACA	Free for academic use																		
+"free available for purely academic institutions; fees apply for commercial institutions"		"ACA;RES;FF"	Free for academic use																		
+free available for science		ACA	Free for academic use																		
+free available for scientific usage		ACA	Free for academic use																		
+free for academic use		ACA	Free for academic use																		
+free for academic use (subcat frames)		ACA	Free for academic use																		
+free for non-commercial use		NC	Free for academic use																		
+freely available for academic research and education		ACA	Free for academic use																		
+freely available for research and education		ACA	Free for academic use																		
+freely available for science		ACA	Free for academic use																		
+freely usable for non-commercial usage (inform resource creator)		NC; INF	Free for academic use																		
+Free to use for research and teaching purposes.		ACA	Free for academic use																		
+Free to use for research and teaching purposes		ACA	Free for academic use																		
+non-commercial use		NC	Free for academic use																		
+ree available for science		ACA	Free for academic use																		
+research use only		ACA	Free for academic use																		
+restricted: available to researchers with legitimate interest 1		RES; PLAN	Free for academic use																		
+restricted: available to researchers with legitimate interest 2		RES; PLAN	Free for academic use																		
+restricted: available to researchers with legitimate interest		RES; PLAN	Free for academic use																		
+The Conditions of Use for the IPROSLA data set specify among other things that no commercial use may be made of the data, that the creators of the data set should always be acknowledged in any publication on the data set, and that utmost care should be taken to protect the privacy of the families involved.		"RES; BY; NC; PRIV"	Free for academic use																		
+Vrij beschikbaar voor dialectologisch, fonetisch, historisch of ander onderzoek. Onderzoekers wordt gevraagd bij publicatie als bron deze website te vermelden. Neem voor andersoortig gebruik contact op met het Meertens Instituut		ACA	Free for academic use																		
+Access is restricted. Permission can be obtained by contacting the owner or the MPI		RES	Restricted																		
+All data including audio is accessible for authorised researchers.		RES	Restricted																		
+Annotation derzeit nicht vollständig. Freigabe erst nach Auswertung möglich. Lizensierung zur Veröffentlichung im Web als Vereinbarung nötig.		undefined	Restricted																		
+A special license is required because of the stem lexicon. SMOR (without a stem lexicon) comes with the SFST-tools (Stuttgart Finite State Transducer Tools) under the GNU Public License GPLv2.		undefined	Restricted																		
+//available-restrictedUse		ignore	Restricted																		
+By permission of owner only		RES	Restricted																		
+CC-BY-NC-ND		"PUB;BY;NC;ND"	Restricted																		
+CC-BY-ND		"PUB;BY;ND"	Restricted																		
+CLARIN_RES		RES	Restricted																		
+closed		RES	Restricted																		
+Closed		RES	Restricted																		
+Closed.		RES	Restricted																		
+//commercial		ignore	Restricted																		
+//commercialUse		ignore	Restricted																		
+"free; Contains personal data - photos and recordings. Oral permission for displying the photos, as long as they don't depict nude people."		"RES;PRIV"	Restricted																		
+Free to use for research and teaching purposes approved by the rights holder.		RES; PLAN	Restricted																		
+"free; Use of text excerpts for scientific research."		RES	Restricted																		
+internal		RES	Restricted																		
+Linguistic Data Consortium, The Trustees of the University of Pennsylvania.		RES	Restricted																		
+MS-C-NoReD-ND-FF		"RES;FF;LRT"	Restricted																		
+no access		unavailable	Restricted																		
+no available		unavailable	Restricted																		
+Not available		unavailable	Restricted																		
+Nor available		unavailable	Restricted																		
+noDerivatives		ND	Restricted																		
+non available		unavailable	Restricted																		
+no recordings available due to the sensitivity of the material		unavailable	Restricted																		
+noRedistribution		NORED	Restricted																		
+no		unavailable	Restricted																		
+No		unavailable	Restricted																		
+not available to the public		undefined	Restricted																		
+other		undefined	Restricted																		
+proprietary		undefined	Restricted																		
+Recurso protegido - Protected resource		undefined	Restricted																		
+Registrierung erforderlich, die Texte der taz müssen erworben werden		RES;FF	Restricted																		
+Registrierung erforderlich, eingeschränkte Nutzung für nicht-akademische und kommerzielle Nutzung		RES	Restricted																		
+RES		RES	Restricted																		
+restricted		Other	Restricted																		
+restricted 2009		Other	Restricted																		
+Restricted		Other	Restricted																		
+restricted - only available for licence owners		Other	Restricted																		
+restringido/restricted		Other	Restricted																		
+some concept definitions are open		Other	Restricted																		
+special license		Other	Restricted																		
+underNegotiation		undefined	Restricted																		
+available after registration		PUB+ID	Upon request																		
+Available on request		RES	Upon request																		
+Available upon request		RES	Upon request																		
+free for academic use, request required		RES	Upon request																		
+on request, for academic use		RES	Upon request																		
+Please contact contact-person		RES	Upon request																		
+request required		RES	Upon request																		
+Upon Request		RES	Upon request																		
+																					
+//1	4	ignore																			
+//2	12	ignore																			
+//3	87	ignore																			
+//4	58	ignore																			
+//"[free; free for academic use; restricted use; request required; user license required; unknown]"	1	ignore																			
+//__	4	ignore																			
+//476306KB	1	ignore																			
+//94408KB	1	ignore																			
+//archiving+dissemination	114	ignore																			
+Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)	3	PUB;BY;SA																			
+//Available	4	ignore																			
+//available	423	ignore																			
+BAS:aGender	1																				
+BAS:ALC	1																				
+BAS:ASICA	1																				
+BAS:CI_1	1																				
+BAS:CLIPS_MT_MANUAL	1																				
+BAS:FORMTASK	1																				
+BAS:HEMPEL	1																				
+BAS:HOESI	1																				
+BAS:NM-MoCap-Corpus	1																				
+BAS:PD1	1																				
+BAS:PD2	1																				
+BAS:PHATTSESSIONZ	1																				
+BAS:RVG1_CLARIN	1																				
+BAS:RVG-J	1																				
+BAS:SaGA	1																				
+BAS:SC1	2																				
+BAS:SC10	1																				
+BAS:SHC	1																				
+BAS:SIGNUM	1																				
+BAS:SK	3																				
+BAS:SMC	1																				
+BAS:SVC	1																				
+BAS:TAXI	1																				
+BAS:VERIF1DE	1																				
+BAS:VM1	1																				
+BAS:VM2	1																				
+BAS:VMEMO	1																				
+BAS:ZIPTEL	1																				
+CC-BY-...	1																				
+Creative Commons Attribution-ShareAlike 3.0	1	PUB;BY;SA																			
+Creative Commons CC BY-NC 3.0 DE, http://creativecommons.org/licenses/by-nc/3.0/de/	1	PUB;BY;NC																			
+Creative_Commons-BY	9	PUB;BY																			
+Die Nutzung des Wörterbuchs ist online über eine kostenfreie Abfrage einzelner Artikel möglich.	3	PUB																			
+Dit werk is valt onder een Creative Commons Naamsvermelding-NietCommercieel 4.0 Internationaal-licentie(http://creativecommons.org/licenses/by-nc/4.0/)	1	PUB;BY;NC																			
+Dit werk is valt onder een Creative Commons Naamsvermelding-NietCommercieel 4.0 Internationaal-licentie.(http://creativecommons.org/licenses/by-nc/4.0/)	1																				
+ELRA_END_USER	1	"RES;FF;LOC;LRT;Other"																			
+Free for academic use	1																				
+"free for academic use by non-commercial organisation; 15.000 euro for commercial use and for use by commercial organisation; user licence required"	1	"ACA;NC;RES;FF"																			
+Free for academic use.non applicable for commercial parties	4	ACA																			
+"free for academic use; available to commercial parties, but not for free; user licence required for all parties; restricted use"	1	"ACA; RES;FF"																			
+"free for academic use; non applicable for commercial parties"	3	ACA;NC																			
+"free for academic use; non applicable for commercial parties"	1	ACA;NC																			
+"free for academic use; non appliccable for commercial parties"	1	ACA;NC																			
+"free for academic use; non appliccable for commercial parties"	1	ACA;NC																			
+"free for academic use; non appliccable for commercial parties"	4	ACA;NC																			
+free for science	1	ACA																			
+Free to use for research purposes provided permission has been granted by rights holder.	234	"ACA;REQ"																			
+Free, accessible through CLARIN Institutional login	2	ACA																			
+"free; Corpus contains personal data, but person names have been changed."	1	PUB																			
+"free; External users must prove they have licensed the original taz data."	2																				
+"free; online subscription for the digitalized newspaper texts."	1	"PUB;REG"																			
+freely available for non-commercial research use (CC BY-NC-SA Licence)	11	CC;BY;NC;SA																			
+GNU General Public License	660	PUB;BY;SA																			
+GNU General Public License, version 3	1	PUB;BY;SA																			
+http://creativecommons.org/licenses/by-nc/3.0/ 	1	PUB;BY;NC																			
+HZSK-ACA	28	ACA																			
+HZSK-PUB	27	PUB																			
+HZSK-RES	2484	RES																			
+Individual lexical entries of this dictionary can be accessed freely online	9	PUB																			
+Korpus nicht im endgültigem Zustand Generelle Freigabe kann erst erfolgen, wenn die erfassten Daten ausgewertet wurden. Vollständige Freigabe nur auf Anfrage.	14	RES																			
+Lesser General Public License For Linguistic Resources	2	PUB;BY																			
+"License Agreement for the \Huge German Corpus (HGC)"" This agreement is made between - Universität Stuttgart Institut für maschinelle Sprachverarbeitung - Computerlinguistik - Pfaffenwaldring 5b D 70569 Stuttgart, Germany Contact: clarin@ims.uni-stuttgart.de Contact person: Dr. Heike Zinsmeister hereinafter referred to as the Licensor - Institute: Address: Represented by: Contact person: (email: ) duly authorised to sign this Agreement, hereinafter referred to as the User This agreement is made and enters into force as of ................................. (date). 1 Product This agreement relates to the \Huge German Corpus (HGC)"", a collection of German Newspaper texts, hereinafter referred to as the Product. The corpus is partly based on data taken from the European Corpus Initiative Multilingual Corpus I (ECI/MCI). The HCG currently comprises approximately 204 million tokens. It is automatically preprocessed in terms of segmentation, lemmatization, and part-of-speech annotation. Furthermore, it is indexed for use in the IMS Corpus Workbench (CWB). 2 Academic Research License 1. Licensor grants User a non-exclusive license to use the Product for the purpose of non-commercial, non-profit research by User for any research project conducted on the premises of User. 2. User agrees to acknowledge the use of the Product in all publications reporting on results produced with the help of the Product by referring to the landing page of the Product or Fitschen (2004, p. 8): - HGC landing page: http://www.ims.uni-stuttgart.de/forschung/ressourcen/korpora/hgc.en.html - Fitschen, Arne. 2004. Ein Computerlinguistisches Lexikon als komplexes System. Doctoral Thesis. University of Stuttgart. Published as AIMS 10 3). 3. User agrees to quote at most individual sample sentences of the original texts. User may not cite longer sequences of sentences. 4. User agrees not to redistribute nor to sublicense the Product in whole nor in part. 3 Non-Disclosure 1. User will not make the Product available to any third party. 2. User will use all reasonable efforts to ensure that no persons or institutions other than persons that are in the institute of User will get access to the Product. Other persons or institutions desiring to use the Product should be directed to Licensor to obtain separate license agreements. 3. User will use all reasonable efforts, at least as great as the precautions it takes to protect its own information, to prevent inadvertent disclosure of the Product to any third party. 4 Disclaimer 1. Licensor hereby informs User that the distributed version of the Product is work in progress and that, despite care and effort spent by Licensor on the pre-processing of the Product, the Product may still contain errors. 2. The Product is provided to User as-is, without any warranty and without any guarantee of its usability. 3. Licensor shall not be held liable for any consequences that arise from defects in the Product. 5 Agreement 1. This Agreement constitutes the complete agreement between Licensor and User, and it supersedes any prior agreements between them that concern the the Product. 2. This Agreement shall be construed in accordance with German law; disputes shall be adjudicated or otherwise decided in the courts of Stuttgart, Germany. 3. If any provision of this Agreement is held by a court of competent jurisdiction to be unenforceable, all other provisions hereof shall remain in full force and effect, and be interpreted to the extent possible consistent with the intent of the parties expressed by this Agreement. 6 Termination 1. Licensor may terminate the agreement forthwith if the User commits any material breach of this agreement or if the copyright holder raises an objection against the terms of the license agreement. 2. User may terminate this agreement within 30 days of written notice. On termination howsoever caused, User shall erase all copies of the Product. 7 Fee This license is granted by Licensor to User free of charge. 8 Acknowledgement Part of the raw text as used in the Product is based on the European Corpus Initiative Multilingual Corpus I (ECI/MCI), which is copyrighted by the Association for Computational Linguistics (ACL) on behalf of the European Corpus Initiative (ECI): ELSNET/CLARIN Trans 10 3512 JK Utrecht The Netherlands URL: http://www.elsnet.org/eci.html Signatures For the Licensor: Done at Stuttgart, on .............................. By (name): Prof. Dr. Jonas Kuhn Title: Director IMS-GCL Signature: .............................. For the User: Done at ..................., on ................... By (name): .............................. Title: .............................. Signature: .............................."	1																				
+"License Agreement for the TIGER Corpus for non-commercial use Universität Stuttgart, Institut für Maschinelle Sprachverarbeitung Prof. Dr. Jonas Kuhn Pfaffenwaldring 5b, D-70569 Stuttgart, Germany Universität Potsdam, Institut für Germanistik Postfach 601553, D-14415 Potsdam, Germany Universität des Saarlandes, FR 4.7 Computerlinguistik Lehrstuhl Prof. Dr. Hans Uszkoreit Postfach 151150, D-66041 Saarbrücken, Germany (""Licenser"") and ""Licensee"" agree as follows 1. Status of Licensee Licensee confirmes that Licensee is (part of) an academic or educational institution. 2. Product The TIGER Treebank, consists of approximately 900,000 tokens (50,000 sentences) of German newspaper text, taken from the Frankfurter Rundschau. The corpus was annotated with parts-of-speech and syntactic structures in the project TIGER (DFG) in Potsdam, Saarbrücken and Stuttgart. Copyright of different parts of the TIGER Treebank is to: Universität Potsdam, Institut für Germanistik Universität des Saarlandes, FR 4.7 Computerlinguistik Universität Stuttgart, Institut für Maschinelle Sprachverarbeitung for all part-of-speech and structural annotations, and corpus documentation. The TIGER Treebank includes third party data as listed in the Appendix. Licenser and Licensee recognize that the copyrights of these data belong to the respective organisation, as mentioned in the Appendix. 3. License Licenser grants Licensee a non-exclusive license to use the TIGER Treebank. Licensee agrees to use the corpus only for non-commercial, non-profit research purposes; to make no changes to the corpus; and to acknowledge the use of the corpus in all publications reporting on results produced with the help of the TIGER Treebank. Use of the corpus or use of data derived from the corpus for any commercial purposes requires explicit written agreement of Licenser. Licenser and Licensee recognize that the copyrights of the third party data belong to the respective organisation, as mentioned in the Appendix. 4. Non-Disclosure The TIGER Treebank and its documentation will be held in confidence by Licensee and will not be disclosed by Licensee to third parties, except for those parts of the corpus or its documentation that are explicitly marked for public use, and except for example sentences in scientific publications. Licensee shall and will employ all necessary precautions to ensure that no persons or institutions other than persons as are in the employ of Licensee or in the same research project as Licensee will get access to the TIGER Treebank or parts thereof. Other persons or institutions desiring access to the corpus should be directed to Licenser to obtain separate licence agreements. 5. Commencement and Duration This Agreement will take effect from the date of signature and will continue until terminated either by Licensee or Licenser in accordance with Clause 6 below. 6. Termination Licenser may terminate the agreement forthwith if the Licensee commits any material breach of this agreement or if the copyright holder raises an objection against the terms of the license agreement. Licensee may terminate this agreement within 30 days of written notice. On termination howsoever caused, the Licensee shall erase all copies of the TIGER Treebank. 7. Fee This license is granted by Licenser to Licensee free of charge. 8. Disclaimer This license is granted under the premise that the copyright holder of the raw data accepts the terms of the license agreement. If the copyright holder raises an objection against the terms of the license agreement, lincenser may terminate the agreement and Licensee shall then erase all copies of the TIGER Treebank. The TIGER Treebank and its documentation is provided on an ``as is'' basis, with no guarantee of its veracity or accuracy. No liability is accepted for any damage caused by its use. Licenser hereby informs Licensee that, although large efforts were spent on removing annotation errors, some of them still remain in the corpus. Appendix: Acknowledgements The raw text of the Frankfurter Rundschau as used in the corpus is copyrighted by the Frankfurter Rundschau: Druck- und Verlagshaus Frankfurt am Main GmbH Verlag der Frankfurter Rundschau Große Eschenheimer Straße 16-18 D-60313 Frankfurt am Main"	1																				
+"mit Benutzerlizenz (Formular online zum Download); für nicht akademischen Gebrauch auf Anfrage bei Erhard Hinrichs"	2	"REG;REQ"																			
+"mit Benutzerlizenz (Formular online zum Download); für nicht akademischen Gebrauch auf Anfrage bei Prof. Dr. Erhard Hinrichs"	1	"REG;REQ"																			
+MSCommons-BY-NC-SA	1	PUB;BY;NC;SA																			
+nor available	1	RES																			
+not available	28	RES																			
+Open	1	PUB																			
+Open access	13	PUB																			
+part is open	93																				
+Public	27	PUB																			
+"restricted; Free for academic use, but issues with the comic licenses may have to be dealt with."	1	ACA																			
+"restricted; Free for academic use, copyright owned by Professor Svenka Savic, Novi Sad (Serbia)."	1	ACA																			
+"restricted; free for academic, but not for commercial use."	1	ACA;NC																			
+//test	1	--																			
+This resource can be used online http://retro.dwds.de/?corpus=1&cc=OSTWEST	1	PUB																			
+unknown	1																				
+Unspecified	2602	undefined																			
+unspecified	1	undefined																			
+upon request	4	REQ																			
+video not available, transcript only available	4																				
+"with user license (license form online accessible); for non-academic use please contact Erhard Hinrichs"	1	"REG;REQ"																			
+yes	1	PUC																			

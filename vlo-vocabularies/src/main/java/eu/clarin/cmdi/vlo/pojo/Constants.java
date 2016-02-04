@@ -22,6 +22,9 @@ public class Constants {
 	public static final String NATIONAL_PROJECT = "nationalProjectsMapping";
 	public static final String ORGANISATION = "OrganisationControlledVocabulary";
 	public static final String PROFILE = "profileName_resourceType_map";
+	public static final String AVAIL_NEW = "Availability_NEW"; 
+	public static final String LIC_CAT_NEW = "LicenceCategory_NEW";
+	
 	
 	public static final List<String> maps = new ArrayList<String>();
 	

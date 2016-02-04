@@ -12,7 +12,7 @@ public class TransformAllMaps {
 	
 	public static void main(String[] args) throws FileNotFoundException, JAXBException, IOException {
 		
-		new CSVTransformer().csv2xml(Constants.RESOURCE_TYPE);
+		new CSVTransformer().csv2xml(Constants.AVAIL_NEW);
 		System.out.println("Finished.");
 		
 		

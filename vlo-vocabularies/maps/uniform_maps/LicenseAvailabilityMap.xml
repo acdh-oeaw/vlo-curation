@@ -1,157 +1,1204 @@
-<mappings field="availability">
-   <mapping>
-      <normalizedValue value="Free"/>
-      <variant value="Apache 2.0"/>
-      <variant value="Apache"/>
-      <variant value="ApacheLicence_2.0"/>
-      <variant value="Apache Licence 2.0"/>
-      <variant value="Apache-Licence"/>
-      <variant value="attribution"/>
-      <variant value="Available to all"/>
-      <variant value="Available to public"/>
-      <variant value="BSD-style"/>
-      <variant value="BSD"/>
-      <variant value="BSD or CC-BY-3.0"/>
-      <variant value="CC BY-SA 3.0"/>
-      <variant value="CC-BY-SA"/>
-      <variant value="CC-BY"/>
-      <variant value="CC-ZERO"/>
-      <variant value="CLARIN_PUB"/>
-      <variant value="CLARIN-PUB"/>
-      <variant value="free by CLARIN Service Provider federation"/>
-      <variant value="free; Distributed as a dissertation - &#34;Lexikalische Polygenese im Konzeptbereich KOPF&#34;"/>
-      <variant value="free"/>
-      <variant value="free; Free for academic use."/>
-      <variant value="free; Free for research purposes."/>
-      <variant value="freely available"/>
-      <variant value="freely usable"/>
-      <variant value="Free"/>
-      <variant value="GFDL"/>
-      <variant value="GNU GPL 3"/>
-      <variant value="GNU GPL"/>
-      <variant value="GNU GPL v2"/>
-      <variant value="GNU GPL v3"/>
-      <variant value="GNU GPL"/>
-      <variant value="GPL"/>
-      <variant value="GPL v2"/>
-      <variant value="GNU Public License"/>
-      <variant value="informLicensor"/>
-      <variant value="LGPL for Linguistic Resources"/>
-      <variant value="LGPL"/>
-      <variant value="open 2009"/>
-      <variant value="open access"/>
-      <variant value="Open Access"/>
-      <variant value="Open aceess"/>
-      <variant value="open"/>
-      <variant value="openly available"/>
-      <variant value="open to all"/>
-      <variant value="Princeton_Wordnet"/>
-      <variant value="PUB"/>
-      <variant value="public"/>
-      <variant value="redeposit"/>
-      <variant value="shareAlike"/>
-   </mapping>
-   <mapping>
-      <normalizedValue value="Free for academic use"/>
-      <variant value="academic access"/>
-      <variant value="academic"/>
-      <variant value="academic-nonCommercialUse"/>
-      <variant value="academic - available for academic use"/>
-      <variant value="ACA"/>
-      <variant value="available to researcher/annotator"/>
-      <variant value="Binnen de kaders van de Gedragscode voor gebruik van persoonsgegevens in wetenschappelijk onderzoek van de VSNU (Vereniging van Samenwerkende Nederlandse Universiteiten) vrij beschikbaar voor dialectologisch, fonetisch, historisch of ander onderzoek. Onderzoekers wordt gevraagd bij publicatie als bron deze website te vermelden. Neem voor andersoortig gebruik contact op met het Meertens Instituut."/>
-      <variant value="CC BY-NC 3.0 DE"/>
-      <variant value="CC BY-NC 3.0"/>
-      <variant value="CC BY-NC 4.0"/>
-      <variant value="CC BY-NC-SA 3.0"/>
-      <variant value="CC-BY-NC"/>
-      <variant value="CC - BY - NC"/>
-      <variant value="CC-BY-NC-SA"/>
-      <variant value="CC-by-nc-sa"/>
-      <variant value="CLARIN ACA"/>
-      <variant value="CLARIN_ACA"/>
-      <variant value="CLARIN-ACA"/>
-      <variant value="CLARIN_ACA-NC"/>
-      <variant value="disponible para indÃ­genas e investigadores"/>
-      <variant value="disponible para indígenas e investigadores"/>
-      <variant value="free available for purely academic institutions; fees apply for commercial institutions"/>
-      <variant value="free available for science"/>
-      <variant value="free available for scientific usage"/>
-      <variant value="free for academic use"/>
-      <variant value="free for academic use (subcat frames)"/>
-      <variant value="free for non-commercial use"/>
-      <variant value="freely available for academic research and education"/>
-      <variant value="freely available for research and education"/>
-      <variant value="freely available for science"/>
-      <variant value="freely usable for non-commercial usage (inform resource creator)"/>
-      <variant value="Free to use for research and teaching purposes."/>
-      <variant value="Free to use for research and teaching purposes"/>
-      <variant value="non-commercial use"/>
-      <variant value="ree available for science"/>
-      <variant value="research use only"/>
-      <variant value="restricted: available to researchers with legitimate interest 1"/>
-      <variant value="restricted: available to researchers with legitimate interest 2"/>
-      <variant value="restricted: available to researchers with legitimate interest"/>
-      <variant value="The Conditions of Use for the IPROSLA data set specify among other things that no commercial use may be made of the data, that the creators of the data set should always be acknowledged in any publication on the data set, and that utmost care should be taken to protect the privacy of the families involved."/>
-      <variant value="Vrij beschikbaar voor dialectologisch, fonetisch, historisch of ander onderzoek. Onderzoekers wordt gevraagd bij publicatie als bron deze website te vermelden. Neem voor andersoortig gebruik contact op met het Meertens Instituut"/>
-   </mapping>
-   <mapping>
-      <normalizedValue value="Restricted"/>
-      <variant value="Access is restricted. Permission can be obtained by contacting the owner or the MPI"/>
-      <variant value="All data including audio is accessible for authorised researchers."/>
-      <variant value="Annotation derzeit nicht vollständig. Freigabe erst nach Auswertung möglich. Lizensierung zur Veröffentlichung im Web als Vereinbarung nötig."/>
-      <variant value="A special license is required because of the stem lexicon. SMOR (without a stem lexicon) comes with the SFST-tools (Stuttgart Finite State Transducer Tools) under the GNU Public License GPLv2."/>
-      <variant value="available-restrictedUse"/>
-      <variant value="By permission of owner only"/>
-      <variant value="CC-BY-NC-ND"/>
-      <variant value="CC-BY-ND"/>
-      <variant value="CLARIN_RES"/>
-      <variant value="closed"/>
-      <variant value="Closed"/>
-      <variant value="Closed."/>
-      <variant value="commercial"/>
-      <variant value="commercialUse"/>
-      <variant value="free; Contains personal data - photos and recordings. Oral permission for displying the photos, as long as they don't depict nude people."/>
-      <variant value="Free to use for research and teaching purposes approved by the rights holder."/>
-      <variant value="free; Use of text excerpts for scientific research."/>
-      <variant value="internal"/>
-      <variant value="Linguistic Data Consortium, The Trustees of the University of Pennsylvania."/>
-      <variant value="MS-C-NoReD-ND-FF"/>
-      <variant value="no access"/>
-      <variant value="no available"/>
-      <variant value="Not available"/>
-      <variant value="Nor available"/>
-      <variant value="noDerivatives"/>
-      <variant value="non available"/>
-      <variant value="no recordings available due to the sensitivity of the material"/>
-      <variant value="noRedistribution"/>
-      <variant value="no"/>
-      <variant value="No"/>
-      <variant value="not available to the public"/>
-      <variant value="other"/>
-      <variant value="proprietary"/>
-      <variant value="Recurso protegido - Protected resource"/>
-      <variant value="Registrierung erforderlich, die Texte der taz müssen erworben werden"/>
-      <variant value="Registrierung erforderlich, eingeschränkte Nutzung für nicht-akademische und kommerzielle Nutzung"/>
-      <variant value="RES"/>
-      <variant value="restricted"/>
-      <variant value="restricted 2009"/>
-      <variant value="Restricted"/>
-      <variant value="restricted - only available for licence owners"/>
-      <variant value="restringido/restricted"/>
-      <variant value="some concept definitions are open"/>
-      <variant value="special license"/>
-      <variant value="underNegotiation"/>
-   </mapping>
-   <mapping>
-      <normalizedValue value="Upon request"/>
-      <variant value="available after registration"/>
-      <variant value="Available on request"/>
-      <variant value="Available upon request"/>
-      <variant value="free for academic use, request required"/>
-      <variant value="on request, for academic use"/>
-      <variant value="Please contact contact-person"/>
-      <variant value="request required"/>
-      <variant value="Upon Request"/>
-   </mapping>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mappings field="resourceclass">
+    <mapping>
+        <normalizedValue value="annotatedText"/>
+        <variant value="Transcription ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="transcription"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Transcription: IPA ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="transcription"/>
+            </cross-mappings>
+        </variant>
+    </mapping>
+    <mapping>
+        <normalizedValue value="annotation; collection; text"/>
+        <variant value="AnnotatedTextCorpus "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="annotation;collection"/>
+        <variant value="MultimodalCorpus ">
+            <cross-mappings>
+                <cross-mapping facet="modality" value="multimodal"/>
+            </cross-mappings>
+        </variant>
+    </mapping>
+    <mapping>
+        <normalizedValue value="audioRecording"/>
+        <variant value="Audio "/>
+        <variant value="Dialogue ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="dialogue"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Dialogues ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="dialogue"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Instrumental music ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="music"/>
+                <cross-mapping facet="subject" value="instrumental music"/>
+                <cross-mapping facet="modality" value="performance"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Music ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="music"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Radio ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="radio"/>
+                <cross-mapping facet="subject" value="radio"/>
+                <cross-mapping facet="media" value="radio"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Read ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="reading"/>
+                <cross-mapping facet="subject" value="read"/>
+                <cross-mapping facet="modality" value="speech"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Session "/>
+        <variant value="Songs ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="songs"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Sound "/>
+        <variant value="Speech ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="speech"/>
+                <cross-mapping facet="modality" value="speech"/>
+            </cross-mappings>
+        </variant>
+    </mapping>
+    <mapping>
+        <normalizedValue value="audioRecording; corpus"/>
+        <variant value="OralCorpus ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="speech"/>
+                <cross-mapping facet="modality" value="speech"/>
+            </cross-mappings>
+        </variant>
+        <variant value="SongsAnthologiesLinguistic corporaCorpus ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="songs"/>
+            </cross-mappings>
+        </variant>
+        <variant value="SpeechCorpus ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="speech"/>
+                <cross-mapping facet="modality" value="speech"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Spoken Corpus ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="speech"/>
+                <cross-mapping facet="modality" value="speech"/>
+            </cross-mappings>
+        </variant>
+    </mapping>
+    <mapping>
+        <normalizedValue value="audioRecording;text"/>
+        <variant value="Wordbooks ">
+            <cross-mappings>
+                <cross-mapping facet="media" value=" "/>
+            </cross-mappings>
+        </variant>
+    </mapping>
+    <mapping>
+        <normalizedValue value="collection"/>
+        <variant value="Collection "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="corpus"/>
+        <variant value="Anthologies ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="anthology"/>
+            </cross-mappings>
+        </variant>
+        <variant value="MultiVolumeWork "/>
+        <variant value="NewspapersLinguistic corporaCorpus ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="newspaper"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Parallel ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="literature"/>
+                <cross-mapping facet="subject" value="comparative literature"/>
+            </cross-mappings>
+        </variant>
+    </mapping>
+    <mapping>
+        <normalizedValue value="grammar"/>
+        <variant value="Grammars "/>
+        <variant value="Grammar"/>
+        <variant value="GrammarsAnthologies "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="image"/>
+        <variant value="Image "/>
+        <variant value="StillImage ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="stilll image"/>
+            </cross-mappings>
+        </variant>
+    </mapping>
+    <mapping>
+        <normalizedValue value="interactiveResource"/>
+        <variant value="Web application "/>
+        <variant value="Website "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="lexicalResource"/>
+        <variant value="Annotation: Affixes "/>
+        <variant value="Annotation: Chinese_glosses ">
+            <cross-mappings>
+                <cross-mapping facet="subject" value="gloss"/>
+                <cross-mapping facet="languagecode" value="Chinese"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Annotation: English_glosses ">
+            <cross-mappings>
+                <cross-mapping facet="subject" value="gloss"/>
+                <cross-mapping facet="languagecode" value="English"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Bilingual "/>
+        <variant value="BilingualDictionary "/>
+        <variant value="Description/inflectional morphology ">
+            <cross-mappings>
+                <cross-mapping facet="subject" value="&quot;morphology;inflectional description&quot;"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Dictionaries "/>
+        <variant value="LanguageDescription ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="description"/>
+                <cross-mapping facet="subject" value="language"/>
+            </cross-mappings>
+        </variant>
+        <variant value="LexicalConceptualResource "/>
+        <variant value="LexicalResource "/>
+        <variant value="Lexicon "/>
+        <variant value="Lexicon: Lexical_categories "/>
+        <variant value="Machine readable dictionary "/>
+        <variant value="Monolingual ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="monolingual"/>
+            </cross-mappings>
+        </variant>
+        <variant value="MonolinugalDictionary ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="dictionary"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Multilingual "/>
+        <variant value="Treebank"/>
+        <variant value="WordNet "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="other"/>
+        <variant value="Economics ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="economics"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Games ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="games"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Niet van toepassing "/>
+        <variant value="No value given "/>
+        <variant value="Other "/>
+        <variant value="Overig "/>
+        <variant value="Politics ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="politics"/>
+            </cross-mappings>
+        </variant>
+        <variant value="-- Germany"/>
+        <variant value="Xxx -- xxx -- xxx"/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="physicalObject"/>
+        <variant value="PhysicalObject "/>
+        <variant value="Scores ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="&quot;musical sheet; score&quot;"/>
+                <cross-mapping facet="subject" value="scores"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Scroll ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="scroll"/>
+            </cross-mappings>
+        </variant>
+    </mapping>
+    <mapping>
+        <normalizedValue value="software"/>
+        <variant value="Local/desktop "/>
+        <variant value="Software "/>
+        <variant value="Tool "/>
+        <variant value="Tools "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="structured data"/>
+        <variant value="CommentariesGazetteers ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="commentary"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Data Provider "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="structuredData"/>
+        <variant value="Databases "/>
+        <variant value="Dataset "/>
+        <variant value="Experimental Data "/>
+        <variant value="Formularies ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="medicine"/>
+                <cross-mapping facet="subject" value="&quot;historic medicine; formulary&quot;"/>
+            </cross-mappings>
+        </variant>
+        <variant value="FrequencyList ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="statistic data"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Genealogies ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="geneology"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Info:eu-repo/semantics/dataset "/>
+        <variant value="Languages ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="language"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Lectures ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="lecture"/>
+                <cross-mapping facet="modality" value="speech"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Legal formularies ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="legal texts"/>
+            </cross-mappings>
+        </variant>
+        <variant value="LemmaList "/>
+        <variant value="Linguistic data "/>
+        <variant value="Medical formularies ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="formularies"/>
+                <cross-mapping facet="subject" value="medicine"/>
+            </cross-mappings>
+        </variant>
+        <variant value="NamedEntitiesList ">
+            <cross-mappings>
+                <cross-mapping facet="subject" value="named entities"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Scientific Information Service "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="text"/>
+        <variant value="Academic dissertations ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="academia"/>
+                <cross-mapping facet="subject" value="dissertations"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Addresses ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="public speaking"/>
+                <cross-mapping facet="subject" value="address"/>
+            </cross-mappings>
+        </variant>
+        <variant value="AddressesAnthologiesLinguistic corporaCorpus ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="public speaking"/>
+                <cross-mapping facet="subject" value="address"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Aligned_sentence ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="annotation"/>
+                <cross-mapping facet="subject" value="aligned sentence"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Alter Druck ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="old print"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Ancient religious texts ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="history"/>
+                <cross-mapping facet="subject" value="religion"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Annals ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="history"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Autobiographies ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="autobiography"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Bibles ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="religion"/>
+                <cross-mapping facet="subject" value="bible"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Bibliographies ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="bibliography"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Biographies ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="personal text"/>
+                <cross-mapping facet="subject" value="biography"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Catechisms ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="religion"/>
+                <cross-mapping facet="subject" value="catechism"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Charter ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="law"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Chronicals ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="history"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Chronicles ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="history"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Commentaries ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="commentary"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Commentaries -- Italy -- 17th century ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="commentary"/>
+                <cross-mapping facet="country" value="Italy"/>
+                <cross-mapping facet="temporalcoverage" value="17th century"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Comparable ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="comparative literature"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Confessions ">
+            <cross-mappings>
+                <cross-mapping facet="subject" value="confession"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Constitutions ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="legal texts"/>
+                <cross-mapping facet="subject" value="constitution"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Conversion narratives ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="religion"/>
+                <cross-mapping facet="subject" value="conversion narrative"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Correspondence ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="correspondence"/>
+                <cross-mapping facet="subject" value="letters"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Courtesy books ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="book"/>
+                <cross-mapping facet="subject" value="courtesy book"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Devotional literature ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="religious texts"/>
+                <cross-mapping facet="subject" value="devotional literature"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Devotional material ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="religious texts"/>
+                <cross-mapping facet="subject" value="devotional literature"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Diaries ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="personal text"/>
+                <cross-mapping facet="subject" value="diary"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Early book ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="book"/>
+                <cross-mapping facet="subject" value="early printed book"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Early printed book (1501-1800)">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="book"/>
+                <cross-mapping facet="subject" value="early printed book"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Electronic publications ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="electronic publication"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Electronic publications -- Great Britain -- 20th century ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="electronic publication"/>
+                <cross-mapping facet="country" value="Great Britain"/>
+                <cross-mapping facet="temporalcoverage" value="20th century"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Electronic publications -- Indonesia -- 20th century ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="electronic publication"/>
+                <cross-mapping facet="country" value="Indonesia"/>
+                <cross-mapping facet="temporalcoverage" value="20th century"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Electronic publications -- Japan -- 20th centuryDatabases -- Japan -- 20th century ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="electronic publication"/>
+                <cross-mapping facet="country" value="Japan"/>
+                <cross-mapping facet="temporalcoverage" value="20th century"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Electronic publications -- United States -- 20th century ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="electronic publication"/>
+                <cross-mapping facet="country" value="United States"/>
+                <cross-mapping facet="temporalcoverage" value="20th century"/>
+            </cross-mappings>
+        </variant>
+        <variant value="English drama -- Restoration, 1660-1700 ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="drama"/>
+                <cross-mapping facet="country" value="England"/>
+                <cross-mapping facet="temporalcoverage" value="1660-1700"/>
+            </cross-mappings>
+        </variant>
+        <variant value="English literature -- Middle English, 1100-1500 ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="literature"/>
+                <cross-mapping facet="subject" value="middle english"/>
+                <cross-mapping facet="country" value="England"/>
+                <cross-mapping facet="temporalcoverage" value="1100-1500"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Epics ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="literature"/>
+                <cross-mapping facet="subject" value="epic poetry"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Essays ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="literature"/>
+                <cross-mapping facet="subject" value="essay"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Ethics ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="ethics"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Etiquette books ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="book"/>
+                <cross-mapping facet="subject" value="ettiquette"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Exploration literature ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="literature"/>
+                <cross-mapping facet="subject" value="exploration"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Fairy tales ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="literature"/>
+                <cross-mapping facet="subject" value="folklore"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Fiction ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="literature"/>
+                <cross-mapping facet="subject" value="fiction"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Field Notes ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="field notes"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Fieldwork Material "/>
+        <variant value="Folk tales ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="literature"/>
+                <cross-mapping facet="subject" value="folklore"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Fragment ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="fragment"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Gazeta ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="newspaper"/>
+                <cross-mapping facet="languagecode" value="Polish"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Geometry ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="mathematics"/>
+                <cross-mapping facet="subject" value="geometry"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Gesta ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="chronicle"/>
+                <cross-mapping facet="temporalcoverage" value="medieval period"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Handbooks ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="manual"/>
+                <cross-mapping facet="subject" value="handbook"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Herbals -- England -- 17th century ">
+            <cross-mappings>
+                <cross-mapping facet="subject" value="medicine"/>
+                <cross-mapping facet="country" value="England"/>
+                <cross-mapping facet="temporalcoverage" value="17th century"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Historical fiction ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="literature"/>
+                <cross-mapping facet="subject" value="historic fiction"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Indexes ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="index"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Inscriptions ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="inscription"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Juvenile literature ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="literature"/>
+                <cross-mapping facet="subject" value="jeuvenile literature"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Juvenilia ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="literature"/>
+                <cross-mapping facet="subject" value="jeuvenile literature"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Książka ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="book"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Laws ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="legal texts"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Legal Works ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="legal texts"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Legal works ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="legal texts"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Legislative proceedingsConstitutionsAnthologies ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="legal texts"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Letters ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="correspondence"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Libretti ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="music"/>
+                <cross-mapping facet="subject" value="opera"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Literary criticism ">
+            <cross-mappings>
+                <cross-mapping facet="subject" value="literary criticism"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Literature of prejudice ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="literature"/>
+                <cross-mapping facet="subject" value="literature of prejudice"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Local Histories ">
+            <cross-mappings>
+                <cross-mapping facet="subject" value="local history"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Local histories ">
+            <cross-mappings>
+                <cross-mapping facet="subject" value="local history"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Local historiesNovels ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="novel"/>
+                <cross-mapping facet="subject" value="local history"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Manuals ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="manual"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Manuals  (Handbooks)">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="manual"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Manuscript ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="manuscript"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Memoirs ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="autobiography"/>
+                <cross-mapping facet="subject" value="memoires"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Military histories ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="&quot;military; history&quot;"/>
+                <cross-mapping facet="subject" value="military history"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Military manuals ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="military"/>
+                <cross-mapping facet="subject" value="military handbooks"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Monograph ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="monograph"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Monologue ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="drama"/>
+                <cross-mapping facet="subject" value="monologue"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Mystery and detective fiction ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="literature"/>
+                <cross-mapping facet="subject" value="&quot;mystery; detective fiction&quot;"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Myths and legends ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="literature"/>
+                <cross-mapping facet="subject" value="folklore"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Myths and legends--13th century ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="literature"/>
+                <cross-mapping facet="subject" value="folklore"/>
+                <cross-mapping facet="temporalcoverage" value="13th century"/>
+            </cross-mappings>
+        </variant>
+        <variant value="NewpapersAnthologiesLinguistic corporaCorpus ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="newspaper"/>
+                <cross-mapping facet="languagecode" value="English"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Newspapers ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="newspaper"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Notebooks "/>
+        <variant value="Novels ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="novel"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Novels -- France -- 19th century ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="novel"/>
+                <cross-mapping facet="country" value="France"/>
+                <cross-mapping facet="temporalcoverage" value="19th century"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Parables ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="literature"/>
+                <cross-mapping facet="subject" value="parables"/>
+            </cross-mappings>
+        </variant>
+        <variant value="ParodiesFables ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="literature"/>
+                <cross-mapping facet="subject" value="&quot;parodies; fables&quot;"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Patristic texts -- 1st-5th century period ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="religious texts"/>
+                <cross-mapping facet="subject" value="patristic theology"/>
+                <cross-mapping facet="temporalcoverage" value="1-5th centuries"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Patristic texts -- England -- 6th-10th century period ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="religious texts"/>
+                <cross-mapping facet="subject" value="patristic theology"/>
+                <cross-mapping facet="country" value="England"/>
+                <cross-mapping facet="temporalcoverage" value="6-10th centuries"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Patristic texts -- England -- 6th-10th century periodScripture commentaries -- England -- 6th-10th century period ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="religious texts"/>
+                <cross-mapping facet="subject" value="patristic theology"/>
+                <cross-mapping facet="country" value="England"/>
+                <cross-mapping facet="temporalcoverage" value="6-10th centuries"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Patristic texts -- Italy -- 6th-10th century period ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="religious texts"/>
+                <cross-mapping facet="subject" value="patristic theology"/>
+                <cross-mapping facet="country" value="Italy"/>
+                <cross-mapping facet="temporalcoverage" value="6-10th centuries"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Periodicals ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="periodical"/>
+            </cross-mappings>
+        </variant>
+        <variant value="PeriodicalsAnthologies ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="periodical"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Petitions ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="petition"/>
+                <cross-mapping facet="subject" value="politics"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Philosophical texts ">
+            <cross-mappings>
+                <cross-mapping facet="subject" value="philosophy"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Philosophical texts -- Great Britain -- 18th century ">
+            <cross-mappings>
+                <cross-mapping facet="subject" value="philosophy"/>
+                <cross-mapping facet="country" value="Great Britain"/>
+                <cross-mapping facet="temporalcoverage" value="18th century"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Philosophical texts -- Great Britain -- 19th century ">
+            <cross-mappings>
+                <cross-mapping facet="subject" value="phlosophy"/>
+                <cross-mapping facet="country" value="Great Britain"/>
+                <cross-mapping facet="temporalcoverage" value="19th century"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Philosophical works ">
+            <cross-mappings>
+                <cross-mapping facet="subject" value="philosophy"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Phrase books ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="book"/>
+                <cross-mapping facet="subject" value="&quot;phrases; colloquial language&quot;"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Plays ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="drama"/>
+                <cross-mapping facet="modality" value="performance"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Plays -- England -- 17th century ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="drama"/>
+                <cross-mapping facet="country" value="England"/>
+                <cross-mapping facet="temporalcoverage" value="17th century"/>
+            </cross-mappings>
+        </variant>
+        <variant value="PlaysAnthologies ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="drama"/>
+            </cross-mappings>
+        </variant>
+        <variant value="PlaysAnthologiesLinguistic corporaCorpus ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="drama"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Poems ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="poetry"/>
+            </cross-mappings>
+        </variant>
+        <variant value="PoemsAnthologies ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="poetry"/>
+            </cross-mappings>
+        </variant>
+        <variant value="PoemsDevotional literature ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="religion"/>
+                <cross-mapping facet="subject" value="&quot;devotional literature; devotional poems&quot;"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Poetry ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="poetry"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Primers "/>
+        <variant value="Protest literature ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="politics"/>
+                <cross-mapping facet="subject" value="protest literature"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Proverbs ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="literature"/>
+                <cross-mapping facet="subject" value="proverbs"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Romances ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="romance"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Sacred texts ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="sacred literature"/>
+                <cross-mapping facet="subject" value="religion"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Sacred texts -- India -- B.C. ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="sacred literature"/>
+                <cross-mapping facet="subject" value="religion"/>
+                <cross-mapping facet="country" value="India"/>
+                <cross-mapping facet="temporalcoverage" value="BC"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Sacred texts -- United States -- 19th century ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="sacred literature"/>
+                <cross-mapping facet="subject" value="religion"/>
+                <cross-mapping facet="country" value="USA"/>
+                <cross-mapping facet="temporalcoverage" value="19th century"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Satires ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="literature"/>
+                <cross-mapping facet="subject" value="satires"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Scientific Journal ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="periodical"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Sermons ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="religion"/>
+                <cross-mapping facet="subject" value="sermons"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Short stories ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="&quot;literature; short stories&quot;"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Short stories, Italian -- 19th century ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="&quot;literature; short stories&quot;"/>
+                <cross-mapping facet="country" value="Italy"/>
+                <cross-mapping facet="temporalcoverage" value="19th century"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Spontaneous ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="spontaneous"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Starodruk ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="old print"/>
+                <cross-mapping facet="languagecode" value="Polish"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Stary druk ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="old print"/>
+                <cross-mapping facet="languagecode" value="Polish"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Text "/>
+        <variant value="Textbooks "/>
+        <variant value="Tragedies ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="&quot;drama; tragedy&quot;"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Translation ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="translation"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Travel literature ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="travel literature"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Utopian literature ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="literature"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Virtual_manuscript ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="manuscript"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Volume ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="historic texts"/>
+            </cross-mappings>
+        </variant>
+    </mapping>
+    <mapping>
+        <normalizedValue value="text; collection"/>
+        <variant value="AnthologiesDevotional literature ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="anthology"/>
+                <cross-mapping facet="subject" value="devotional literature"/>
+            </cross-mappings>
+        </variant>
+        <variant value="AnthologiesLinguistic corporaCorpus ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="anthology"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Anthology ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="anthology"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Bible storiesLinguistic corporaCorpus ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="religion"/>
+                <cross-mapping facet="subject" value="bible"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Fairy talesAnthologies ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="literature"/>
+                <cross-mapping facet="subject" value="folklore"/>
+            </cross-mappings>
+        </variant>
+        <variant value="FolkloreAnthologies ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="literature"/>
+                <cross-mapping facet="subject" value="folklore"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Linguistic corpora "/>
+        <variant value="Linguistic corporaCorpus "/>
+        <variant value="Linguistic corporaCorpusAnthologies "/>
+        <variant value="Linguistic corporaCorpusLetters ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="correspondence"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Linguistic corporaCorpusLettersAnthologies ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="correspondence"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Linguistic corporaCorpusNewspapersAnthologies ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="newspaper"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Linguistic corporaCorpusPeriodicals -- Italy -- 20th Century ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="newspaper"/>
+                <cross-mapping facet="country" value="Italy"/>
+                <cross-mapping facet="temporalcoverage" value="20th Century"/>
+            </cross-mappings>
+        </variant>
+        <variant value="NovelsAnthologiesLinguistic corporaCorpus">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="novel"/>
+            </cross-mappings>
+        </variant>
+        <variant value="RomancesLinguistic corporaCorpus ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="romance"/>
+            </cross-mappings>
+        </variant>
+        <variant value="UnannotatedTextCorpus "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="text;annotation"/>
+        <variant value="TextAnnotation "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="text;collection"/>
+        <variant value="CorporaCorpus"/>
+        <variant value="Corpus "/>
+        <variant value="Written Corpus "/>
+        <variant value="WrittenCorpus "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="tool;service"/>
+        <variant value="ToolService "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="videoRecording"/>
+        <variant value="Amateurfilm ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="film"/>
+                <cross-mapping facet="subject" value="amature film"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Ballad operas ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="opera"/>
+                <cross-mapping facet="subject" value="ballad opera"/>
+                <cross-mapping facet="modality" value="performance"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Bioscoop ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="cinema"/>
+                <cross-mapping facet="subject" value="film"/>
+                <cross-mapping facet="languagecode" value="Dutch"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Buddhism ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="religon"/>
+                <cross-mapping facet="subject" value="Buddhism"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Comedies ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="drama"/>
+                <cross-mapping facet="subject" value="comedy"/>
+                <cross-mapping facet="modality" value="perfomance"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Internet "/>
+        <variant value="&quot;Internet; mobiele telefoon &quot;"/>
+        <variant value="Mobile telephone">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="mobile phone"/>
+                <cross-mapping facet="media" value="mobile phone"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Moving image ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="moving image"/>
+            </cross-mappings>
+        </variant>
+        <variant value="MovingImage ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="moving image"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Televisie ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="television"/>
+                <cross-mapping facet="media" value="television"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Video "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="webService"/>
+        <variant value="Catalogues ">
+            <cross-mappings>
+                <cross-mapping facet="genre" value="bibliography"/>
+                <cross-mapping facet="subject" value="catalogue"/>
+            </cross-mappings>
+        </variant>
+        <variant value="Service "/>
+        <variant value="Web service "/>
+        <variant value="WebService "/>
+    </mapping>
 </mappings>

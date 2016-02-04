@@ -233,7 +233,7 @@ public class CCRImporter implements CMDIDataProcessor{
 	            	case FacetConstants.FIELD_LICENSE:
 	            		String conceptURL = config.getPatternsMap().get(pattern);
 	            		if(conceptURL != null){//if it comes from concept, not from hardcoded xpaths
-	            			String conceptPrefLabel = "c-" + CCRService.getPrefLabel(conceptURL).trim().replaceAll(" ", "_");
+	            			String conceptPrefLabel = CCRService.getPrefLabel(conceptURL).trim().replaceAll(" ", "_");
 	            			cmdiData.addDocField(conceptPrefLabel, value, false);
 	            			if(!indexedConcepts.contains(conceptPrefLabel)){
 	            				System.out.println("New Concept added: " + conceptPrefLabel);

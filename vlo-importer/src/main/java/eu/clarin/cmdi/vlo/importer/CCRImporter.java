@@ -213,6 +213,12 @@ public class CCRImporter implements CMDIDataProcessor{
 	            
 	            final List<String> values = postProcess(config.getName(), value);
 	            
+	            if(values.get(0).equals("--")){//ignore this values
+	        	LOG.warn("EXCLUDED: {}", value);
+	        	return matchedPattern;
+	        	
+	            }
+	            
 	            insertFacetValues(config.getName(), values, cmdiData, languageCode, allowMultipleValues, config.isCaseInsensitive(), true);
 	            
 	            //in case of profile name forward normalized value (not profileId)

@@ -17,8 +17,12 @@ Rules for creating csv maps:
 * NORMALIZED_VALUE value must exist
 * If you want to map some value to more then one NORMALIZED_VALUE use semicolon as separator
 * If NORMALIZED_VALUE is quoted, quotes will be ignored
+* If NORMALIZED_VALUE is equal to --, original value will not be shown in VLO UI 
 
-* If you want to ignore any row put C style one line comments: // at the beginning of the line
+
+* If you want to skip any row put C style one line comments: // at the beginning of the line
+Do this for rows that are not finished to avoid exceptions or to ignore mapping
+
 
 * 
 

@@ -213,10 +213,9 @@ public class CCRImporter implements CMDIDataProcessor{
 	            
 	            final List<String> values = postProcess(config.getName(), value);
 	            
-	            if(values.get(0).equals("--")){//ignore this values
+	            if(values != null && !values.isEmpty() && values.get(0).equals("--")){//ignore this values
 	        	LOG.warn("EXCLUDED: {}", value);
-	        	return matchedPattern;
-	        	
+	        	return matchedPattern;	        	
 	            }
 	            
 	            insertFacetValues(config.getName(), values, cmdiData, languageCode, allowMultipleValues, config.isCaseInsensitive(), true);

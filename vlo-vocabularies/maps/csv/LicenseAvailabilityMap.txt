@@ -191,7 +191,7 @@ Die Nutzung des Wörterbuchs ist online über eine kostenfreie Abfrage einzelner
 Dit werk is valt onder een Creative Commons Naamsvermelding-NietCommercieel 4.0 Internationaal-licentie(http://creativecommons.org/licenses/by-nc/4.0/)	1	PUB;BY;NC																			
 Dit werk is valt onder een Creative Commons Naamsvermelding-NietCommercieel 4.0 Internationaal-licentie.(http://creativecommons.org/licenses/by-nc/4.0/)	1																				
 ELRA_END_USER	1	"RES;FF;LOC;LRT;Other"																			
-Free for academic use	1																				
+Free for academic use	1	ACA																			
 "free for academic use by non-commercial organisation; 15.000 euro for commercial use and for use by commercial organisation; user licence required"	1	"ACA;NC;RES;FF"																			
 Free for academic use.non applicable for commercial parties	4	ACA																			
 "free for academic use; available to commercial parties, but not for free; user licence required for all parties; restricted use"	1	"ACA; RES;FF"																			

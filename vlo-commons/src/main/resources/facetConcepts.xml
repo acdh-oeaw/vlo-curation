@@ -230,7 +230,9 @@
 		<concept>http://www.isocat.org/datcat/DC-5439</concept>
 		<concept>http://hdl.handle.net/11459/CCR_C-5439_98bb103d-476a-7f62-54b4-bf9de24d2229</concept>
 		<!-- the DC is used in the distributionType facet -->
-		<!--<concept>http://purl.org/dc/terms/license</concept>-->
+		<concept>http://purl.org/dc/terms/license</concept>
+		<concept>http://purl.org/dc/terms/rights</concept>
+		<concept>http://purl.org/dc/terms/accessRights</concept>
 	</facetConcept>
 	<facetConcept name="license" description="The licensing conditions for the resource or tool" definition="The name of the license or a very brief description of the licensing conditions under which the resource or tool can be used.">
 		<concept>http://www.isocat.org/datcat/DC-2457</concept>
@@ -247,7 +249,9 @@
 		<!-- <concept>http://www.isocat.org/datcat/DC-5439</concept>
 		     <concept>http://hdl.handle.net/11459/CCR_C-5439_98bb103d-476a-7f62-54b4-bf9de24d2229</concept> -->
 		<!-- the DC is used in the distributionType facet -->
-		<!--<concept>http://purl.org/dc/terms/license</concept>-->
+		<concept>http://purl.org/dc/terms/license</concept>
+		<concept>http://purl.org/dc/terms/rights</concept>
+		<concept>http://purl.org/dc/terms/accessRights</concept>
 	</facetConcept>
 	<facetConcept name="organisation" description="The organisation currently responsible for the resource or tool" definition="The name of the organisation currently responsible for the resource or tool, i.e. to be contacted with any questions or requests regarding the metadata or access to the resource/tool.">
 		<concept>http://www.isocat.org/datcat/DC-2459</concept>

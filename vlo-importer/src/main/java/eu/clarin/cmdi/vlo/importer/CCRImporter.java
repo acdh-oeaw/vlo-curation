@@ -213,8 +213,11 @@ public class CCRImporter implements CMDIDataProcessor{
 	            
 	            final List<String> values = postProcess(config.getName(), value);
 	            
+	            String sValues = "";
+	            for(String s: values)
+	        	sValues += value + ";";
+	            
 	            if(values != null && !values.isEmpty() && values.get(0).equals("--")){//ignore this values
-	        	LOG.warn("EXCLUDED: {}", value);
 	        	return matchedPattern;	        	
 	            }
 	            
@@ -319,6 +322,7 @@ public class CCRImporter implements CMDIDataProcessor{
 	        } else {
 	            resultList.add(extractedValue);
 	        }
+	     
 	        return resultList;
 	    }
 	    

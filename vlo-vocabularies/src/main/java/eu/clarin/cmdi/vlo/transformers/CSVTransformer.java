@@ -222,11 +222,12 @@ public class CSVTransformer implements CSV2XMLTransformer, XML2CSVTransformer {
 		String normalizedVal;
 		try {
 		    normalizedVal = tokens[columnIndexes.get(Constants.NORMALIZED_VALUE)];
+		    
 		} catch (ArrayIndexOutOfBoundsException ex) {
 		    _logger.warn("Line \"{}\" does not contain normalised value. It will be skipped!", line.trim());
 		    continue;
 		}
-
+		
 		// strip qoutes
 		if ((normalizedVal.startsWith("\"") || normalizedVal.startsWith("'"))
 			&& (normalizedVal.endsWith("\"") || normalizedVal.endsWith("'"))
@@ -244,7 +245,7 @@ public class CSVTransformer implements CSV2XMLTransformer, XML2CSVTransformer {
 					    // values without variants???
 
 		    String origVal = tokens[0];
-		    // strip qoutes
+		    // strip quotes
 		    if ((origVal.startsWith("\"") || origVal.startsWith("'"))
 			    && (origVal.endsWith("\"") || origVal.endsWith("'"))
 			    && origVal.length() > 1) {
@@ -252,9 +253,10 @@ public class CSVTransformer implements CSV2XMLTransformer, XML2CSVTransformer {
 		    }
 
 		    var = new Variant();
-		    var.setValue(origVal);
+		    var.setValue(origVal);	    
+		    
 		    _logger.debug("new varinat was found, variant value is {}. ", var.getValue());
-
+		    
 		    // we are setting regEx attr only if it's true
 		    if (columnIndexes.containsKey(Constants.REGULAR_EXPRESSION)
 			    && tokens[columnIndexes.get(Constants.REGULAR_EXPRESSION)].toLowerCase().equals("true"))

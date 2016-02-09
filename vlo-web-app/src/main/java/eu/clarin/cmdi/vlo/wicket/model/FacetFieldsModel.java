@@ -43,70 +43,76 @@ public class FacetFieldsModel extends LoadableDetachableModel<List<FacetField>> 
     private final List<String> facets;
     private final IModel<QueryFacetsSelection> selectionModel;
     private final int valueLimit;
-    
-    
+
     /**
-     * now we are returning all facets and model is shared between facetValuesPanel and FacetsPagePanel
-    *
-    * @param service service to use for facet field retrieval
-    * @param facets facets to include
-    * @param selectionModel model that provides current query/selection
-    */
-    public FacetFieldsModel(FacetFieldsService service, List<String> facets, IModel<QueryFacetsSelection> selectionModel) {
-        this(service, facets, selectionModel, -1);
+     * now we are returning all facets and model is shared between
+     * facetValuesPanel and FacetsPagePanel
+     *
+     * @param service
+     *            service to use for facet field retrieval
+     * @param facets
+     *            facets to include
+     * @param selectionModel
+     *            model that provides current query/selection
+     */
+    public FacetFieldsModel(FacetFieldsService service, List<String> facets,
+	    IModel<QueryFacetsSelection> selectionModel) {
+	this(service, facets, selectionModel, -1);
     }
 
     /**
      *
-     * @param service service to use for facet field retrieval
-     * @param facets facets to include
-     * @param selectionModel model that provides current query/selection
-     * @param valueLimit maximum number of values to retrieve per facet.
-     * Negative for unlimited
+     * @param service
+     *            service to use for facet field retrieval
+     * @param facets
+     *            facets to include
+     * @param selectionModel
+     *            model that provides current query/selection
+     * @param valueLimit
+     *            maximum number of values to retrieve per facet. Negative for
+     *            unlimited
      */
-    public FacetFieldsModel(FacetFieldsService service, List<String> facets, IModel<QueryFacetsSelection> selectionModel, int valueLimit) {
-        this.service = service;
-        this.facets = facets;
-        this.selectionModel = selectionModel;
-        this.valueLimit = valueLimit;
+    public FacetFieldsModel(FacetFieldsService service, List<String> facets,
+	    IModel<QueryFacetsSelection> selectionModel, int valueLimit) {
+	this.service = service;
+	this.facets = facets;
+	this.selectionModel = selectionModel;
+	this.valueLimit = valueLimit;
     }
-    
-    
-
 
     @Override
     protected List<FacetField> load() {
-        return service.getFacetFields(selectionModel.getObject(), facets, valueLimit);
+	return service.getFacetFields(selectionModel.getObject(), facets, valueLimit);
     }
 
     @Override
     public void detach() {
-        super.detach();
-        selectionModel.detach();
+	super.detach();
+	selectionModel.detach();
     }
-    
-    public FacetField getFacetField(String facetName){
-    	List<FacetField> facetList = getObject();
-    	if(facetList != null)
-	    	for(FacetField facet: facetList)
-	    		if(facet.getName().equals(facetName))
-	    			return removeSelected(facet, selectionModel.getObject().getSelectionValues(facetName));
-    	
-    	return null;
+
+    public FacetField getFacetField(String facetName) {
+	List<FacetField> facetList = getObject();
+	if (facetList != null)
+	    for (FacetField facet : facetList)
+		if (facet.getName().equals(facetName))
+		    return removeSelected(facet, selectionModel.getObject().getSelectionValues(facetName));
+
+	return null;
     }
-    
-    private FacetField removeSelected(FacetField facetField, FacetSelection selection){
-    	FacetField filtered = new FacetField(facetField.getName());
-    	if(selection != null)
-    		for(FacetField.Count value: facetField.getValues())
-    			if(selection.getValues().contains(value.getName()))
-    				continue;
-    			else
-    				filtered.add(value.getName(), value.getCount());
-    	else
-    		filtered = facetField;
-    	
-    	return filtered;
+
+    private FacetField removeSelected(FacetField facetField, FacetSelection selection) {
+	FacetField filtered = new FacetField(facetField.getName());
+	if (selection != null)
+	    for (FacetField.Count value : facetField.getValues())
+		if (selection.getValues().contains(value.getName()))
+		    continue;
+		else
+		    filtered.add(value.getName(), value.getCount());
+	else
+	    filtered = facetField;
+
+	return filtered;
     }
 
 }

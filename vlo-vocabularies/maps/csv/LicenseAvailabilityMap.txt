@@ -151,39 +151,39 @@ Upon Request		RES	Upon request
 __	4	--																			
 476306KB	1	--																			
 94408KB	1	--																			
-archiving+dissemination	114	ignore																			
+archiving+dissemination	114	--																			
 Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)	3	PUB;BY;SA																			
 Available	4	--																			
 available	423	--																			
-BAS:aGender	1																				
-BAS:ALC	1																				
-BAS:ASICA	1																				
-BAS:CI_1	1																				
-BAS:CLIPS_MT_MANUAL	1																				
-BAS:FORMTASK	1																				
-BAS:HEMPEL	1																				
-BAS:HOESI	1																				
-BAS:NM-MoCap-Corpus	1																				
-BAS:PD1	1																				
-BAS:PD2	1																				
-BAS:PHATTSESSIONZ	1																				
-BAS:RVG1_CLARIN	1																				
-BAS:RVG-J	1																				
-BAS:SaGA	1																				
-BAS:SC1	2																				
-BAS:SC10	1																				
-BAS:SHC	1																				
-BAS:SIGNUM	1																				
-BAS:SK	3																				
-BAS:SMC	1																				
-BAS:SVC	1																				
-BAS:TAXI	1																				
-BAS:VERIF1DE	1																				
-BAS:VM1	1																				
-BAS:VM2	1																				
-BAS:VMEMO	1																				
-BAS:ZIPTEL	1																				
-CC-BY-...	1																				
+BAS:aGender	1	--																			
+BAS:ALC	1	--																			
+BAS:ASICA	1	--																			
+BAS:CI_1	1	--																			
+BAS:CLIPS_MT_MANUAL	1	--																			
+BAS:FORMTASK	1	--																			
+BAS:HEMPEL	1	--																			
+BAS:HOESI	1	--																			
+BAS:NM-MoCap-Corpus	1	--																			
+BAS:PD1	1	--																			
+BAS:PD2	1	--																			
+BAS:PHATTSESSIONZ	1	--																			
+BAS:RVG1_CLARIN	1	--																			
+BAS:RVG-J	1	--																			
+BAS:SaGA	1	--																			
+BAS:SC1	2	--																			
+BAS:SC10	1	--																			
+BAS:SHC	1	--																			
+BAS:SIGNUM	1	--																			
+BAS:SK	3	--																			
+BAS:SMC	1	--																			
+BAS:SVC	1	--																			
+BAS:TAXI	1	--																			
+BAS:VERIF1DE	1	--																			
+BAS:VM1	1	--																			
+BAS:VM2	1	--																			
+BAS:VMEMO	1	--																			
+BAS:ZIPTEL	1	--																			
+CC-BY-...	1	--																			
 Creative Commons Attribution-ShareAlike 3.0	1	PUB;BY;SA																			
 Creative Commons CC BY-NC 3.0 DE, http://creativecommons.org/licenses/by-nc/3.0/de/	1	PUB;BY;NC																			
 Creative_Commons-BY	9	PUB;BY																			

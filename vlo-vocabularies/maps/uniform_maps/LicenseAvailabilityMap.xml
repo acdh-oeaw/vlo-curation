@@ -13,8 +13,38 @@
         <variant value="__"/>
         <variant value="476306KB"/>
         <variant value="94408KB"/>
+        <variant value="archiving+dissemination"/>
         <variant value="Available"/>
         <variant value="available"/>
+        <variant value="BAS:aGender"/>
+        <variant value="BAS:ALC"/>
+        <variant value="BAS:ASICA"/>
+        <variant value="BAS:CI_1"/>
+        <variant value="BAS:CLIPS_MT_MANUAL"/>
+        <variant value="BAS:FORMTASK"/>
+        <variant value="BAS:HEMPEL"/>
+        <variant value="BAS:HOESI"/>
+        <variant value="BAS:NM-MoCap-Corpus"/>
+        <variant value="BAS:PD1"/>
+        <variant value="BAS:PD2"/>
+        <variant value="BAS:PHATTSESSIONZ"/>
+        <variant value="BAS:RVG1_CLARIN"/>
+        <variant value="BAS:RVG-J"/>
+        <variant value="BAS:SaGA"/>
+        <variant value="BAS:SC1"/>
+        <variant value="BAS:SC10"/>
+        <variant value="BAS:SHC"/>
+        <variant value="BAS:SIGNUM"/>
+        <variant value="BAS:SK"/>
+        <variant value="BAS:SMC"/>
+        <variant value="BAS:SVC"/>
+        <variant value="BAS:TAXI"/>
+        <variant value="BAS:VERIF1DE"/>
+        <variant value="BAS:VM1"/>
+        <variant value="BAS:VM2"/>
+        <variant value="BAS:VMEMO"/>
+        <variant value="BAS:ZIPTEL"/>
+        <variant value="CC-BY-..."/>
         <variant value="test"/>
     </mapping>
     <mapping>
@@ -292,10 +322,6 @@
     <mapping>
         <normalizedValue value="SA"/>
         <variant value="shareAlike"/>
-    </mapping>
-    <mapping>
-        <normalizedValue value="ignore"/>
-        <variant value="archiving+dissemination"/>
     </mapping>
     <mapping>
         <normalizedValue value="unavailable"/>

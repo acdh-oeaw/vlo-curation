@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mappings field="profilename">
+    <mapping>
+        <normalizedValue value="ArthurianFiction"/>
+        <variant value="ArthurianFiction ">
+            <cross-mappings>
+                <cross-mapping facet="resourceclass" value="plainText"/>
+            </cross-mappings>
+        </variant>
+    </mapping>
+    <mapping>
+        <normalizedValue value="CRM"/>
+        <variant value="CRM "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="CRMCollection"/>
+        <variant value="CRMCollection "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="CenterProfile"/>
+        <variant value="CenterProfile "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="Communication_Recording"/>
+        <variant value="Communication_Recording ">
+            <cross-mappings>
+                <cross-mapping facet="resourceclass" value="audioRecording"/>
+            </cross-mappings>
+        </variant>
+    </mapping>
+    <mapping>
+        <normalizedValue value="Communication_Transcript"/>
+        <variant value="Communication_Transcript ">
+            <cross-mappings>
+                <cross-mapping facet="resourceclass" value="annotatedText"/>
+            </cross-mappings>
+        </variant>
+    </mapping>
+    <mapping>
+        <normalizedValue value="CorpusSample"/>
+        <variant value="CorpusSample ">
+            <cross-mappings>
+                <cross-mapping facet="resourceclass" value="collection"/>
+            </cross-mappings>
+        </variant>
+    </mapping>
+    <mapping>
+        <normalizedValue value="DGDCorpus"/>
+        <variant value="DGDCorpus "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="DGDEvent"/>
+        <variant value="DGDEvent "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="DIDDD_sub_location"/>
+        <variant value="DIDDD_sub_location "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="DcmiTerms"/>
+        <variant value="DcmiTerms "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="DiscAn_Case"/>
+        <variant value="DiscAn_Case "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="DynaSAND_sub_location"/>
+        <variant value="DynaSAND_sub_location "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="EMITX"/>
+        <variant value="EMITX "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="Etstoel"/>
+        <variant value="Etstoel "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="EtstoelCollection"/>
+        <variant value="EtstoelCollection "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="Fesli"/>
+        <variant value="Fesli "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="FesliCollection"/>
+        <variant value="FesliCollection "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="GBA-derived_sub_coroparea"/>
+        <variant value="GBA-derived_sub_coroparea "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="GBA-derived_sub_dialectarea"/>
+        <variant value="GBA-derived_sub_dialectarea "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="GBA-derived_sub_municipality "/>
+        <variant value="GBA-derived_sub_municipality "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="GBA-derived_sub_province"/>
+        <variant value="GBA-derived_sub_province "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="GTRP_sub_location"/>
+        <variant value="GTRP_sub_location "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="IDSAGD_Event"/>
+        <variant value="IDSAGD_Event ">
+            <cross-mappings>
+                <cross-mapping facet="resourceclass" value="structured data"/>
+            </cross-mappings>
+        </variant>
+    </mapping>
+    <mapping>
+        <normalizedValue value="IDSAGD_Speaker"/>
+        <variant value="IDSAGD_Speaker ">
+            <cross-mappings>
+                <cross-mapping facet="resourceclass" value="structured data"/>
+            </cross-mappings>
+        </variant>
+    </mapping>
+    <mapping>
+        <normalizedValue value="JacobsstafVerhaal"/>
+        <variant value="JacobsstafVerhaal "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="LINDAT_CLARIN"/>
+        <variant value="LINDAT_CLARIN "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="LexicalResourceProfile"/>
+        <variant value="LexicalResourceProfile ">
+            <cross-mappings>
+                <cross-mapping facet="resourceclass" value="lexicalResource"/>
+            </cross-mappings>
+        </variant>
+    </mapping>
+    <mapping>
+        <normalizedValue value="OLAC-DcmiTerms"/>
+        <variant value="OLAC-DcmiTerms "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="OralHistoryInterviewDANS"/>
+        <variant value="OralHistoryInterviewDANS ">
+            <cross-mappings>
+                <cross-mapping facet="resourceclass" value="audioRecording"/>
+            </cross-mappings>
+        </variant>
+    </mapping>
+    <mapping>
+        <normalizedValue value="Performer"/>
+        <variant value="Performer "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="PhotoSinger"/>
+        <variant value="PhotoSinger "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="SL-IPROSLA"/>
+        <variant value="SL-IPROSLA "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="Song"/>
+        <variant value="Song ">
+            <cross-mappings>
+                <cross-mapping facet="resourceclass" value="structured data"/>
+            </cross-mappings>
+        </variant>
+    </mapping>
+    <mapping>
+        <normalizedValue value="SongAudio"/>
+        <variant value="SongAudio ">
+            <cross-mappings>
+                <cross-mapping facet="resourceclass" value="audioRecording"/>
+            </cross-mappings>
+        </variant>
+    </mapping>
+    <mapping>
+        <normalizedValue value="SongScan"/>
+        <variant value="SongScan ">
+            <cross-mappings>
+                <cross-mapping facet="resourceclass" value="image"/>
+            </cross-mappings>
+        </variant>
+    </mapping>
+    <mapping>
+        <normalizedValue value="Soundbites-recording"/>
+        <variant value="Soundbites-recording ">
+            <cross-mappings>
+                <cross-mapping facet="resourceclass" value="audioRecording"/>
+            </cross-mappings>
+        </variant>
+    </mapping>
+    <mapping>
+        <normalizedValue value="Source"/>
+        <variant value="Source ">
+            <cross-mappings>
+                <cross-mapping facet="resourceclass" value="structured data"/>
+            </cross-mappings>
+        </variant>
+    </mapping>
+    <mapping>
+        <normalizedValue value="SourceScan"/>
+        <variant value="SourceScan ">
+            <cross-mappings>
+                <cross-mapping facet="resourceclass" value="image"/>
+            </cross-mappings>
+        </variant>
+    </mapping>
+    <mapping>
+        <normalizedValue value="SymbolicMusicNotation"/>
+        <variant value="SymbolicMusicNotation "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="Text"/>
+        <variant value="Text ">
+            <cross-mappings>
+                <cross-mapping facet="resourceclass" value="plainText"/>
+            </cross-mappings>
+        </variant>
+    </mapping>
+    <mapping>
+        <normalizedValue value="TextCorpusProfile"/>
+        <variant value="TextCorpusProfile ">
+            <cross-mappings>
+                <cross-mapping facet="resourceclass" value="collection"/>
+            </cross-mappings>
+        </variant>
+    </mapping>
+    <mapping>
+        <normalizedValue value="TextProfile"/>
+        <variant value="TextProfile "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="ToponymProfile"/>
+        <variant value="ToponymProfile "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="UserSubmission"/>
+        <variant value="UserSubmission "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="VK-book"/>
+        <variant value="VK-book "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="VK-semantic"/>
+        <variant value="VK-semantic "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="VirtualCollection"/>
+        <variant value="VirtualCollection "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="WebLichtWebService"/>
+        <variant value="WebLichtWebService ">
+            <cross-mappings>
+                <cross-mapping facet="resourceclass" value="webservice"/>
+            </cross-mappings>
+        </variant>
+    </mapping>
+    <mapping>
+        <normalizedValue value="Website"/>
+        <variant value="Website "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="collection"/>
+        <variant value="collection ">
+            <cross-mappings>
+                <cross-mapping facet="resourceclass" value="collection"/>
+            </cross-mappings>
+        </variant>
+    </mapping>
+    <mapping>
+        <normalizedValue value="imdi-corpus"/>
+        <variant value="imdi-corpus ">
+            <cross-mappings>
+                <cross-mapping facet="resourceclass" value="collection"/>
+            </cross-mappings>
+        </variant>
+    </mapping>
+    <mapping>
+        <normalizedValue value="imdi-profile-instance"/>
+        <variant value="imdi-profile-instance "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="media-session-profile"/>
+        <variant value="media-session-profile ">
+            <cross-mappings>
+                <cross-mapping facet="resourceclass" value="audioRecording"/>
+            </cross-mappings>
+        </variant>
+    </mapping>
+    <mapping>
+        <normalizedValue value="resourceInfo"/>
+        <variant value="resourceInfo "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="singlePaperPackage"/>
+        <variant value="singlePaperPackage "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="talkbank-session"/>
+        <variant value="talkbank-session ">
+            <cross-mappings>
+                <cross-mapping facet="resourceclass" value="audioRecording"/>
+            </cross-mappings>
+        </variant>
+    </mapping>
+    <mapping>
+        <normalizedValue value="teiHeader"/>
+        <variant value="teiHeader ">
+            <cross-mappings>
+                <cross-mapping facet="resourceclass" value="annotatedText"/>
+            </cross-mappings>
+        </variant>
+    </mapping>
+    <mapping>
+        <normalizedValue value="textCorpusProfile"/>
+        <variant value="textCorpusProfile "/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="wnd_subcollection_core_data"/>
+        <variant value="wnd_subcollection_core_data "/>
+    </mapping>
+</mappings>

@@ -1,0 +1,281 @@
+
+<mappings field="resourceClass">
+    <mapping>
+        <normalizedValue value="annotatedText"/>
+        <variant value="Aligned_sentence"/>
+        <variant value="Medical formularies"/>
+        <variant value="TextAnnotation"/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="audioRecording"/>
+        <variant value="Audio"/>
+        <variant value="Instrumental music"/>
+        <variant value="Music"/>
+        <variant value="OralCorpus"/>
+        <variant value="Radio"/>
+        <variant value="Sound"/>
+        <variant value="Speech"/>
+        <variant value="SpeechCorpus"/>
+        <variant value="Spoken Corpus"/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="collection"/>
+        <variant value="Collection"/>
+        <variant value="Volume"/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="corpus"/>
+        <variant value="AddressesAnthologiesLinguistic corporaCorpus"/>
+        <variant value="CorporaCorpus"/>
+        <variant value="Corpus"/>
+        <variant value="Linguistic corpora"/>
+        <variant value="Linguistic corporaCorpus"/>
+        <variant value="Linguistic corporaCorpusAnthologies"/>
+        <variant value="Linguistic corporaCorpusLetters"/>
+        <variant value="Linguistic corporaCorpusLettersAnthologies"/>
+        <variant value="Linguistic corporaCorpusNewspapersAnthologies"/>
+        <variant value="Linguistic corporaCorpusPeriodicals -- Italy -- 20th Century"/>
+        <variant value="MultimodalCorpus"/>
+        <variant value="MultiVolumeWork"/>
+        <variant value="NewpapersAnthologiesLinguistic corporaCorpus"/>
+        <variant value="NewspapersLinguistic corporaCorpus"/>
+        <variant value="NovelsAnthologiesLinguistic corporaCorpus"/>
+        <variant value="PeriodicalsAnthologies"/>
+        <variant value="RomancesLinguistic corporaCorpus"/>
+        <variant value="SongsAnthologiesLinguistic corporaCorpus"/>
+        <variant value="UnannotatedTextCorpus"/>
+        <variant value="Written Corpus"/>
+        <variant value="WrittenCorpus"/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="database"/>
+        <variant value="Databases"/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="dataset:experimentalData"/>
+        <variant value="Experimental Data"/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="dataset:surveyData"/>
+        <variant value="Genealogies"/>
+        <variant value="Linguistic data"/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="digitalImage"/>
+        <variant value="Libretti"/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="grammar"/>
+        <variant value="Grammars"/>
+        <variant value="GrammarsAnthologies"/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="image"/>
+        <variant value="Image"/>
+        <variant value="StillImage"/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="lexicalResource"/>
+        <variant value="Annotation: Affixes"/>
+        <variant value="Annotation: Chinese_glosses"/>
+        <variant value="Annotation: English_glosses"/>
+        <variant value="BilingualDictionary"/>
+        <variant value="Description/inflectional morphology"/>
+        <variant value="Dictionaries"/>
+        <variant value="LanguageDescription"/>
+        <variant value="LemmaList"/>
+        <variant value="LexicalConceptualResource"/>
+        <variant value="LexicalResource"/>
+        <variant value="Lexicon"/>
+        <variant value="Lexicon: Lexical_categories"/>
+        <variant value="Machine readable dictionary"/>
+        <variant value="MonolinugalDictionary"/>
+        <variant value="Translation"/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="other"/>
+        <variant value="Info:eu-repo/semantics/dataset"/>
+        <variant value="Internet"/>
+        <variant value="Niet van toepassing"/>
+        <variant value="No value given"/>
+        <variant value="Other"/>
+        <variant value="Overig"/>
+        <variant value="Parallel"/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="physicalObject"/>
+        <variant value="Courtesy books"/>
+        <variant value="Etiquette books"/>
+        <variant value="Fieldwork Material"/>
+        <variant value="Inscriptions"/>
+        <variant value="Książka"/>
+        <variant value="Masques"/>
+        <variant value="Phrase books"/>
+        <variant value="PhysicalObject"/>
+        <variant value="Scores"/>
+        <variant value="Scroll"/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="plainText"/>
+        <variant value="Academic dissertations"/>
+        <variant value="Addresses"/>
+        <variant value="Alter Druck"/>
+        <variant value="Ancient religious texts"/>
+        <variant value="Annals"/>
+        <variant value="AnnotatedTextCorpus"/>
+        <variant value="Anthologies"/>
+        <variant value="AnthologiesDevotional literature"/>
+        <variant value="AnthologiesLinguistic"/>
+        <variant value="Anthology"/>
+        <variant value="Autobiographies"/>
+        <variant value="Bibles"/>
+        <variant value="Bible storiesLinguistic corporaCorpus"/>
+        <variant value="Bibliographies"/>
+        <variant value="Biographies"/>
+        <variant value="Catechisms"/>
+        <variant value="Charter"/>
+        <variant value="Chronicals"/>
+        <variant value="Chronicles"/>
+        <variant value="Commentaries"/>
+        <variant value="CommentariesGazetteers"/>
+        <variant value="Commentaries -- Italy -- 17th century"/>
+        <variant value="Confessions"/>
+        <variant value="Constitutions"/>
+        <variant value="Conversion narratives"/>
+        <variant value="Correspondence"/>
+        <variant value="Devotional literature"/>
+        <variant value="Devotional material"/>
+        <variant value="Diaries"/>
+        <variant value="Early book"/>
+        <variant value="Early printed book"/>
+        <variant value="Electronic publications"/>
+        <variant value="Electronic publications -- Great Britain -- 20th century"/>
+        <variant value="Electronic publications -- Indonesia -- 20th century"/>
+        <variant value="Electronic publications -- Japan -- 20th centuryDatabases -- Japan -- 20th century"/>
+        <variant value="Electronic publications -- United States -- 20th century"/>
+        <variant value="English drama -- Restoration, 1660-1700"/>
+        <variant value="English literature -- Middle English, 1100-1500"/>
+        <variant value="Epics"/>
+        <variant value="Essays"/>
+        <variant value="Exploration literature"/>
+        <variant value="Fairy tales"/>
+        <variant value="Fairy talesAnthologies"/>
+        <variant value="Fiction"/>
+        <variant value="Field Notes"/>
+        <variant value="FolkloreAnthologies"/>
+        <variant value="Folk tales"/>
+        <variant value="Formularies"/>
+        <variant value="Fragment"/>
+        <variant value="FrequencyList"/>
+        <variant value="Gazeta"/>
+        <variant value="Gesta"/>
+        <variant value="Handbooks"/>
+        <variant value="Herbals -- England -- 17th century"/>
+        <variant value="Historical fiction"/>
+        <variant value="Indexes"/>
+        <variant value="Juvenile literature"/>
+        <variant value="Juvenilia"/>
+        <variant value="Laws"/>
+        <variant value="Legal formularies"/>
+        <variant value="Legal Works"/>
+        <variant value="Legal works"/>
+        <variant value="Legislative proceedingsConstitutionsAnthologies"/>
+        <variant value="Letters"/>
+        <variant value="Literature of prejudice"/>
+        <variant value="Local Histories"/>
+        <variant value="Local histories"/>
+        <variant value="Local historiesNovels"/>
+        <variant value="Manuals"/>
+        <variant value="Manuals (Handbooks)"/>
+        <variant value="Memoirs"/>
+        <variant value="Military histories"/>
+        <variant value="Military manuals"/>
+        <variant value="Monograph"/>
+        <variant value="Monologue"/>
+        <variant value="Mystery and detective fiction"/>
+        <variant value="Myths and legends"/>
+        <variant value="Myths and legends--13th century"/>
+        <variant value="NamedEntitiesList"/>
+        <variant value="Newspapers"/>
+        <variant value="Notebooks"/>
+        <variant value="Novels"/>
+        <variant value="Novels -- France -- 19th century"/>
+        <variant value="Parables"/>
+        <variant value="ParodiesFables"/>
+        <variant value="Patristic texts -- 1st-5th century period"/>
+        <variant value="Patristic texts -- England -- 6th-10th century period"/>
+        <variant value="Patristic texts -- England -- 6th-10th century periodScripture commentaries -- England -- 6th-10th century period"/>
+        <variant value="Patristic texts -- Italy -- 6th-10th century period"/>
+        <variant value="Periodicals"/>
+        <variant value="Petitions"/>
+        <variant value="Philosophical texts"/>
+        <variant value="Philosophical texts -- Great Britain -- 18th century"/>
+        <variant value="Philosophical texts -- Great Britain -- 19th century"/>
+        <variant value="Philosophical works"/>
+        <variant value="Plays"/>
+        <variant value="PlaysAnthologies"/>
+        <variant value="PlaysAnthologiesLinguistic corporaCorpus"/>
+        <variant value="Plays -- England -- 17th century"/>
+        <variant value="Poems"/>
+        <variant value="PoemsAnthologies"/>
+        <variant value="PoemsDevotional literature"/>
+        <variant value="Poetry"/>
+        <variant value="Protest literature"/>
+        <variant value="Proverbs"/>
+        <variant value="Sacred texts"/>
+        <variant value="Sacred texts -- India -- B.C."/>
+        <variant value="Sacred texts -- United States -- 19th century"/>
+        <variant value="Satires"/>
+        <variant value="Scientific Journal"/>
+        <variant value="Sermons"/>
+        <variant value="Short stories"/>
+        <variant value="Short stories, Italian -- 19th century"/>
+        <variant value="Text"/>
+        <variant value="Transcription"/>
+        <variant value="Transcription: IPA"/>
+        <variant value="Travel literature"/>
+        <variant value="Utopian literature"/>
+        <variant value="Virtual_manuscript"/>
+        <variant value="Wordbooks"/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="plainText/videoRecording"/>
+        <variant value="Romances"/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="session"/>
+        <variant value="Session"/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="teachingMaterial"/>
+        <variant value="Primers"/>
+        <variant value="Textbooks"/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="videoRecording"/>
+        <variant value="Amateurfilm"/>
+        <variant value="Ballad operas"/>
+        <variant value="Comedies"/>
+        <variant value="Dialogue"/>
+        <variant value="Dialogues"/>
+        <variant value="Moving image"/>
+        <variant value="MovingImage"/>
+        <variant value="Video"/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="webApplication"/>
+        <variant value="Software"/>
+        <variant value="Tool"/>
+        <variant value="Tools"/>
+        <variant value="ToolService"/>
+        <variant value="Web application"/>
+        <variant value="WordNet"/>
+    </mapping>
+    <mapping>
+        <normalizedValue value="webService"/>
+        <variant value="Catalogues"/>
+        <variant value="Web service"/>
+        <variant value="WebService"/>
+        <variant value="Website"/>
+    </mapping>
+</mappings>

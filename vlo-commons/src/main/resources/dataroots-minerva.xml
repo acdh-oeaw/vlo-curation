@@ -1,0 +1,9 @@
+<dataRoots>
+    <DataRoot>
+        <originName>CLARIN Centres</originName>
+        <rootFile>/media/acdh_data/oai-harvest/results/cmdi/</rootFile>            
+        <prefix>http://catalog.clarin.eu/</prefix>
+        <tostrip>/media/acdh_data/</tostrip>
+        <deleteFirst>false</deleteFirst>
+    </DataRoot>
+</dataRoots>

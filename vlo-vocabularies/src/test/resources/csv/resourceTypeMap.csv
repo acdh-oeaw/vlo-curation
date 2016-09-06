@@ -1,0 +1,219 @@
+RESOURCECLASS	COUNT	NORMALIZED_VALUE	
+Aligned_sentence		annotatedText	
+Medical formularies		annotatedText	
+TextAnnotation		annotatedText	
+Audio		audioRecording	
+Instrumental music		audioRecording	
+Music		audioRecording	
+OralCorpus		audioRecording	
+Radio		audioRecording	
+Sound		audioRecording	
+Speech		audioRecording	
+SpeechCorpus		audioRecording	
+Spoken Corpus		audioRecording	
+Collection		collection	
+Volume		collection	
+AddressesAnthologiesLinguistic corporaCorpus		corpus	
+CorporaCorpus		corpus	
+Corpus		corpus	
+Linguistic corpora		corpus	
+Linguistic corporaCorpus		corpus	
+Linguistic corporaCorpusAnthologies		corpus	
+Linguistic corporaCorpusLetters		corpus	
+Linguistic corporaCorpusLettersAnthologies		corpus	
+Linguistic corporaCorpusNewspapersAnthologies		corpus	
+Linguistic corporaCorpusPeriodicals -- Italy -- 20th Century		corpus	
+MultimodalCorpus		corpus	
+MultiVolumeWork		corpus	
+NewpapersAnthologiesLinguistic corporaCorpus		corpus	
+NewspapersLinguistic corporaCorpus		corpus	
+NovelsAnthologiesLinguistic corporaCorpus		corpus	
+PeriodicalsAnthologies		corpus	
+RomancesLinguistic corporaCorpus		corpus	
+SongsAnthologiesLinguistic corporaCorpus		corpus	
+UnannotatedTextCorpus		corpus	
+Written Corpus		corpus	
+WrittenCorpus		corpus	
+Databases		database	
+Experimental Data		dataset:experimentalData	
+Genealogies		dataset:surveyData	
+Linguistic data		dataset:surveyData	
+Libretti		digitalImage	
+Grammars		grammar	
+GrammarsAnthologies		grammar	
+Image		image	
+StillImage		image	
+Annotation: Affixes		lexicalResource	
+Annotation: Chinese_glosses		lexicalResource	
+Annotation: English_glosses		lexicalResource	
+BilingualDictionary		lexicalResource	
+Description/inflectional morphology		lexicalResource	
+Dictionaries		lexicalResource	
+LanguageDescription		lexicalResource	
+LemmaList		lexicalResource	
+LexicalConceptualResource		lexicalResource	
+LexicalResource		lexicalResource	
+Lexicon		lexicalResource	
+Lexicon: Lexical_categories		lexicalResource	
+Machine readable dictionary		lexicalResource	
+MonolinugalDictionary		lexicalResource	
+Translation		lexicalResource	
+Info:eu-repo/semantics/dataset		other	
+Internet		other	
+Niet van toepassing		other	
+No value given		other	
+Other		other	
+Overig		other	
+Parallel		other	
+Courtesy books		physicalObject	
+Etiquette books		physicalObject	
+Fieldwork Material		physicalObject	
+Inscriptions		physicalObject	
+Książka		physicalObject	
+Masques		physicalObject	
+Phrase books		physicalObject	
+PhysicalObject		physicalObject	
+Scores		physicalObject	
+Scroll		physicalObject	
+Academic dissertations		plainText	
+Addresses		plainText	
+Alter Druck		plainText	
+Ancient religious texts		plainText	
+Annals		plainText	
+AnnotatedTextCorpus		plainText	
+Anthologies		plainText	
+AnthologiesDevotional literature		plainText	
+AnthologiesLinguistic		plainText	
+Anthology		plainText	
+Autobiographies		plainText	
+Bibles		plainText	
+Bible storiesLinguistic corporaCorpus		plainText	
+Bibliographies		plainText	
+Biographies		plainText	
+Catechisms		plainText	
+Charter		plainText	
+Chronicals		plainText	
+Chronicles		plainText	
+Commentaries		plainText	
+CommentariesGazetteers		plainText	
+Commentaries -- Italy -- 17th century		plainText	
+Confessions		plainText	
+Constitutions		plainText	
+Conversion narratives		plainText	
+Correspondence		plainText	
+Devotional literature		plainText	
+Devotional material		plainText	
+Diaries		plainText	
+Early book		plainText	
+Early printed book		plainText	
+Electronic publications		plainText	
+Electronic publications -- Great Britain -- 20th century		plainText	
+Electronic publications -- Indonesia -- 20th century		plainText	
+Electronic publications -- Japan -- 20th centuryDatabases -- Japan -- 20th century		plainText	
+Electronic publications -- United States -- 20th century		plainText	
+English drama -- Restoration, 1660-1700		plainText	
+English literature -- Middle English, 1100-1500		plainText	
+Epics		plainText	
+Essays		plainText	
+Exploration literature		plainText	
+Fairy tales		plainText	
+Fairy talesAnthologies		plainText	
+Fiction		plainText	
+Field Notes		plainText	
+FolkloreAnthologies		plainText	
+Folk tales		plainText	
+Formularies		plainText	
+Fragment		plainText	
+FrequencyList		plainText	
+Gazeta		plainText	
+Gesta		plainText	
+Handbooks		plainText	
+Herbals -- England -- 17th century		plainText	
+Historical fiction		plainText	
+Indexes		plainText	
+Juvenile literature		plainText	
+Juvenilia		plainText	
+Laws		plainText	
+Legal formularies		plainText	
+Legal Works		plainText	
+Legal works		plainText	
+Legislative proceedingsConstitutionsAnthologies		plainText	
+Letters		plainText	
+Literature of prejudice		plainText	
+Local Histories		plainText	
+Local histories		plainText	
+Local historiesNovels		plainText	
+Manuals		plainText	
+Manuals (Handbooks)		plainText	
+Memoirs		plainText	
+Military histories		plainText	
+Military manuals		plainText	
+Monograph		plainText	
+Monologue		plainText	
+Mystery and detective fiction		plainText	
+Myths and legends		plainText	
+Myths and legends--13th century		plainText	
+NamedEntitiesList		plainText	
+Newspapers		plainText	
+Notebooks		plainText	
+Novels		plainText	
+Novels -- France -- 19th century		plainText	
+Parables		plainText	
+ParodiesFables		plainText	
+Patristic texts -- 1st-5th century period		plainText	
+Patristic texts -- England -- 6th-10th century period		plainText	
+Patristic texts -- England -- 6th-10th century periodScripture commentaries -- England -- 6th-10th century period		plainText	
+Patristic texts -- Italy -- 6th-10th century period		plainText	
+Periodicals		plainText	
+Petitions		plainText	
+Philosophical texts		plainText	
+Philosophical texts -- Great Britain -- 18th century		plainText	
+Philosophical texts -- Great Britain -- 19th century		plainText	
+Philosophical works		plainText	
+Plays		plainText	
+PlaysAnthologies		plainText	
+PlaysAnthologiesLinguistic corporaCorpus		plainText	
+Plays -- England -- 17th century		plainText	
+Poems		plainText	
+PoemsAnthologies		plainText	
+PoemsDevotional literature		plainText	
+Poetry		plainText	
+Protest literature		plainText	
+Proverbs		plainText	
+Sacred texts		plainText	
+Sacred texts -- India -- B.C.		plainText	
+Sacred texts -- United States -- 19th century		plainText	
+Satires		plainText	
+Scientific Journal		plainText	
+Sermons		plainText	
+Short stories		plainText	
+Short stories, Italian -- 19th century		plainText	
+Text		plainText	
+Transcription		plainText	
+Transcription: IPA		plainText	
+Travel literature		plainText	
+Utopian literature		plainText	
+Virtual_manuscript		plainText	
+Wordbooks		plainText	
+Romances		plainText/videoRecording	
+Session		session	
+Primers		teachingMaterial	
+Textbooks		teachingMaterial	
+Amateurfilm		videoRecording	
+Ballad operas		videoRecording	
+Comedies		videoRecording	
+Dialogue		videoRecording	
+Dialogues		videoRecording	
+Moving image		videoRecording	
+MovingImage		videoRecording	
+Video		videoRecording	
+Software		webApplication	
+Tool		webApplication	
+Tools		webApplication	
+ToolService		webApplication	
+Web application		webApplication	
+WordNet		webApplication	
+Catalogues		webService	
+Web service		webService	
+WebService		webService	
+Website		webService	

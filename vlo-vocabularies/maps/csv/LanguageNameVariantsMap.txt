@@ -1,0 +1,2 @@
+LANGUAGECODE	COUNT	NORMALIZED_VALUE	
+Spanish, Castilian		Spanish; Castilian	

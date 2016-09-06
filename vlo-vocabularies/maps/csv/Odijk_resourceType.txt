@@ -1,0 +1,248 @@
+Original	Count	ID	Resource Type	parent1	parent2	Purpose	Datatype	Annotation	Genre	web/desktop	Period-From	Period-To	subject	area	remark	
+Text 	134470		Running Natural Language Text													
+Televisie 	41000		audio+video						tv programme							
+TextAnnotation 	20050		TextAnnotation												to check	"Could not really check it; all example files I tried are empty; New reource type ""textAnnotation""may be required"
+Sound 	18642		audio													
+PhysicalObject 	10833		physicalObject													
+Data Provider 	5885		Running Natural Language Text					Linguistic Annotation/Orthographic/Sentence Separators							done	all textual data from the Leipzig Corpora Collection
+Bioscoop 	2956		audio+video						movie							
+Session 	2520														to be studied in more detail	
+Volume 	2130		Running Natural Language Text													
+Monograph 	1799		Running Natural Language Text						monograph							
+Manuscript 	1270		Running Natural Language Text						manuscript							
+Niet van toepassing 	1185		dna												check	
+Image 	1152		image													
+Corpus 	837		collection													
+MultiVolumeWork 	746		Running Natural Language Text													
+Radio 	504		audio						radio programme							
+MovingImage 	497		audio+video						movie							
+Overig 	408		other												check	
+StillImage 	368		image						picture							
+Instrumental music 	335		audio						instrumental music							
+ToolService 	295		software												split out	
+Info:eu-repo/semantics/dataset 	261														check	
+Plays 	216		Running Natural Language Text						play							
+LexicalConceptualResource 	197		Semantic lexicalResource	lexicalResource												
+"Internet; mobiele telefoon "	182														check	
+Poems 	170		Running Natural Language Text						poem							
+Service 	168		service	software											to split for web/desktop	
+Novels 	166		Running Natural Language Text						novel							
+Dataset 	153		structured data												check	
+Software 	106		software												split out	
+Starodruk 	87		Running Natural Language Text						starodruk						(starodruk: collection?)	
+Collection 	80		collection													
+Tool 	80		software												split out	
+WebService 	47		service							web						
+Audio 	40		audio													
+Linguistic corpora 	37		collection					linguistic annotation							to split out	
+Transcription 	35		Running Natural Language Text						transcribed speech							
+Anthologies 	30		Running Natural Language Text						anthology							
+Devotional literature 	24		Running Natural Language Text						devotional literature							
+Linguistic corporaCorpus 	23		collection					linguistic annotation								
+Written Corpus 	23		Running Natural Language Text													
+Letters 	22		Running Natural Language Text						Letter							
+Monolingual 	22														to check	
+Short stories 	22		Running Natural Language Text						short story							
+Translation 	22		Running Natural Language Text						translated tekst							
+LexicalResource 	20		lexicalResource													
+Dictionaries 	19		lexicalResource													
+LanguageDescription 	19		Running Natural Language Text						Language Description							
+Academic dissertations 	18		Running Natural Language Text						Academic Dissertation							
+Other 	18		Other												check/ split out	
+Essays 	15		Running Natural Language Text						essay							
+No value given 	15		unspecified												check	
+Sermons 	15		Running Natural Language Text						sermon							
+Local histories 	14		Running Natural Language Text						local histories							
+WrittenCorpus 	14		Running Natural Language Text													
+Biographies 	13		Running Natural Language Text						biography							
+OralCorpus 	13		audio													
+Politics 	13		Running Natural Language Text						politics							
+Romances 	13		Running Natural Language Text						romance							
+Amateurfilm 	12		audio+video						movie/amateur movie							
+Fiction 	12		Running Natural Language Text						fiction							
+Fragment 	12		Running Natural Language Text						fragment							
+Addresses 	11		Running Natural Language Text						äddresses							
+Sacred texts 	11		Running Natural Language Text						sacred texts							
+Local/desktop 	10		software							desktop					check	
+SpeechCorpus 	9		audio													
+Web service 	9		service	software						web						
+Satires 	8		Running Natural Language Text													
+Xxx -- xxx -- xxx 	8														to check	
+Gesta 	7														to check	
+Lexicon 	7		lexicalResource													
+Multilingual 	7														to check	
+Early printed book (1501-1800)	6		Running Natural Language Text						early printed book		1501	1800				
+Memoirs 	6		Running Natural Language Text						memoirs							
+Travel literature 	6		Running Natural Language Text						travel literature							
+Web application 	6		application	software						web						
+Alter Druck 	5		Running Natural Language Text						Alter Druck						is equal to Starodruk?	
+Bilingual 	5														to check	
+Medical formularies 	5														to check	
+MultimodalCorpus 	5		audio+video						multimodal						split out	
+Myths and legends 	5		Running Natural Language Text						"myth;legend"							
+Periodicals 	5		Running Natural Language Text						periodical							
+Philosophical works 	5		Running Natural Language Text						philosophical work							
+Video 	5		video													
+Annals 	4		Running Natural Language Text						annals							
+Autobiographies 	4		Running Natural Language Text						autobiography							
+Comedies 	4		Running Natural Language Text						comedy							
+Confessions 	4		Running Natural Language Text						confession							
+Dialogue 	4		Running Natural Language Text						dialogue						check	
+Lectures 	4		Running Natural Language Text						lecture						check	
+Patristic texts -- 1st-5th century period 	4		Running Natural Language Text						patristic tekst		1	500				
+Patristic texts -- England -- 6th-10th century period 	4		Running Natural Language Text						patristic tekst		501	1000				
+Aligned_sentence 	3		Running Natural Language Text					sentence alignment								
+Ancient religious texts 	3		Running Natural Language Text						ancient religious tekst						ancient -> pweriod?	
+AnnotatedTextCorpus 	3		Running Natural Language Text					linguistic annotation							split out by annotation	
+Commentaries 	3		Running Natural Language Text						Commentary							
+Electronic publications 	3		Running Natural Language Text						electronic publication						split out	
+Grammars 	3		Running Natural Language Text						grammar							
+Juvenile literature 	3		Running Natural Language Text						juvenile literature							
+Linguistic corporaCorpusAnthologies 	3		Running Natural Language Text						anthology							
+Linguistic data 	1	CLARIN Centres/oai_ota_oucs_2560.xml	structured data						grammaticality judgements						has been split out by ID	
+Linguistic data 	1	CLARIN Centres/oai_ota_oucs_2546.xml	lexicalResource/valency lexicon					valency	lexicon						has been split out by ID	
+Linguistic data 	1	CLARIN Centres/oai_ota_oucs_2547.xml	lexicalResource/valency lexicon					valency	lexicon						has been split out by ID	
+Manuals (Handbooks) 	3		Running Natural Language Text						manual							
+MonolinugalDictionary 	3		lexicalResource/monolingual													
+Philosophical texts 	3		Running Natural Language Text						philosophical tekst							
+Scroll 	3		Running Natural Language Text						scroll							
+Songs 	3		Running Natural Language Text						song						checked	
+Spontaneous 	3		audio+video						spontaneous speech 						checked	
+Tragedies 	3		Running Natural Language Text						tragedy							
+Virtual_manuscript 	3		Running Natural Language Text						manuscript						check	
+AnthologiesLinguistic corporaCorpus 	2		Running Natural Language Text						anthology							
+Buddhism 	2		Running Natural Language Text										buddhism			
+Charter 	2		Running Natural Language Text						charter							
+Chronicles 	2		Running Natural Language Text						chronicles							
+Description/inflectional morphology 	2		Running Natural Language Text						language description				inflectional morphology			
+Diaries 	2		Running Natural Language Text						diary							
+Economics 	2		Running Natural Language Text										economics			
+Electronic publications -- United States -- 20th century 	2		Running Natural Language Text								1901	2000		United States		
+Ethics 	2		Running Natural Language Text										Ethics 			
+Etiquette books 	2		Running Natural Language Text										Etiquette books 			
+Experimental Data 	2		structured data												check	
+Fairy tales 	2		Running Natural Language Text						Fairy tales 							
+Field Notes 	2		Running Natural Language Text						Field Notes 							
+FrequencyList 	2		lexicalResource					frequency of orthographic tokens	FrequencyList 							
+Historical fiction 	2		Running Natural Language Text						Historical fiction 							
+Languages 	2		Running Natural Language Text												check	
+Legal formularies 	2		Running Natural Language Text						Legal formularies 							
+Legal works 	2		Running Natural Language Text						Legal work							
+LemmaList 	2		lexicalResource						LemmaList 							
+Literature of prejudice 	2		Running Natural Language Text						Literature of prejudice 							
+Machine readable dictionary 	2		lexicalresource						Machine readable dictionary 							
+Newspapers 	2		Running Natural Language Text						Newspapers 							
+Parables 	2		Running Natural Language Text						Parables 							
+Poetry 	2		Running Natural Language Text						Poetry 							
+Protest literature 	2		Running Natural Language Text						Protest literature 							
+Proverbs 	2		lexicalResource						Proverbs 							
+Read 	2		Running Natural Language Text						Read 						check	
+Textbooks 	2		Running Natural Language Text						Textbooks 							
+WordNet 	2		Running Natural Language Text	lexicalResource				semantic relations	WordNet 							
+AddressesAnthologiesLinguistic corporaCorpus 	1		Running Natural Language Text												check	
+Annotation: Affixes 	1		Running Natural Language Text					Annotation: Affixes 							check	
+Annotation: Chinese_glosses 	1		structured data					Annotation: Chinese_glosses 	glossed Chinese example sentences							
+Annotation: English_glosses 	1		Running Natural Language Text						Annotation: English_glosses 						from here	
+AnthologiesDevotional literature 	1		Running Natural Language Text						AnthologiesDevotional literature 							
+Anthology 	1		Running Natural Language Text						Anthology 							
+Ballad operas 	1		Running Natural Language Text						Ballad operas 							
+Bibles 	1		Running Natural Language Text						Bibles 							
+Bible storiesLinguistic corporaCorpus 	1		Running Natural Language Text						Bible storiesLinguistic corporaCorpus 							
+Bibliographies 	1		Running Natural Language Text						Bibliographies 							
+BilingualDictionary 	1		Running Natural Language Text						BilingualDictionary 							
+Catalogues 	1		Running Natural Language Text						Catalogues 							
+Catechisms 	1		Running Natural Language Text						Catechisms 							
+Chronicals 	1		Running Natural Language Text						Chronicals 							
+CommentariesGazetteers 	1		Running Natural Language Text						CommentariesGazetteers 							
+Commentaries -- Italy -- 17th century 	1		Running Natural Language Text						Commentaries -- Italy -- 17th century 							
+Comparable 	1		Running Natural Language Text						Comparable 							
+Constitutions 	1		Running Natural Language Text						Constitutions 							
+Conversion narratives 	1		Running Natural Language Text						Conversion narratives 							
+Correspondence 	1		Running Natural Language Text						Correspondence 							
+Courtesy books 	1		Running Natural Language Text						Courtesy books 							
+Databases 	1		Running Natural Language Text						Databases 							
+Devotional material 	1		Running Natural Language Text						Devotional material 							
+Dialogues 	1		Running Natural Language Text						Dialogues 							
+Early book 	1		Running Natural Language Text						Early book 							
+Electronic publications -- Great Britain -- 20th century 	1		Running Natural Language Text						Electronic publications -- Great Britain -- 20th century 							
+Electronic publications -- Indonesia -- 20th century 	1		Running Natural Language Text						Electronic publications -- Indonesia -- 20th century 							
+Electronic publications -- Japan -- 20th centuryDatabases -- Japan -- 20th century 	1		Running Natural Language Text						Electronic publications -- Japan -- 20th centuryDatabases -- Japan -- 20th century 							
+English drama -- Restoration, 1660-1700 	1		Running Natural Language Text						English drama -- Restoration, 1660-1700 							
+English literature -- Middle English, 1100-1500 	1		Running Natural Language Text						English literature -- Middle English, 1100-1500 							
+Epics 	1		Running Natural Language Text						Epics 							
+Exploration literature 	1		Running Natural Language Text						Exploration literature 							
+Fairy talesAnthologies 	1		Running Natural Language Text						Fairy talesAnthologies 							
+Fieldwork Material 	1		Running Natural Language Text						Fieldwork Material 							
+FolkloreAnthologies 	1		Running Natural Language Text						FolkloreAnthologies 							
+Folk tales 	1		Running Natural Language Text						Folk tales 							
+Formularies 	1		Running Natural Language Text						Formularies 							
+Games 	1		Running Natural Language Text						Games 							
+Gazeta 	1		Running Natural Language Text						Gazeta 							
+Genealogies 	1		Running Natural Language Text						Genealogies 							
+Geometry 	1		Running Natural Language Text						Geometry 							
+=-- Germany	1		Running Natural Language Text						=-- Germany							
+GrammarsAnthologies 	1		Running Natural Language Text						GrammarsAnthologies 							
+Handbooks 	1		Running Natural Language Text						Handbooks 							
+Herbals -- England -- 17th century 	1		Running Natural Language Text						Herbals -- England -- 17th century 							
+Indexes 	1		Running Natural Language Text						Indexes 							
+Inscriptions 	1		Running Natural Language Text						Inscriptions 							
+Internet 	1		Running Natural Language Text						Internet 							
+Juvenilia 	1		Running Natural Language Text						Juvenilia 							
+Ksi??ka 	1		Running Natural Language Text						Ksi??ka 							
+Laws 	1		Running Natural Language Text						Laws 							
+Legal Works 	1		Running Natural Language Text						Legal Works 							
+Legislative proceedingsConstitutionsAnthologies 	1		Running Natural Language Text						Legislative proceedingsConstitutionsAnthologies 							
+Lexicon: Lexical_categories 	1		Running Natural Language Text						Lexicon: Lexical_categories 							
+Libretti 	1		Running Natural Language Text						Libretti 							
+Linguistic corporaCorpusLetters 	1		Running Natural Language Text						Linguistic corporaCorpusLetters 							
+Linguistic corporaCorpusLettersAnthologies 	1		Running Natural Language Text						Linguistic corporaCorpusLettersAnthologies 							
+Linguistic corporaCorpusNewspapersAnthologies 	1		Running Natural Language Text						Linguistic corporaCorpusNewspapersAnthologies 							
+Linguistic corporaCorpusPeriodicals -- Italy -- 20th Century 	1		Running Natural Language Text						Linguistic corporaCorpusPeriodicals -- Italy -- 20th Century 							
+Literary criticism 	1		Running Natural Language Text						Literary criticism 							
+Local Histories 	1		Running Natural Language Text						Local Histories 							
+Local historiesNovels 	1		Running Natural Language Text						Local historiesNovels 							
+Manuals 	1		Running Natural Language Text						Manuals 							
+Masques 	1		Running Natural Language Text						Masques 							
+Mathematics 	1		Running Natural Language Text						Mathematics 							
+Military histories 	1		Running Natural Language Text						Military histories 							
+Military manuals 	1		Running Natural Language Text						Military manuals 							
+Monologue 	1		Running Natural Language Text						Monologue 							
+Moving image 	1		Running Natural Language Text						Moving image 							
+Music 	1		Running Natural Language Text						Music 							
+Mystery and detective fiction 	1		Running Natural Language Text						Mystery and detective fiction 							
+Myths and legends--13th century 	1		Running Natural Language Text						Myths and legends--13th century 							
+NamedEntitiesList 	1		Running Natural Language Text						NamedEntitiesList 							
+NewpapersAnthologiesLinguistic corporaCorpus 	1		Running Natural Language Text						NewpapersAnthologiesLinguistic corporaCorpus 							
+NewspapersLinguistic corporaCorpus 	1		Running Natural Language Text						NewspapersLinguistic corporaCorpus 							
+Notebooks 	1		Running Natural Language Text						Notebooks 							
+NovelsAnthologiesLinguistic corporaCorpus 	1		Running Natural Language Text						NovelsAnthologiesLinguistic corporaCorpus 							
+Novels -- France -- 19th century 	1		Running Natural Language Text						Novels -- France -- 19th century 							
+Parallel 	1		Running Natural Language Text						Parallel 							
+ParodiesFables 	1		Running Natural Language Text						ParodiesFables 							
+Patristic texts -- England -- 6th-10th century periodScripture commentaries -- England -- 6th-10th century period 	1		Running Natural Language Text						Patristic texts -- England -- 6th-10th century periodScripture commentaries -- England -- 6th-10th century period 							
+Patristic texts -- Italy -- 6th-10th century period 	1		Running Natural Language Text						Patristic texts -- Italy -- 6th-10th century period 							
+PeriodicalsAnthologies 	1		Running Natural Language Text						PeriodicalsAnthologies 							
+Petitions 	1		Running Natural Language Text						Petitions 							
+Philosophical texts -- Great Britain -- 18th century 	1		Running Natural Language Text						Philosophical texts -- Great Britain -- 18th century 							
+Philosophical texts -- Great Britain -- 19th century 	1		Running Natural Language Text						Philosophical texts -- Great Britain -- 19th century 							
+Phrase books 	1		Running Natural Language Text						Phrase books 							
+PlaysAnthologies 	1		Running Natural Language Text						PlaysAnthologies 							
+PlaysAnthologiesLinguistic corporaCorpus 	1		Running Natural Language Text						PlaysAnthologiesLinguistic corporaCorpus 							
+Plays -- England -- 17th century 	1		Running Natural Language Text						Plays -- England -- 17th century 							
+PoemsAnthologies 	1		Running Natural Language Text						PoemsAnthologies 							
+PoemsDevotional literature 	1		Running Natural Language Text						PoemsDevotional literature 							
+Primers 	1		Running Natural Language Text						Primers 							
+RomancesLinguistic corporaCorpus 	1		Running Natural Language Text						RomancesLinguistic corporaCorpus 							
+Sacred texts -- India -- B.C. 	1		Running Natural Language Text						Sacred texts -- India -- B.C. 							
+Sacred texts -- United States -- 19th century 	1		Running Natural Language Text						Sacred texts -- United States -- 19th century 							
+Scores 	1		Running Natural Language Text						Scores 							
+Short stories, Italian -- 19th century 	1		Running Natural Language Text						Short stories, Italian -- 19th century 							
+SongsAnthologiesLinguistic corporaCorpus 	1		Running Natural Language Text						SongsAnthologiesLinguistic corporaCorpus 							
+Speech 	1		Running Natural Language Text						Speech 							
+Stary druk 	1		Running Natural Language Text						Stary druk 							
+Tools 	1		Running Natural Language Text						Tools 							
+Transcription: IPA 	1		Running Natural Language Text						Transcription: IPA 							
+UnannotatedTextCorpus 	1		Running Natural Language Text						UnannotatedTextCorpus 							
+Utopian literature 	1		Running Natural Language Text						Utopian literature 							
+Website 	1		Running Natural Language Text						Website 							
+Wordbooks 	1		Running Natural Language Text						Wordbooks 							

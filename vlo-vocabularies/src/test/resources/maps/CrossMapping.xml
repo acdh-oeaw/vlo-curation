@@ -1,0 +1,34 @@
+
+<mappings field="languageCode">
+    <mapping>
+        <normalizedValue value="webApplication"/>
+        <variant value="Software">
+        	<cross-mappings>
+                <cross-mapping>
+                    <facet>temporal coverage</facet>
+                    <value>19th century</value>
+                </cross-mapping>
+                <cross-mapping>
+                    <facet>resourceType</facet>
+                    <value>plainText</value>
+                </cross-mapping>
+            </cross-mappings>
+        </variant>
+        <variant value="Tool">
+            <cross-mappings>
+                <cross-mapping>
+                    <facet>temporal coverage</facet>
+                    <value>20th century</value>
+                </cross-mapping>
+                <cross-mapping>
+                    <facet>country</facet>
+                    <value>England</value>
+                </cross-mapping>
+                <cross-mapping>
+                    <facet>nationalProject</facet>
+                    <value>whatever</value>
+                </cross-mapping>
+            </cross-mappings>
+        </variant>
+    </mapping>
+</mappings>

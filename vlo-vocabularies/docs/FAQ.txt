@@ -1,0 +1,21 @@
+Q: How can I open csv with MS Excel 2013?
+A: easy peasy
+	- start MS Excel 2013
+	- open new sheet document
+	- go to DATA tab
+	- click "From Text" icon
+	- in new window
+		- select Delimited
+		- check My data has headers
+		- click Next
+		- select Tab as delimiter
+		- select None for Text qualifier
+		- click Finish
+  That's it, enjoy your new CSV.
+  
+Q: How to generate CSV XML's?
+A: make sure that you installed maven. If yes run "mvn process-resources -Pxml2csv".
+
+Q: How to generate XML from  CSV files?
+A: make sure that you installed maven. If yes run "mvn process-resources -Pcsv2xml"
+

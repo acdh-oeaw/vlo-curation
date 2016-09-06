@@ -1,0 +1,4 @@
+2016-02-04 10:31:55,265 INFO [eu.clarin.cmdi.vlo.importer.MetadataImporter#main:682] - Could not get config file name via the command line, trying the system properties.
+2016-02-04 10:31:55,267 ERROR [eu.clarin.cmdi.vlo.importer.MetadataImporter#main:695] - Could not get filename as system property either - stopping.
+2016-02-04 10:32:32,223 INFO [eu.clarin.cmdi.vlo.importer.MetadataImporter#main:682] - Could not get config file name via the command line, trying the system properties.
+2016-02-04 10:32:57,654 ERROR [eu.clarin.cmdi.vlo.importer.MetadataImporter#main:695] - Could not get filename as system property either - stopping.

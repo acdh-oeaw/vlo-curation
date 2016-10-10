@@ -9,9 +9,7 @@ public class ProfileNamePostProcessor extends PostProcessorsWithVocabularyMap{
 	public List<String> process(String value) {
 		// doesnt do anything
 		return Arrays.asList(value);
-	}
-
-	
+	}	
 	
 	@Override
 	public String getNormalizationMapURL() {

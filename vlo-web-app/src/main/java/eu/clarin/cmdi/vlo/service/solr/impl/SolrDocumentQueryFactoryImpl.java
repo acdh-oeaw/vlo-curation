@@ -50,7 +50,7 @@ public class SolrDocumentQueryFactoryImpl extends AbstractSolrQueryFactory imple
         // make a query to get all documents that match the selection criteria
         final SolrQuery query = getDefaultDocumentQuery();
         // apply selection
-        addQueryFacetParameters(query, selection, true);
+        addQueryFacetParameters(query, selection);
         // set offset and limit
         query.setStart(first);
         query.setRows(count);

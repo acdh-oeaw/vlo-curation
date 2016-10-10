@@ -1,9 +1,10 @@
 package eu.clarin.cmdi.vlo.importer;
 
+import java.util.Arrays;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 /**
  * Adds information about the affiliation of a metadata file to a national
@@ -13,8 +14,8 @@ import org.slf4j.LoggerFactory;
  *
  */
 public class NationalProjectPostProcessor extends PostProcessorsWithVocabularyMap {
-
-    private final static Logger LOG = LoggerFactory.getLogger(NationalProjectPostProcessor.class);
+	
+    //private final static Logger LOG = LoggerFactory.getLogger(NationalProjectPostProcessor.class);
 
     /**
      * Returns the national project based on the mapping in
@@ -25,13 +26,11 @@ public class NationalProjectPostProcessor extends PostProcessorsWithVocabularyMa
      */
     @Override
     public List<String> process(String value) {
-    	return normalize(value.trim(), "");
+    	return Arrays.asList(normalize(value.trim(), ""));
     }
     
-
 	@Override
 	public String getNormalizationMapURL() {
 		return MetadataImporter.config.getNationalProjectMapping();
-	}
-    
+	}    
 }

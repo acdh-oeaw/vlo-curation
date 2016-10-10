@@ -19,7 +19,6 @@ package eu.clarin.cmdi.vlo.wicket.panels.record;
 import eu.clarin.cmdi.vlo.wicket.components.LanguageInfoLink;
 import com.google.common.collect.ImmutableSet;
 import eu.clarin.cmdi.vlo.FacetConstants;
-import eu.clarin.cmdi.vlo.JavaScriptResources;
 import eu.clarin.cmdi.vlo.config.VloConfig;
 import eu.clarin.cmdi.vlo.pojo.DocumentField;
 import eu.clarin.cmdi.vlo.pojo.FacetSelection;
@@ -38,9 +37,6 @@ import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.extensions.markup.html.basic.SmartLinkMultiLineLabel;
-import org.apache.wicket.markup.head.CssHeaderItem;
-import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
@@ -158,7 +154,7 @@ public class FieldsTablePanel extends Panel {
                 super.onConfigure();
                 // only show for facet fields
                 setVisible(isShowFacetSelectLinks()
-                        && vloConfig.getAllFacetFields().contains(facetNameModel.getObject()));
+                        && vloConfig.getFacetsInSearch().contains(facetNameModel.getObject()));
             }
 
         };

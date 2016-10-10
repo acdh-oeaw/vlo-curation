@@ -5,11 +5,10 @@
     <parent>
         <groupId>eu.clarin.cmdi</groupId>
         <artifactId>vlo</artifactId>
-        <version>3.4-SNAPSHOT</version>
+        <version>4.0.1-CURATION</version>
     </parent>
-    <groupId>eu.clarin.cmdi</groupId>
+    
     <artifactId>vlo-commons</artifactId>
-    <version>3.4-SNAPSHOT</version>
     <name>VLO Commons</name>
     <url>http://maven.apache.org</url>
     <properties>
@@ -46,43 +45,10 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <vloconfig.solrUrl>http://localhost:8080/vlo-solr/core0/</vloconfig.solrUrl>
+                <vloconfig.solrUrl>http://localhost:9080/vlo-solr/core0/</vloconfig.solrUrl>
                 <vloconfig.dataRootsFile>dataroots-local.xml</vloconfig.dataRootsFile>
             </properties>
-        </profile>
-        
-        <profile>
-            <!-- For deployment to catalog-clarin.esc.rzg.mpg.de -->
-            <id>dev-vm</id>
-            <properties>
-                <vloconfig.solrUrl>http://localhost:8080/vlo-solr/core0/</vloconfig.solrUrl>
-                <vloconfig.dataRootsFile>file:/lat/webapps/vlo/dataroots-testvm.xml</vloconfig.dataRootsFile>
-            </properties>
-        </profile>
-        
-        <profile>
-            <!-- For deployment to vlo.clarin.eu -->
-            <id>production</id>
-            <properties>
-                <vloconfig.deleteAllFirst>false</vloconfig.deleteAllFirst>
-                <vloconfig.maxDaysInSolr>7</vloconfig.maxDaysInSolr>
-                <vloconfig.solrUrl>http://localhost:8080/solr/core0/</vloconfig.solrUrl>
-                <vloconfig.homeUrl>http://vlo.clarin.eu</vloconfig.homeUrl>
-                <vloconfig.dataRootsFile>dataroots-production.xml</vloconfig.dataRootsFile>
-            </properties>
-        </profile>
-        
-        <profile>
-            <!--  For deployment to beta-vlo.clarin.eu -->
-            <id>beta</id>
-            <properties>
-                <vloconfig.deleteAllFirst>false</vloconfig.deleteAllFirst>
-                <vloconfig.maxDaysInSolr>7</vloconfig.maxDaysInSolr>
-                <vloconfig.solrUrl>http://172.17.42.1:8080/solr/core0/</vloconfig.solrUrl>
-                <vloconfig.homeUrl>http://beta-vlo.clarin.eu</vloconfig.homeUrl>
-                <vloconfig.dataRootsFile>dataroots-beta.xml</vloconfig.dataRootsFile>
-            </properties>
-        </profile>
+        </profile>        
     </profiles>
     
     <dependencies>
@@ -105,6 +71,11 @@
             <scope>test</scope>
             <type>xml</type>
             <classifier>ivy</classifier>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>19.0</version>
         </dependency>
     </dependencies>
 </project>

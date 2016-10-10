@@ -4,6 +4,8 @@ import com.ximpleware.AutoPilot;
 import com.ximpleware.NavException;
 import com.ximpleware.VTDGen;
 import com.ximpleware.VTDNav;
+import com.ximpleware.XPathEvalException;
+import com.ximpleware.XPathParseException;
 import eu.clarin.cmdi.vlo.FacetConstants;
 import eu.clarin.cmdi.vlo.importer.FacetConceptMapping.FacetConcept;
 import eu.clarin.cmdi.vlo.importer.FacetConceptMapping.AcceptableContext;
@@ -25,7 +27,7 @@ public class FacetMappingFactory {
 
     private final static Logger LOG = LoggerFactory.getLogger(FacetMappingFactory.class);
 
-    private Map<String, FacetMapping> mapping = new HashMap<String, FacetMapping>();
+    private final Map<String, FacetMapping> mapping = new HashMap<>();
 
     /**
      * Our one instance of the FMF.
@@ -92,7 +94,7 @@ public class FacetMappingFactory {
             // Below we put the stuff we found into the configuration class.
             for (FacetConcept facetConcept : conceptMapping.getFacetConcepts()) {
                 FacetConfiguration config = new FacetConfiguration();
-                List<String> xpaths = new ArrayList<String>();
+                List<String> xpaths = new ArrayList<>();
                 handleId(xpaths, facetConcept);
                 for (String concept : facetConcept.getConcepts()) {
                     List<String> paths = conceptLinkPathMapping.get(concept);
@@ -101,7 +103,7 @@ public class FacetMappingFactory {
                             for (String path : paths) {
                                 // lazily instantiate the reverse mapping, i.e., from concept to path
                                 if (pathConceptLinkMapping == null) {
-                                    pathConceptLinkMapping = new HashMap<String, String>();
+                                    pathConceptLinkMapping = new HashMap<>();
                                     for (String c : conceptLinkPathMapping.keySet()) {
                                         for (String p : conceptLinkPathMapping.get(c)) {
                                             pathConceptLinkMapping.put(p, c);
@@ -172,11 +174,11 @@ public class FacetMappingFactory {
                 config.setAllowMultipleValues(facetConcept.isAllowMultipleValues());
                 config.setName(facetConcept.getName());
 
-                LinkedHashSet<String> linkedHashSet = new LinkedHashSet<String>(xpaths);
+                LinkedHashSet<String> linkedHashSet = new LinkedHashSet<>(xpaths);
                 if(xpaths.size() != linkedHashSet.size()) {
-                    LOG.error("Duplicate XPaths in : "+xpaths);
+                    LOG.error("Duplicate XPaths for facet {} in: {}.", facetConcept.getName(), xpaths);
                 }
-                config.setPatterns(new ArrayList<String>(linkedHashSet));
+                config.setPatterns(new ArrayList<>(linkedHashSet));
                 config.setFallbackPatterns(facetConcept.getPatterns());
                 config.setDerivedFacets(facetConcept.getDerivedFacets());
 
@@ -228,10 +230,16 @@ public class FacetMappingFactory {
      * @throws NavException
      */
     private Map<String, List<String>> createConceptLinkPathMapping(String xsd, Boolean useLocalXSDCache) throws NavException {
-        Map<String, List<String>> result = new HashMap<String, List<String>>();
+        Map<String, List<String>> result = new HashMap<>();
         VTDGen vg = new VTDGen();
-        boolean parseSuccess;
+        boolean parseSuccess;        
+        
         if(useLocalXSDCache) {
+        	//Windows platform can't store profiles in the form of profileID -> illegal file name.
+            //xsd has to be normalised
+            if(System.getProperty("os.name").startsWith("Windows"))
+            	xsd = xsd.replaceAll(":", "_");        
+            
             parseSuccess = vg.parseFile(Thread.currentThread().getContextClassLoader().getResource("testProfiles/"+xsd+".xsd").getPath(), true);
         } else {
             parseSuccess = vg.parseHttpUrl(MetadataImporter.config.getComponentRegistryProfileSchema(xsd), true);
@@ -244,7 +252,7 @@ public class FacetMappingFactory {
         VTDNav vn = vg.getNav();
         AutoPilot ap = new AutoPilot(vn);
         ap.selectElement("xs:element");
-        Deque<Token> elementPath = new LinkedList<Token>();
+        Deque<Token> elementPath = new LinkedList<>();
         while (ap.iterate()) {
             int i = vn.getAttrVal("name");
             if (i != -1) {
@@ -253,14 +261,45 @@ public class FacetMappingFactory {
                 int datcatIndex = getDatcatIndex(vn);
                 if (datcatIndex != -1) {
                     String conceptLink = vn.toNormalizedString(datcatIndex);
-                    String xpath = createXpath(elementPath);
+                    String xpath = createXpath(elementPath, null);
                     List<String> values = result.get(conceptLink);
                     if (values == null) {
-                        values = new ArrayList<String>();
+                        values = new ArrayList<>();
                         result.put(conceptLink, values);
                     }
                     values.add(xpath);
                 }
+
+                // look for associated attributes with concept links
+                vn.push();
+                AutoPilot attributeAutopilot = new AutoPilot(vn);
+                attributeAutopilot.declareXPathNameSpace("xs", "http://www.w3.org/2001/XMLSchema");
+
+                try {
+                    attributeAutopilot.selectXPath("./xs:complexType/xs:simpleContent/xs:extension/xs:attribute | ./xs:complexType/xs:attribute");
+                    while (attributeAutopilot.evalXPath() != -1) {
+                        int attributeDatcatIndex = getDatcatIndex(vn);
+                        int attributeNameIndex = vn.getAttrVal("name");
+
+                        if (attributeNameIndex != -1 && attributeDatcatIndex != -1) {
+                            String attributeName = vn.toNormalizedString(attributeNameIndex);
+                            String conceptLink = vn.toNormalizedString(attributeDatcatIndex);
+
+                            String xpath = createXpath(elementPath, attributeName);
+                            List<String> values = result.get(conceptLink);
+                            if (values == null) {
+                                values = new ArrayList<>();
+                                result.put(conceptLink, values);
+                            }
+                            values.add(xpath);
+                        }
+                    }
+                } catch (XPathParseException | XPathEvalException | NavException e) {
+                    LOG.error("Cannot extract attributes for element "+elementName+". Will continue anyway...", e);
+                }
+
+                // returning to normal element-based workflow
+                vn.pop();
             }
         }
         return result;
@@ -274,12 +313,9 @@ public class FacetMappingFactory {
      */
     private int getDatcatIndex(VTDNav vn) throws NavException {
         int result = -1;
-        result = vn.getAttrValNS("http://www.isocat.org/ns/dcr", "datcat");
+        result = vn.getAttrValNS("http://www.clarin.eu/cmd/1", "ConceptLink");
         if (result == -1) {
-            result = vn.getAttrValNS("http://www.isocat.org", "datcat");
-        }
-        if (result == -1) {
-            result = vn.getAttrVal("dcr:datcat");
+            result = vn.getAttrVal("cmd:ConceptLink");
         }
         return result;
     }
@@ -288,14 +324,20 @@ public class FacetMappingFactory {
      * Given an xml-token path thingy create an xpath.
      *
      * @param elementPath
+     * @param attributeName will be appended as attribute to XPath expression if not null
      * @return
      */
-    private String createXpath(Deque<Token> elementPath) {
-        StringBuilder xpath = new StringBuilder("/");
+    private String createXpath(Deque<Token> elementPath, String attributeName) {
+        StringBuilder xpath = new StringBuilder("/cmd:CMD/cmd:Components/");
         for (Token token : elementPath) {
-            xpath.append("c:").append(token.name).append("/");
+            xpath.append("cmdp:").append(token.name).append("/");
         }
-        return xpath.append("text()").toString();
+
+        if (attributeName != null) {
+            return xpath.append("@").append(attributeName).toString();
+        } else {
+            return xpath.append("text()").toString();
+        }
     }
 
     /**

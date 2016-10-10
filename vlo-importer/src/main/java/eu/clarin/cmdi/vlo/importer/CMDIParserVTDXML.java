@@ -1,23 +1,5 @@
 package eu.clarin.cmdi.vlo.importer;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.ximpleware.AutoPilot;
 import com.ximpleware.NavException;
 import com.ximpleware.VTDException;
@@ -25,8 +7,20 @@ import com.ximpleware.VTDGen;
 import com.ximpleware.VTDNav;
 import com.ximpleware.XPathEvalException;
 import com.ximpleware.XPathParseException;
-
 import eu.clarin.cmdi.vlo.FacetConstants;
+import eu.clarin.cmdi.vlo.config.VloConfig;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class CMDIParserVTDXML implements CMDIDataProcessor {
 
@@ -36,34 +30,58 @@ public class CMDIParserVTDXML implements CMDIDataProcessor {
     private final static Logger LOG = LoggerFactory.getLogger(CMDIParserVTDXML.class);
 
     private static final String DEFAULT_LANGUAGE = "code:und";
+    private final VloConfig config;
 
-    public CMDIParserVTDXML(Map<String, PostProcessor> postProcessors, Boolean useLocalXSDCache) {
+    public CMDIParserVTDXML(Map<String, PostProcessor> postProcessors, VloConfig config, Boolean useLocalXSDCache) {
         this.postProcessors = postProcessors;
         this.useLocalXSDCache = useLocalXSDCache;
+        this.config = config;
     }
 
     @Override
     public CMDIData process(File file) throws VTDException, IOException {
-        CMDIData cmdiData = new CMDIData();
-        VTDGen vg = new VTDGen();
-        FileInputStream fileInputStream = new FileInputStream(file);
-        vg.setDoc(IOUtils.toByteArray(fileInputStream));
-        vg.parse(true);
-        fileInputStream.close();
+        final CMDIData cmdiData = new CMDIData();
+        final VTDGen vg = new VTDGen();
+        final FileInputStream fileInputStream = new FileInputStream(file);
+        try {
+            vg.setDoc(IOUtils.toByteArray(fileInputStream));
+            vg.parse(true);
+        } finally {
+            fileInputStream.close();
+        }
 
-        VTDNav nav = vg.getNav();
-        String profileId = extractXsd(nav.cloneNav());
-        cmdiData.addDocField("profileId", profileId, false);
-        FacetMapping facetMapping = getFacetMapping(profileId);
+        final VTDNav nav = vg.getNav();
+        final FacetMapping facetMapping = getFacetMapping(nav.cloneNav());
 
         if (facetMapping.getFacets().isEmpty()) {
             LOG.error("Problems mapping facets for file: {}", file.getAbsolutePath());
         }
-        
+
         nav.toElement(VTDNav.ROOT);
         processResources(cmdiData, nav);
         processFacets(cmdiData, nav, facetMapping);
         return cmdiData;
+    }
+
+    @Override
+    public String extractMdSelfLink(File file) throws VTDException, IOException {
+        final VTDGen vg = new VTDGen();
+        try (FileInputStream fileInputStream = new FileInputStream(file)) {
+            vg.setDoc(IOUtils.toByteArray(fileInputStream));
+            vg.parse(true);
+        }
+        final VTDNav nav = vg.getNav();
+        nav.toElement(VTDNav.ROOT);
+        AutoPilot ap = new AutoPilot(nav);
+        setNameSpace(ap, null);
+        ap.selectXPath("/cmd:CMD/cmd:Header/cmd:MdSelfLink/text()");
+        int index = ap.evalXPath();
+
+        String mdSelfLink = null;
+        if (index != -1) {
+            mdSelfLink = nav.toString(index).trim();
+        }
+        return mdSelfLink;
     }
 
     /**
@@ -71,8 +89,11 @@ public class CMDIParserVTDXML implements CMDIDataProcessor {
      *
      * @param ap
      */
-    private void setNameSpace(AutoPilot ap) {
-        ap.declareXPathNameSpace("c", "http://www.clarin.eu/cmd/");
+    private void setNameSpace(AutoPilot ap, String profileId) {
+        ap.declareXPathNameSpace("cmd", "http://www.clarin.eu/cmd/1");
+        if(profileId != null) {
+            ap.declareXPathNameSpace("cmdp", "http://www.clarin.eu/cmd/1/profiles/"+profileId);
+        }
     }
 
     /**
@@ -82,7 +103,8 @@ public class CMDIParserVTDXML implements CMDIDataProcessor {
      * @return the facet mapping used to map meta data to facets
      * @throws VTDException
      */
-    private FacetMapping getFacetMapping(String profileId) throws VTDException {
+    private FacetMapping getFacetMapping(VTDNav nav) throws VTDException {
+        String profileId = extractXsd(nav);
         if (profileId == null) {
             throw new RuntimeException("Cannot get xsd schema so cannot get a proper mapping. Parse failed!");
         }
@@ -137,8 +159,8 @@ public class CMDIParserVTDXML implements CMDIDataProcessor {
     private String getProfileIdFromHeader(VTDNav nav) throws XPathParseException, XPathEvalException, NavException {
         nav.toElement(VTDNav.ROOT);
         AutoPilot ap = new AutoPilot(nav);
-        setNameSpace(ap);
-        ap.selectXPath("/c:CMD/c:Header/c:MdProfile/text()");
+        setNameSpace(ap, null);
+        ap.selectXPath("/cmd:CMD/cmd:Header/cmd:MdProfile/text()");
         int index = ap.evalXPath();
         String profileId = null;
         if (index != -1) {
@@ -161,7 +183,8 @@ public class CMDIParserVTDXML implements CMDIDataProcessor {
         int index = nav.getAttrValNS("http://www.w3.org/2001/XMLSchema-instance", "schemaLocation");
         if (index != -1) {
             String schemaLocation = nav.toNormalizedString(index);
-            result = schemaLocation.split(" ")[1];
+            String[] schemaLocationArray = schemaLocation.split(" ");
+            result = schemaLocationArray[schemaLocationArray.length-1];
         } else {
             index = nav.getAttrValNS("http://www.w3.org/2001/XMLSchema-instance", "noNamespaceSchemaLocation");
             if (index != -1) {
@@ -188,26 +211,28 @@ public class CMDIParserVTDXML implements CMDIDataProcessor {
      */
     private void processResources(CMDIData cmdiData, VTDNav nav) throws VTDException {
         AutoPilot mdSelfLink = new AutoPilot(nav);
-        setNameSpace(mdSelfLink);
-        mdSelfLink.selectXPath("/c:CMD/c:Header/c:MdSelfLink");
+        setNameSpace(mdSelfLink, null);
+        mdSelfLink.selectXPath("/cmd:CMD/cmd:Header/cmd:MdSelfLink");
         String mdSelfLinkString = mdSelfLink.evalXPathToString();
-        ResourceStructureGraph.addResource(mdSelfLinkString);
+        if (config.isProcessHierarchies()) {
+            ResourceStructureGraph.addResource(mdSelfLinkString);
+        }
 
         AutoPilot resourceProxy = new AutoPilot(nav);
-        setNameSpace(resourceProxy);
-        resourceProxy.selectXPath("/c:CMD/c:Resources/c:ResourceProxyList/c:ResourceProxy");
+        setNameSpace(resourceProxy, null);
+        resourceProxy.selectXPath("/cmd:CMD/cmd:Resources/cmd:ResourceProxyList/cmd:ResourceProxy");
 
         AutoPilot resourceRef = new AutoPilot(nav);
-        setNameSpace(resourceRef);
-        resourceRef.selectXPath("c:ResourceRef");
+        setNameSpace(resourceRef, null);
+        resourceRef.selectXPath("cmd:ResourceRef");
 
         AutoPilot resourceType = new AutoPilot(nav);
-        setNameSpace(resourceType);
-        resourceType.selectXPath("c:ResourceType");
+        setNameSpace(resourceType, null);
+        resourceType.selectXPath("cmd:ResourceType");
 
         AutoPilot resourceMimeType = new AutoPilot(nav);
-        setNameSpace(resourceMimeType);
-        resourceMimeType.selectXPath("c:ResourceType/@mimetype");
+        setNameSpace(resourceMimeType, null);
+        resourceMimeType.selectXPath("cmd:ResourceType/@mimetype");
 
         while (resourceProxy.evalXPath() != -1) {
             String ref = resourceRef.evalXPathToString();
@@ -220,7 +245,7 @@ public class CMDIParserVTDXML implements CMDIDataProcessor {
             }
 
             // resource hierarchy information?
-            if (type.toLowerCase().equals("metadata")) {
+            if (config.isProcessHierarchies() && type.toLowerCase().equals("metadata")) {
                 ResourceStructureGraph.addEdge(ref, mdSelfLinkString);
             }
         }
@@ -235,8 +260,7 @@ public class CMDIParserVTDXML implements CMDIDataProcessor {
      * @throws VTDException
      */
     private void processFacets(CMDIData cmdiData, VTDNav nav, FacetMapping facetMapping) throws VTDException {
-    	    	
-        List<FacetConfiguration> facetList = facetMapping.getFacets();    	
+        List<FacetConfiguration> facetList = facetMapping.getFacets();
         for (FacetConfiguration config : facetList) {
             boolean matchedPattern = false;
             List<String> patterns = config.getPatterns();
@@ -274,7 +298,7 @@ public class CMDIParserVTDXML implements CMDIDataProcessor {
      */
     private boolean matchPattern(CMDIData cmdiData, VTDNav nav, FacetConfiguration config, String pattern, Boolean allowMultipleValues) throws VTDException {
         final AutoPilot ap = new AutoPilot(nav);
-        setNameSpace(ap);
+        setNameSpace(ap, extractXsd(nav));
         ap.selectXPath(pattern);
 
         boolean matchedPattern = false;
@@ -294,24 +318,14 @@ public class CMDIParserVTDXML implements CMDIDataProcessor {
                 index = ap.evalXPath();
                 continue;
             }
-            
+
             final List<String> values = postProcess(config.getName(), value);
-            
-            insertFacetValues(config.getName(), values, cmdiData, languageCode, allowMultipleValues, config.isCaseInsensitive(), true);
-            
-            //in case of profile name forward normalized value (not profileId)
-            crossMap(config, config.getName().equals(FacetConstants.FIELD_CLARIN_PROFILE)? values.get(0) : value, cmdiData, languageCode);
-            
-            //add also non curated values
-            
-            switch(config.getName()){
-            	case FacetConstants.FIELD_RESOURCE_CLASS: cmdiData.addDocField("resourceClassOrig", value, false); break;
-            	case FacetConstants.FIELD_LANGUAGE_CODE:  cmdiData.addDocField("languageOrig", value, false); break;
-            	case FacetConstants.FIELD_COUNTRY: cmdiData.addDocField("countryOrig", value, false); break;
-            	case FacetConstants.FIELD_AVAILABILITY: cmdiData.addDocField("availabilityOrig", value, false); break;
-            	case FacetConstants.FIELD_ORGANISATION: cmdiData.addDocField("organisationOrig", value, false); break;
-            	case FacetConstants.FIELD_NATIONAL_PROJECT: cmdiData.addDocField("natProjectOrig", value, false); break;            	
+            //discard '--' values
+            if (values != null && !values.isEmpty() && values.get(0).equals("--")) {
+                return matchedPattern;
             }
+
+            insertFacetValues(config.getName(), values, cmdiData, languageCode, allowMultipleValues, config.isCaseInsensitive());
 
             // insert post-processed values into derived facet(s) if configured
             for (String derivedFacet : config.getDerivedFacets()) {
@@ -319,7 +333,7 @@ public class CMDIParserVTDXML implements CMDIDataProcessor {
                 for (String postProcessedValue : values) {
                     derivedValues.addAll(postProcess(derivedFacet, postProcessedValue));
                 }
-                insertFacetValues(derivedFacet, derivedValues, cmdiData, languageCode, allowMultipleValues, config.isCaseInsensitive(), true);
+                insertFacetValues(derivedFacet, derivedValues, cmdiData, languageCode, allowMultipleValues, config.isCaseInsensitive());
             }
 
             index = ap.evalXPath();
@@ -344,23 +358,7 @@ public class CMDIParserVTDXML implements CMDIDataProcessor {
         return postProcessors.get(FacetConstants.FIELD_LANGUAGE_CODE).process(languageCode).get(0);
     }
 
-    
-    /*
-	 * Add values to facet either they come from MD fields either from cross mapping
-	 * Advantage is given to the values from MD fields. They will be always at the begging of the list and in case
-	 * when facet doesn't allow multiple values and we already had value from cross mapping this value will be overridden
-	 * 
-	 */
-    private void insertFacetValues(String name, List<String> valueList, CMDIData cmdiData, String languageCode, boolean allowMultipleValues, boolean caseInsensitive, boolean comesFromConceptMapping) {
-    	
-    	//keep only values from original concepts, not from cross mappings
-		if(comesFromConceptMapping && !allowMultipleValues && cmdiData.getSolrDocument() != null && cmdiData.getSolrDocument().containsKey(name)){
-			cmdiData.getSolrDocument().remove(name);
-		}
-		
-		if(!comesFromConceptMapping && !allowMultipleValues && cmdiData.getSolrDocument() != null && cmdiData.getSolrDocument().containsKey(name))
-			return;
-    	
+    private void insertFacetValues(String name, List<String> valueList, CMDIData cmdiData, String languageCode, boolean allowMultipleValues, boolean caseInsensitive) {
         for (int i = 0; i < valueList.size(); i++) {
             if (!allowMultipleValues && i > 0) {
                 break;
@@ -391,31 +389,4 @@ public class CMDIParserVTDXML implements CMDIDataProcessor {
         }
         return resultList;
     }
-    
-    private void crossMap(FacetConfiguration config, String extractedValue, CMDIData cmdiData, String languageCode){
-    	//skip if not enabled
-    	if(!MetadataImporter.config.isUseCrossMapping())
-    		return;
-    	
-        if (postProcessors.containsKey(config.getName())){
-            PostProcessor processor = postProcessors.get(config.getName());
-            if(processor instanceof PostProcessorsWithVocabularyMap){
-            	
-            	List<String> facetNames = MetadataImporter.config.getAllFacetFields();
-            	
-            	Map<String, String> crossMap = ((PostProcessorsWithVocabularyMap) processor).getCrossMappings(extractedValue);
-            	if(crossMap != null)
-	            	for(Entry e: crossMap.entrySet()){
-	            		String toFacet = (String) e.getKey();
-	            		String value = (String) e.getValue();
-	            		for(String facetName: facetNames){
-	            			if(toFacet.toLowerCase().equals(facetName.toLowerCase())){//normalize facet name, map can contain it in any case
-	            				insertFacetValues(facetName, Arrays.asList(value), cmdiData, languageCode, config.getAllowMultipleValues(), config.isCaseInsensitive(), false);
-	            			}
-	            		}
-	            	}
-            }
-        }
-    }
-    
 }

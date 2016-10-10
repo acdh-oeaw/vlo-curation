@@ -409,32 +409,35 @@
  </types>
 
 
-
+ <!-- All fields (except copyField targets) are stored to allow partial updates --> 
  <fields>
    <field name="id" type="string" indexed="true" stored="true" required="true"/>
-   <field name="collection" type="string" indexed="true" stored="true" multiValued="true" default="[missing value]" />
-   <field name="name" type="text" indexed="true" stored="true" multiValued="false"/>
-   <field name="projectName" type="string" indexed="true" stored="true" multiValued="true"/>
-   <field name="continent" type="string" indexed="true" stored="true" multiValued="true" default="[missing value]" />
-   <field name="country" type="string" indexed="true" stored="true" multiValued="true" default="[missing value]" />
-   <field name="languageCode" type="string" indexed="true" stored="true" multiValued="true" default="[missing value]" />
-   <field name="availability" type="string" indexed="true" stored="true" multiValued="true" default="[missing value]" />
-   <field name="license" type="string" indexed="true" stored="true" multiValued="true" />
-   <field name="organisation"  type="string" indexed="true" stored="true" multiValued="true" default="[missing value]" />
-   <field name="genre"  type="string" indexed="true" stored="true" multiValued="true" default="[missing value]" />
-   <field name="modality"  type="string" indexed="true" stored="true" multiValued="true" default="[missing value]" />
-   <field name="subject"  type="string" indexed="true" stored="true" multiValued="true" default="[missing value]" />
-   <field name="description" type="text" indexed="true" stored="true" multiValued="true" />
-   <field name="resourceClass" type="string" indexed="true" stored="true" multiValued="true" default="[missing value]" />
-   <field name="format" type="string" indexed="true" stored="true" multiValued="true" default="[missing value]" />
-   <field name="dataProvider" type="string" indexed="true" stored="true" multiValued="false" default="[missing value]" />
-   <field name="nationalProject" type="string" indexed="true" stored="true" multiValued="true" default="[missing value]" />
-   <field name="keywords" type="string" indexed="true" stored="true" multiValued="true"/>
-   <field name="temporalCoverage" type="string" indexed="true" stored="true" multiValued="true"/>
-   <field name="lifeCycleStatus" type="string" indexed="true" stored="true" multiValued="true"/>
-   <field name="distributionType" type="string" indexed="true" stored="true" multiValued="true"/>
-   <field name="rightsHolder" type="string" indexed="true" stored="true" multiValued="true"/>
-   <field name="text" type="text" indexed="true" stored="false" multiValued="true"/>
+   <field name="collection" type="string" indexed="true" stored="true" multiValued="true"  default="{missing_value}"/>
+   <field name="name" type="text" indexed="true" stored="true" multiValued="false" default="{missing_value}"/>
+   <field name="projectName" type="string" indexed="true" stored="true" multiValued="true" default="{missing_value}"/>
+   <field name="continent" type="string" indexed="true" stored="true" multiValued="true" default="{missing_value}"/>
+   <field name="country" type="string" indexed="true" stored="true" multiValued="true" default="{missing_value}"/>
+   <field name="languageCode" type="string" indexed="true" stored="true" multiValued="true"  default="{missing_value}"/>
+   <field name="availability" type="string" indexed="true" stored="true" multiValued="true" default="UNSPECIFIED"/>
+   <field name="license" type="string" indexed="true" stored="true" multiValued="true"  default="{missing_value}"/>
+   <field name="accessInfo" type="string" indexed="true" stored="true" multiValued="true"  default="{missing_value}"/>
+   <field name="organisation"  type="string" indexed="true" stored="true" multiValued="true" default="{missing_value}"/>
+   <field name="genre"  type="string" indexed="true" stored="true" multiValued="true" default="{missing_value}"/>
+   <field name="modality"  type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="subject"  type="string" indexed="true" stored="true" multiValued="true" default="{missing_value}" />
+   <field name="description" type="text" indexed="true" stored="true" multiValued="true"  default="{missing_value}"/>
+   <field name="resourceClass" type="string" indexed="true" stored="true" multiValued="true"  default="{missing_value}"/>
+   <field name="format" type="string" indexed="true" stored="true" multiValued="true"  default="{missing_value}"/>
+   <field name="dataProvider" type="string" indexed="true" stored="true" multiValued="false" default="{missing_value}" />
+   <field name="nationalProject" type="string" indexed="true" stored="true" multiValued="true" default="{missing_value}" />
+   <field name="keywords" type="string" indexed="true" stored="true" multiValued="true" default="{missing_value}"/>
+   <field name="temporalCoverage" type="string" indexed="true" stored="true" multiValued="true" default="{missing_value}"/>
+   <field name="lifeCycleStatus" type="string" indexed="true" stored="true" multiValued="true" default="{missing_value}"/>
+   <field name="distributionType" type="string" indexed="true" stored="true" multiValued="true" default="{missing_value}"/>
+   <field name="rightsHolder" type="string" indexed="true" stored="true" multiValued="true" default="{missing_value}"/>
+
+   <field name="text" type="text" indexed="true" stored="true" multiValued="true"/>
+
 
    <field name="_selfLink" type="string" indexed="true" stored="true" multiValued="false"/>
    <field name="_fileName" type="string" indexed="true" stored="true" multiValued="false" />
@@ -444,25 +447,31 @@
    <field name="_contentSearchRef" type="string" indexed="true" stored="true" multiValued="true" />
    <field name="_landingPageRef" type="string" indexed="true" stored="true" multiValued="true" />
    <field name="_lastSeen" type="tdate" indexed="true" stored="true" multiValued="false" />
+   
+   <field name="_daysSinceLastSeen" type="int" indexed="true" stored="true" multiValued="false" default='0' />
+   
    <field name="_searchPageRef" type="string" indexed="true" stored="true" multiValued="true" />
    <field name="_isPartOf" type="string" indexed="true" stored="true" multiValued="true" />
    <field name="_hasPart" type="string" indexed="true" stored="true" multiValued="true" />
    <field name="_hasPartCount" type="int" indexed="true" stored="true" multiValued="false" />
+
+	<!-- _hasPartCountWeight = log(1 + Math.min(50, _hasPartCount)-->
+   <field name="_hasPartCountWeight" type="double" indexed="true" stored="true" multiValued="false"/>
    <field name="_hierarchyWeight" type="int" indexed="true" stored="true" multiValued="false" default='0'/>
-   <field name="_languageName" type="text" indexed="true" stored="true" multiValued="true" />
+   <field name="_languageName" type="text" indexed="true" stored="true" multiValued="true" default="{missing_value}"/>
    <field name="metadataSource" type="metadataSource" indexed="false" stored="true" multiValued="true" />
 
-   <field name="profileName" type="string" indexed="true" stored="true" multiValued="false"/>
-   <field name="profileId" type="string" indexed="true" stored="true" multiValued="false"/>
+   <field name="profileName" type="string" indexed="true" stored="true" multiValued="false" default="{missing_value}"/>
+   <field name="profileId" type="string" indexed="true" stored="true" multiValued="false" default="{missing_value}"/>
    
-   <field name="resourceClassOrig" type="string" indexed="true" stored="true" multiValued="true" />
-   <field name="languageOrig" type="string" indexed="true" stored="true" multiValued="true" />
-   <field name="countryOrig" type="string" indexed="true" stored="true" multiValued="true" />
-   <field name="availabilityOrig" type="string" indexed="true" stored="true" multiValued="true" />
-   <field name="organisationOrig" type="string" indexed="true" stored="true" multiValued="true" />
-   <field name="natProjectOrig" type="string" indexed="true" stored="true" multiValued="true" />
+   <field name="resourceClassOrig" type="string" indexed="true" stored="true" multiValued="true" default="{missing_value}"/>
+   <field name="languageOrig" type="string" indexed="true" stored="true" multiValued="true" default="{missing_value}"/>
+   <field name="countryOrig" type="string" indexed="true" stored="true" multiValued="true" default="{missing_value}"/>
+   <field name="availabilityOrig" type="string" indexed="true" stored="true" multiValued="true" default="{missing_value}"/>
+   <field name="organisationOrig" type="string" indexed="true" stored="true" multiValued="true" default="{missing_value}"/>
+   <field name="natProjectOrig" type="string" indexed="true" stored="true" multiValued="true" default="{missing_value}"/>
    
-   
+
    <!-- Field _version_ for update log (needed for partial updates) -->
    <field name="_version_" type="long" indexed="true" stored="true"/>
    
@@ -471,8 +480,10 @@
    <copyField source="text" dest="_suggester"/>
 
 
+
   <!-- Concepts -->
-  <dynamicField name="c-*" type="string" indexed="true" stored="true"  multiValued="true" />
+  <dynamicField name="c-*" type="string" indexed="true" stored="true"  multiValued="true"/>
+  <dynamicField name="dc-*" type="string" indexed="true" stored="true"  multiValued="true" />
  
 </fields>
 

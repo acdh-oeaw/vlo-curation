@@ -16,27 +16,33 @@
  */
 package eu.clarin.cmdi.vlo.wicket.pages;
 
+import eu.clarin.cmdi.vlo.wicket.panels.BootstrapFeedbackPanel;
+import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.ImmutableNavbarComponent;
+import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.Navbar;
+import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.Navbar.ComponentPosition;
+import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarButton;
+import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarExternalLink;
+import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarText;
 import eu.clarin.cmdi.vlo.JavaScriptResources;
 import eu.clarin.cmdi.vlo.VloWebAppParameters;
 import eu.clarin.cmdi.vlo.VloWicketApplication;
-import eu.clarin.cmdi.vlo.config.VloConfig;
+import eu.clarin.cmdi.vlo.config.PiwikConfig;
 import eu.clarin.cmdi.vlo.wicket.HideJavascriptFallbackControlsBehavior;
+import org.apache.wicket.AttributeModifier;
+import org.apache.wicket.Component;
 import org.apache.wicket.Session;
 import org.apache.wicket.behavior.AttributeAppender;
-import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.GenericWebPage;
 import org.apache.wicket.markup.html.WebComponent;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.link.ExternalLink;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.migrate.StringResourceModelMigration;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.util.string.StringValue;
 import org.slf4j.Logger;
@@ -63,7 +69,7 @@ public class VloBasePage<T> extends GenericWebPage<T> {
     public final static String DEFAULT_PAGE_TITLE = "CLARIN VLO";
 
     @SpringBean
-    private VloConfig vloConfig;
+    private PiwikConfig piwikConfig;
 
     public VloBasePage() {
         addComponents();
@@ -168,20 +174,59 @@ public class VloBasePage<T> extends GenericWebPage<T> {
 
     @Override
     public void renderHead(IHeaderResponse response) {
-        // Include CSS. Exact file will be chosen on basis of current locale and style (theme)
-        response.render(CssHeaderItem.forReference(new CssResourceReference(VloBasePage.class, "vlo.css", getLocale(), getStyle(), getVariation())));
         // Include JavaScript for header (e.g. permalink animation)
         response.render(JavaScriptHeaderItem.forReference(JavaScriptResources.getVloHeaderJS()));
     }
 
     private void addComponents() {
-        add(new FeedbackPanel("feedback"));
-        add(new ExternalLink("help", vloConfig.getHelpUrl()));
 
-        // add 'class' attribute to header indicating version qualifier (e.g. 'beta')
-        add(new WebMarkupContainer("header").add(new AttributeAppender("class", VloWicketApplication.get().getAppVersionQualifier())));
+        add(new BootstrapFeedbackPanel("feedback"));
+
+        add(new WebMarkupContainer("header")
+                // navbar in header
+                .add(createHeaderMenu("menu"))
+                // add 'class' attribute to header indicating version qualifier (e.g. 'beta')
+                .add(new AttributeAppender("class", VloWicketApplication.get().getAppVersionQualifier(), " ")));
 
         add(new HideJavascriptFallbackControlsBehavior());
+
+        // add Piwik tracker (if enabled)
+        if (piwikConfig.isEnabled()) {
+            add(new PiwikTracker("piwik", piwikConfig.getSiteId(), piwikConfig.getPiwikHost(), piwikConfig.getDomains()));
+        } else {
+            //empty placeholder
+            add(new WebMarkupContainer("piwik"));
+        }
+    }
+
+    private Component createHeaderMenu(String id) {
+        final Navbar navbar = new Navbar(id) {
+            @Override
+            protected Label newBrandLabel(String markupId) {
+                //set label to not escape model strings to allow HTML
+                return (Label) super.newBrandLabel(markupId).setEscapeModelStrings(false);
+            }
+
+        };
+        navbar.setBrandName(Model.of("<i class=\"fa fa-globe\" aria-hidden=\"true\"></i> Virtual Language Observatory"));
+
+        // link to CLARIN website
+        final Component clarinLink = new NavbarExternalLink(Model.of("http://www.clarin.eu/")) {
+            @Override
+            protected Component newLabel(String markupId) {
+                return super.newLabel(markupId).setEscapeModelStrings(false);
+            }
+
+        }
+                .setLabel(Model.of("<span>CLARIN</span>"))
+                .add(new AttributeModifier("class", "clarin-logo hidden-xs"));
+
+        //add all menu compoennts
+        navbar.addComponents(new ImmutableNavbarComponent(new NavbarButton(FacetedSearchPage.class, Model.of("Search")), ComponentPosition.LEFT),
+                new ImmutableNavbarComponent(new NavbarButton(HelpPage.class, Model.of("Help")), ComponentPosition.LEFT),
+                new ImmutableNavbarComponent(clarinLink, ComponentPosition.RIGHT)
+        );
+        return navbar;
     }
 
 }

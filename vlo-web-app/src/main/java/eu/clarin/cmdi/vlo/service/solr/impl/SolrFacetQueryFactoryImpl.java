@@ -46,20 +46,10 @@ public class SolrFacetQueryFactoryImpl extends AbstractSolrQueryFactory implemen
     @Override
     public SolrQuery createFacetQuery(QueryFacetsSelection queryFacetsSelections, List<String> facets, int facetValueLimit) {
         final SolrQuery query = getBaseQuery(facets);
-        addQueryFacetParameters(query, queryFacetsSelections, true);
+        addQueryFacetParameters(query, queryFacetsSelections);
         query.setFacetLimit(facetValueLimit);
         return query;
     }
-    
-    @Override
-	public SolrQuery createExludedFacetQuery(QueryFacetsSelection queryFacetsSelections, String facet, int facetValueLimit) {
-    	SolrQuery query = baseQuery.getCopy();
-    	query.addFacetField(facet);
-        addQueryFacetParameters(query, queryFacetsSelections, false);
-        query.setFacetLimit(facetValueLimit);
-        return query;
-	}
-    
 
     @Override
     public synchronized SolrQuery createCountFacetsQuery(List<String> facets) {
@@ -72,13 +62,6 @@ public class SolrFacetQueryFactoryImpl extends AbstractSolrQueryFactory implemen
         SolrQuery query = baseQuery.getCopy();
         query.addFacetField(facets.toArray(new String[facets.size()]));
         return query;
-    }
-    
-    public SolrQuery createNullQuery(String facet, QueryFacetsSelection selection){   	
-    	SolrQuery query = baseQuery.getCopy();
-    	addQueryFacetParameters(query, selection, false);
-        query.setQuery("-(" + facet + ":*)");
-        return query;	
     }
 
 }

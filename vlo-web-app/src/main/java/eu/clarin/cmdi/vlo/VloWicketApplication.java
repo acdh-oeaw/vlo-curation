@@ -1,22 +1,15 @@
 package eu.clarin.cmdi.vlo;
 
-import eu.clarin.cmdi.vlo.service.FacetDescriptionService;
-import eu.clarin.cmdi.vlo.config.VloConfig;
-import eu.clarin.cmdi.vlo.service.PermalinkService;
-import eu.clarin.cmdi.vlo.service.XmlTransformationService;
-import eu.clarin.cmdi.vlo.service.solr.SolrDocumentService;
-import eu.clarin.cmdi.vlo.wicket.pages.AboutPage;
-import eu.clarin.cmdi.vlo.wicket.pages.HelpPage;
-import eu.clarin.cmdi.vlo.wicket.pages.AllFacetValuesPage;
-import eu.clarin.cmdi.vlo.wicket.pages.FacetedSearchPage;
-import eu.clarin.cmdi.vlo.wicket.pages.RecordPage;
-import eu.clarin.cmdi.vlo.wicket.pages.SimpleSearchPage;
-import eu.clarin.cmdi.vlo.wicket.pages.VloBasePage;
-import eu.clarin.cmdi.vlo.wicket.provider.FieldValueConverterProvider;
+import de.agilecoders.wicket.core.Bootstrap;
+import de.agilecoders.wicket.core.settings.BootstrapSettings;
+import de.agilecoders.wicket.core.settings.ITheme;
+import de.agilecoders.wicket.core.settings.SingleThemeProvider;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+
 import javax.inject.Inject;
+
 import org.apache.wicket.Application;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.http.WebApplication;
@@ -28,6 +21,27 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+
+import eu.clarin.cmdi.vlo.config.VloConfig;
+import eu.clarin.cmdi.vlo.service.FacetDescriptionService;
+import eu.clarin.cmdi.vlo.service.PermalinkService;
+import eu.clarin.cmdi.vlo.service.XmlTransformationService;
+import eu.clarin.cmdi.vlo.service.solr.SolrDocumentService;
+import eu.clarin.cmdi.vlo.wicket.FragmentEncodingMountedMapper;
+import eu.clarin.cmdi.vlo.wicket.pages.AboutPage;
+import eu.clarin.cmdi.vlo.wicket.pages.AllFacetValuesPage;
+import eu.clarin.cmdi.vlo.wicket.pages.ErrorPage;
+import eu.clarin.cmdi.vlo.wicket.pages.FacetedSearchPage;
+import eu.clarin.cmdi.vlo.wicket.pages.HelpPage;
+import eu.clarin.cmdi.vlo.wicket.pages.RecordPage;
+import eu.clarin.cmdi.vlo.wicket.pages.SimpleSearchPage;
+import eu.clarin.cmdi.vlo.wicket.pages.VloBasePage;
+import eu.clarin.cmdi.vlo.wicket.provider.FieldValueConverterProvider;
+import java.util.Collections;
+import java.util.List;
+import org.apache.wicket.Page;
+import org.apache.wicket.markup.head.HeaderItem;
+import org.apache.wicket.markup.head.IHeaderResponse;
 
 /**
  * Application object for your web application. If you want to run this
@@ -71,6 +85,8 @@ public class VloWicketApplication extends WebApplication implements ApplicationC
     public void init() {
         super.init();
 
+        initBootstrap();
+
         // register global resource bundles (from .properties files)
         registerResourceBundles();
 
@@ -79,6 +95,9 @@ public class VloWicketApplication extends WebApplication implements ApplicationC
 
         // configure Wicket cache according to parameters set in VloConfig 
         setupCache();
+
+        // don't render comments from source in final markup
+        getMarkupSettings().setStripComments(true);
 
         // determine version qualifier (e.g. 'beta'), which can be used to visually mark the base page
         appVersionQualifier = determineVersionQualifier();
@@ -92,6 +111,8 @@ public class VloWicketApplication extends WebApplication implements ApplicationC
         getResourceSettings().getStringResourceLoaders().add(new BundleStringResourceLoader("fieldNames"));
         // register the resource of resource type names and class properties
         getResourceSettings().getStringResourceLoaders().add(new BundleStringResourceLoader("resourceTypes"));
+        // register the resource of license URLs (used in RecordLicenseInfoPanel)
+        getResourceSettings().getStringResourceLoaders().add(new BundleStringResourceLoader("licenseUrls"));
         // register the resource of application properties (version information filtered at build time)
         getResourceSettings().getStringResourceLoaders().add(new BundleStringResourceLoader("application"));
         // register JavaScript bundle (combines  JavaScript source in a single resource to decrease number of client requests)
@@ -100,7 +121,6 @@ public class VloWicketApplication extends WebApplication implements ApplicationC
                 JavaScriptResources.getVloHeaderJS(),
                 JavaScriptResources.getSyntaxHelpJS(),
                 JavaScriptResources.getVloFacetsJS(),
-                JavaScriptResources.getJQueryUIJS(),
                 JavaScriptResources.getJQueryWatermarkJS()
         );
     }
@@ -110,7 +130,7 @@ public class VloWicketApplication extends WebApplication implements ApplicationC
         mountPage("/search", FacetedSearchPage.class);
         // Record (query result) page. E.g. /vlo/record?docId=abc123
         // (cannot encode docId in path because it contains a slash)
-        mountPage("/record", RecordPage.class);
+        mountPageWithFragmentSupport("/record", RecordPage.class);
         // All facet values page (kept for compatibility with old bookmarks)
         // E.g. /vlo/values/genre?facetMinOccurs=1 (min occurs not in path 
         // because it's a filter on the facet list)
@@ -119,6 +139,8 @@ public class VloWicketApplication extends WebApplication implements ApplicationC
         mountPage("/about", AboutPage.class);
         // Help page
         mountPage("/help", HelpPage.class);
+        // Help page
+        mountPage("/error/${" + ErrorPage.PAGE_PARAMETER_RESPONSE_CODE + "}", ErrorPage.class);
     }
 
     private void setupCache() {
@@ -204,6 +226,54 @@ public class VloWicketApplication extends WebApplication implements ApplicationC
 
     public String getAppVersionQualifier() {
         return appVersionQualifier;
+    }
+
+    /**
+     * Like {@link #mountPage(java.lang.String, java.lang.Class) }, but using
+     * {@link FragmentEncodingMountedMapper}
+     *
+     * @param <T> type of page
+     *
+     * @param path the path to mount the page class on
+     * @param pageClass the page class to be mounted
+     * @return the mapper that provides the mount point
+     *
+     * @see WebApplication#mountPage(java.lang.String, java.lang.Class)
+     */
+    public <T extends Page> FragmentEncodingMountedMapper mountPageWithFragmentSupport(String path, Class<T> pageClass) {
+        final FragmentEncodingMountedMapper mapper = new FragmentEncodingMountedMapper(path, pageClass);
+        mount(mapper);
+        return mapper;
+    }
+
+    private void initBootstrap() {
+        Bootstrap.install(this,
+                new BootstrapSettings()
+                //bootstrap CSS is provided via markup (CSS link in HTML head)
+                .setThemeProvider(new SingleThemeProvider(new ExtremeNoopTheme())));
+    }
+
+    private static class ExtremeNoopTheme implements ITheme {
+
+        @Override
+        public String name() {
+            return "noop-theme";
+        }
+
+        @Override
+        public List<HeaderItem> getDependencies() {
+            return Collections.emptyList();
+        }
+
+        @Override
+        public void renderHead(IHeaderResponse response) {
+        }
+
+        @Override
+        public Iterable<String> getCdnUrls() {
+            return Collections.emptyList();
+        }
+
     }
 
 }

@@ -17,8 +17,10 @@
 package eu.clarin.cmdi.vlo.service.solr.impl;
 
 import eu.clarin.cmdi.vlo.pojo.FacetSelection;
+import eu.clarin.cmdi.vlo.pojo.FacetSelectionValueQualifier;
 import eu.clarin.cmdi.vlo.pojo.QueryFacetsSelection;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -33,7 +35,7 @@ public abstract class AbstractSolrQueryFactory {
 
     protected static final String SOLR_SEARCH_ALL = "*:*";
 
-    protected final void addQueryFacetParameters(final SolrQuery query, QueryFacetsSelection queryFacetsSelections, boolean includeFilterQueries) {
+    protected final void addQueryFacetParameters(final SolrQuery query, QueryFacetsSelection queryFacetsSelections) {
         final String queryString = queryFacetsSelections.getQuery();
         if (queryString == null) {
             query.setQuery(SOLR_SEARCH_ALL);
@@ -55,37 +57,42 @@ public abstract class AbstractSolrQueryFactory {
                             break;
                         case AND:
                             for (String value : selection.getValues()) {
-                                encodedQueries.add(createFilterQuery(facetName, value));
+                                if (selection.getQualifier(value) == FacetSelectionValueQualifier.NOT) {
+                                    encodedQueries.add(createNegativeFilterQuery(facetName, value));
+                                } else {
+                                    encodedQueries.add(createFilterQuery(facetName, value));
+                                }
                             }
                             break;
                         case OR:
-                        	String orQuery = "";
-                        	for(String value: selection.getValues()){
-                        		String encodedQuery = createFilterQuery(facetName, value);
-                        		if(!orQuery.isEmpty())
-                        			orQuery += " OR ";
-                        		orQuery += encodedQuery;
-                        	}
-                        	encodedQueries.add(orQuery);                        	
-                        	break;
-                        case NOT:
-                        	String notQuery = "NOT " + facetName + ":*";
-                        	encodedQueries.add(notQuery);
-                        	break; 
+                            // notice that OR ignores qualifiers, so it does not support e.g. (A OR (NOT B))
+                            encodedQueries.add(createFacetOrQuery(facetName, selection.getValues()));
+                            // replace facet field with version prefixed with exclude statement 
+                            // (see <http://wiki.apache.org/solr/SimpleFacetParameters#Multi-Select_Faceting_and_LocalParams>)
+                            query.removeFacetField(facetName);
+                            query.addFacetField(String.format("{!ex=%1$s}%1$s", facetName));
+                            break;
                         default:
-                            //TODO: support OR,NOT
                             throw new UnsupportedOperationException("Unsupported selection type: " + selection.getSelectionType());
                     }
                 }
             }
-            if(includeFilterQueries)
-            	query.setFilterQueries(encodedQueries.toArray(new String[encodedQueries.size()]));
+            query.setFilterQueries(encodedQueries.toArray(new String[encodedQueries.size()]));
         }
     }
 
-    protected final String createFilterQuery(String facetName, String value) {
+    private String createFilterQuery(String facetName, String value) {
         // escape value and wrap in quotes to make literal query
-        return String.format("%s:\"%s\"", facetName, ClientUtils.escapeQueryChars(value));
+        return createFilterQuery("%s:\"%s\"", facetName, value);
+    }
+
+    private String createNegativeFilterQuery(String facetName, String value) {
+        // escape value and wrap in quotes to make literal query, prepend negator
+        return createFilterQuery("-%s:\"%s\"", facetName, value);
+    }
+
+    private String createFilterQuery(String _formatString, String facetName, String value) {
+        return String.format(_formatString, facetName, ClientUtils.escapeQueryChars(value));
     }
 
     /**
@@ -106,6 +113,33 @@ public abstract class AbstractSolrQueryFactory {
                 queryBuilder.append(" OR ");
             }
         }
+        return queryBuilder.toString();
+    }
+
+    /**
+     * Creates an OR filter query for a single facet for a number of values
+     *
+     * @param facetName facet that should be matched
+     * @param values allowed values
+     * @return
+     */
+    private String createFacetOrQuery(String facetName, Collection<String> values) {
+        // escape value and wrap in quotes to make literal query
+        // prefix field name with tag statement (see <http://wiki.apache.org/solr/SimpleFacetParameters#Multi-Select_Faceting_and_LocalParams>)
+        final StringBuilder queryBuilder = new StringBuilder(String.format("{!tag=%1$s}%1$s", facetName)).append(":(");
+        // loop over values
+        final Iterator<String> iterator = values.iterator();
+        while (iterator.hasNext()) {
+            final String value = iterator.next();
+
+            queryBuilder.append(ClientUtils.escapeQueryChars(value));
+
+            // add 'OR' connector except for last token
+            if (iterator.hasNext()) {
+                queryBuilder.append(" OR ");
+            }
+        }
+        queryBuilder.append(")");
         return queryBuilder.toString();
     }
 

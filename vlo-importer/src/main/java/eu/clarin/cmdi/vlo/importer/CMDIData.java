@@ -5,7 +5,6 @@ import eu.clarin.cmdi.vlo.FacetConstants;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
 import org.apache.solr.common.SolrInputDocument;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,7 +38,7 @@ public class CMDIData {
     private final List<Resource> searchResources = new ArrayList<Resource>();
     private final List<Resource> landingPageResources = new ArrayList<Resource>();
     private final List<Resource> searchPageResources = new ArrayList<Resource>();
-    
+
     public SolrInputDocument getSolrDocument() {
         return doc;
     }
@@ -148,5 +147,4 @@ public class CMDIData {
     public String getId() {
         return id;
     }
-	
 }

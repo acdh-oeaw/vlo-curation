@@ -19,3 +19,6 @@ A: make sure that you installed maven. If yes run "mvn process-resources -Pxml2c
 Q: How to generate XML from  CSV files?
 A: make sure that you installed maven. If yes run "mvn process-resources -Pcsv2xml"
 
+Q: How to generate XML normalization maps in uniform format from the old maps?
+A: make sure that you installed maven. Run mvn xml:transform 
+

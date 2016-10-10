@@ -1,17 +1,18 @@
 <VloConfig>
     
-    <deleteAllFirst>false</deleteAllFirst>
+
+    <deleteAllFirst>true</deleteAllFirst>
     
     <maxDaysInSolr>0</maxDaysInSolr>
     
-    <solrUrl>http://localhost:9080/vlo-solr/core0/</solrUrl>
+    <solrUrl>http://localhost:8080/vlo-solr/core0/</solrUrl>
     
     <homeUrl>http://www.clarin.eu/vlo</homeUrl>
     
     <helpUrl>http://www.clarin.eu/vlo</helpUrl>
     
-    <xi:include href="dataroots-minerva.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
-    
+    <xi:include href="dataroots-hephaistos.xml" xmlns:xi="http://www.w3.org/2001/XInclude"></xi:include>
+   
     <!-- Sets the maximum number of page instances which will be stored in the application scoped second level cache for faster retrieval -->
     <pagesInApplicationCache>40</pagesInApplicationCache>
     
@@ -33,9 +34,9 @@
     <!-- leave empty to use default packaged definition -->
     <facetConceptsFile><!-- use default packaged definition --></facetConceptsFile>
     
-    <profileSchemaUrl>http://catalog.clarin.eu/ds/ComponentRegistry/rest/registry/profiles/{PROFILE_ID}/xsd</profileSchemaUrl>
+    <profileSchemaUrl>http://catalog.clarin.eu/ds/ComponentRegistry/rest/registry/1.x/profiles/{PROFILE_ID}/xsd</profileSchemaUrl>
     
-    <componentRegistryRESTURL>http://catalog.clarin.eu/ds/ComponentRegistry/rest/registry/profiles/</componentRegistryRESTURL>
+    <componentRegistryRESTURL>http://catalog.clarin.eu/ds/ComponentRegistry/rest/registry/1.x/profiles/</componentRegistryRESTURL>
     
     <handleServerUrl>http://hdl.handle.net/</handleServerUrl>
     
@@ -51,6 +52,9 @@
     
     <profileNameMapUrl>profileName_resourceType_map.xml</profileNameMapUrl>
     
+	<licenseURIMapUrl>LicenseURIMap.xml</licenseURIMapUrl>
+    
+    
     <!-- resourceAvailabilityMapUrl
         Facet field used to populate collection selector on search page 
         If disabled, the collection facet will not be shown (can be used to
@@ -61,36 +65,36 @@
     <!--<collectionFacet>collection</collectionFacet>-->
     
     <!-- Fields shown as facets on the search page -->
-        <facetFields>        
-        <facetField>languageCode</facetField>
-        <facetField>languageOrig</facetField>
-        <facetField>collection</facetField>
-        <facetField>resourceClass</facetField>
-	<facetField>resourceClassOrig</facetField>
-        <facetField>country</facetField>
-        <facetField>countryOrig</facetField>
-        <facetField>modality</facetField>
-        <facetField>genre</facetField>
-        <facetField>subject</facetField>
-        <facetField>format</facetField>
-        <facetField>organisation</facetField>
-        <facetField>organisationOrig</facetField>
-        <facetField>availability</facetField>
-        <facetField>availabilityOrig</facetField>
-        <facetField>license</facetField>
-	<facetField>c-availability</facetField>
-	<facetField>c-license</facetField>
-	<facetField>c-license_type</facetField>
-	<facetField>c-licence_type</facetField>
-        <facetField>nationalProject</facetField>
-        <facetField>natProjectOrig</facetField>
-        <facetField>keywords</facetField>
-        <facetField>dataProvider</facetField>
-	<facetField>temporalCoverage</facetField>
-        <facetField>_componentProfile</facetField>
-	<facetField>profileId</facetField>
+    <facetFields>        
+	    <facetField>languageCode</facetField>
+	    <facetField>languageOrig</facetField>
+	    <facetField>collection</facetField>
+	    <facetField>resourceClass</facetField>
+		<facetField>resourceClassOrig</facetField>
+	    <facetField>country</facetField>
+	    <facetField>countryOrig</facetField>
+	    <facetField>modality</facetField>
+	    <facetField>genre</facetField>
+	    <facetField>subject</facetField>
+	    <facetField>format</facetField>
+	    <facetField>organisation</facetField>
+	    <facetField>organisationOrig</facetField>
+	    <facetField>availability</facetField>
+	    <facetField>availabilityOrig</facetField>
+	    <facetField>license</facetField>
+		<facetField>c-availability</facetField>
+		<facetField>c-license</facetField>
+		<facetField>c-license_type</facetField>
+		<facetField>c-licence_type</facetField>
+	    <facetField>nationalProject</facetField>
+	    <facetField>natProjectOrig</facetField>
+	    <facetField>keywords</facetField>
+	    <facetField>dataProvider</facetField>
+		<facetField>temporalCoverage</facetField>
+	    <facetField>_componentProfile</facetField>
+		<facetField>profileId</facetField>
     </facetFields>
-            
+
     <simpleSearchFacetFields>
         <simpleSearchFacetField>languageCode</simpleSearchFacetField>
         <simpleSearchFacetField>collection</simpleSearchFacetField>
@@ -99,28 +103,42 @@
         <simpleSearchFacetField>genre</simpleSearchFacetField>
     </simpleSearchFacetFields>
     
+
+    <primaryFacetFields>
+        <primaryFacetField>languageCode</primaryFacetField>
+        <primaryFacetField>collection</primaryFacetField>
+        <primaryFacetField>resourceClass</primaryFacetField>
+        <primaryFacetField>modality</primaryFacetField>
+        <primaryFacetField>format</primaryFacetField>
+        <primaryFacetField>keywords</primaryFacetField>
+    </primaryFacetFields>
+    
     <!-- Fields shown in expanded search results on the search page -->
     <searchResultFields>
-    	<searchResultField>country</searchResultField>
-	<searchResultField>resourceClassOrig</searchResultField>
         <searchResultField>name</searchResultField>
         <searchResultField>country</searchResultField>
         <searchResultField>languageCode</searchResultField>
         <searchResultField>modality</searchResultField>
         <searchResultField>subject</searchResultField>
         <searchResultField>genre</searchResultField>
-        <searchResultField>organization</searchResultField>
+        <searchResultField>resourceClassOrig</searchResultField>
+        <searchResultField>organisation</searchResultField>
         <searchResultField>collection</searchResultField>
         <searchResultField>nationalProject</searchResultField>
 	<searchResultField>_componentProfile</searchResultField>
 	<searchResultField>profileId</searchResultField>
+
     </searchResultFields>
     
     <!-- Fields ignored in the record page -->
     <ignoredFields>
         <ignoredField>format</ignoredField>
         <ignoredField>score</ignoredField>
+        <ignoredField>license</ignoredField>
+        <ignoredField>availability</ignoredField>
+        <ignoredField>accessInfo</ignoredField>
     </ignoredFields>
+    
     
     <!-- Fields shown as technical fields in the record page -->
     <technicalFields>
@@ -136,6 +154,34 @@
         <technicalField>_hierarchyWeight</technicalField>
         <technicalField>_hasPartCount</technicalField>
     </technicalFields>
+
+      
+    <!-- 
+        This defines the availability levels shown in the web app and their
+        display values and descriptions
+
+        Descriptions are shown on the record page and as tooltip in the 
+        availability facet. Values have been adapted from 
+        <https://www.clarin.eu/content/license-categories>.
+    -->
+    <availability>
+        <availabilityValue value="PUB">
+            <displayValue>Public</displayValue>
+            <description>PUB language resources can be distributed publicly. The distribution of these materials is not restricted by copyright or personal data protection issues.</description>
+        </availabilityValue>
+        <availabilityValue value="ACA">
+            <displayValue>Academic</displayValue>
+            <description>ACA language resources can be accessed only for research purposes. The end-user does not need to ask for usage permission but can access the resources via e.g. federated login.</description>
+        </availabilityValue>
+        <availabilityValue value="RES">
+            <displayValue>Restricted for individual</displayValue>
+            <description>RES language resources have additional restrictions, which require permission from the rights holder. These resources may contain material whose usage is limited due to copyright and/or personal data protection issues.</description>
+        </availabilityValue>
+        <availabilityValue value="UNSPECIFIED">
+            <displayValue>Unspecified</displayValue>
+            <description>No specification of availability (contact the original provider)</description>
+        </availabilityValue>
+    </availability>
     
     <languageFilters>
         <languageFilter>filterOne</languageFilter>
@@ -154,8 +200,9 @@
     <language2LetterCodeComponentUrl>http://catalog.clarin.eu/ds/ComponentRegistry/rest/registry/components/clarin.eu:cr1:c_1271859438109/xml</language2LetterCodeComponentUrl>
     
     <language3LetterCodeComponentUrl>http://catalog.clarin.eu/ds/ComponentRegistry/rest/registry/components/clarin.eu:cr1:c_1271859438110/xml</language3LetterCodeComponentUrl>
-   
-    <silToISO639CodesUrl>http://www.clarin.eu/cmd/xslt/sil_to_iso6393.xml</silToISO639CodesUrl>
+
+    <silToISO639CodesUrl>https://infra.clarin.eu/CMDI/1.1/xslt/sil_to_iso6393.xml</silToISO639CodesUrl>
+
     
     <reverseProxyPrefix></reverseProxyPrefix>
     
@@ -165,10 +212,14 @@
     
     <cqlEndpointAlternative>http://cqlservlet.mpi.nl/</cqlEndpointAlternative>
     
+    <lrSwitchboardBaseUrl>http://weblicht.sfs.uni-tuebingen.de/clrs/</lrSwitchboardBaseUrl>
+    
     <!-- makes the score for the result ranking visible in the search results -->
     <showResultScores>false</showResultScores>
     
     <processHierarchies>true</processHierarchies>
+
     
     <useCrossMapping>true</useCrossMapping>
+
 </VloConfig>

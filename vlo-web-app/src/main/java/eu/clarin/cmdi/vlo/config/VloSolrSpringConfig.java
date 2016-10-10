@@ -103,6 +103,8 @@ public class VloSolrSpringConfig {
             FacetConstants.FIELD_SUBJECT,
             FacetConstants.FIELD_ORGANISATION,
             FacetConstants.FIELD_LICENSE,
+            FacetConstants.FIELD_AVAILABILITY,
+            FacetConstants.FIELD_ACCESS_INFO,
             FacetConstants.FIELD_KEYWORDS,
             FacetConstants.FIELD_NATIONAL_PROJECT,
             FacetConstants.FIELD_RESOURCE_CLASS,
@@ -121,6 +123,7 @@ public class VloSolrSpringConfig {
             FacetConstants.FIELD_HIERARCHY_WEIGHT,
             FacetConstants.FIELD_HAS_PART,
             FacetConstants.FIELD_HAS_PART_COUNT,
+            FacetConstants.FIELD_RESOURCE_COUNT,
             FacetConstants.FIELD_IS_PART_OF,
             FacetConstants.FIELD_SOLR_SCORE
     );

@@ -23,15 +23,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </head>
     <body>
         <wicket:panel>
-            <wicket:enclosure child="linkRequest">
-                <form id="permalink" wicket:id="linkRequest">
-                    <input wicket:id="linkRequestButton" type="submit" title="Get a reusable/bookmarkable link to this page" value="Link" />
-                </form>
-                <input wicket:id="linkfield" type="text" id="permalinkfield"></input>
-                |
-            </wicket:enclosure>
-            <a target="_blank" wicket:id="feedback" id="feedbacklink" href="" title="Report an issue with this page or record"><span>Report</span></a>
-            | <a target="_blank" wicket:id="help" id="helplink" href="" title="VLO help and documentation"><span>Help</span></a>
+            <div style="display: inline-block;" wicket:id="shareOptions">[options]</div>
+            <a target="_blank" wicket:id="feedback" id="feedbacklink" class="btn btn-default btn-sm" 
+               title="Report an issue with this page or record">
+                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+            </a>
+            <div wicket:id="linkPanel"></div>
+            <div class="inline-link-panel" wicket:id="inlineBookmarkPanel">
+                <a wicket:id="close" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+                <div wicket:id="linkPanel"></div>
+            </div>
         </wicket:panel>
     </body>
 </html>

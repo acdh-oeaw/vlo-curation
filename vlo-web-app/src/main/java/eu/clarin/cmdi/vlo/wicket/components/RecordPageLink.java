@@ -16,6 +16,7 @@
  */
 package eu.clarin.cmdi.vlo.wicket.components;
 
+import eu.clarin.cmdi.vlo.VloWebAppParameters;
 import eu.clarin.cmdi.vlo.pojo.SearchContext;
 import eu.clarin.cmdi.vlo.service.PageParametersConverter;
 import eu.clarin.cmdi.vlo.wicket.pages.RecordPage;
@@ -26,6 +27,8 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 /**
+ * Link to the {@link RecordPage Record Page} for a document with an optional
+ * search context, both provided by a model
  *
  * @author twagoo
  */
@@ -38,15 +41,39 @@ public class RecordPageLink extends Link {
 
     private final IModel<SolrDocument> documentModel;
     private final IModel<SearchContext> selectionModel;
+    private final String initialTab;
 
+    /**
+     *
+     * @param id component id
+     * @param documentModel document model
+     */
     public RecordPageLink(String id, IModel<SolrDocument> documentModel) {
-        this(id, documentModel, null);
+        this(id, documentModel, null, null);
     }
 
+    /**
+     *
+     * @param id component id
+     * @param documentModel document model
+     * @param selectionModel search context model
+     */
     public RecordPageLink(String id, IModel<SolrDocument> documentModel, IModel<SearchContext> selectionModel) {
+        this(id, documentModel, selectionModel, null);
+    }
+
+    /**
+     *
+     * @param id component id
+     * @param documentModel document model
+     * @param selectionModel search context model
+     * @param initialTab content tab to select initially (can be null)
+     */
+    public RecordPageLink(String id, IModel<SolrDocument> documentModel, IModel<SearchContext> selectionModel, String initialTab) {
         super(id);
         this.documentModel = documentModel;
         this.selectionModel = selectionModel;
+        this.initialTab = initialTab;
     }
 
     @Override
@@ -54,6 +81,9 @@ public class RecordPageLink extends Link {
         final PageParameters params = documentParamConverter.toParameters(documentModel.getObject());
         if (selectionModel != null) {
             params.mergeWith(contextParamConverter.toParameters(selectionModel.getObject()));
+        }
+        if (initialTab != null) {
+            params.add(VloWebAppParameters.RECORD_PAGE_TAB, initialTab);
         }
         setResponsePage(RecordPage.class, params);
     }

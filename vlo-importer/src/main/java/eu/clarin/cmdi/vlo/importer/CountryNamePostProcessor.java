@@ -45,12 +45,14 @@ public class CountryNamePostProcessor implements PostProcessor {
     }
 
     private Map<String, String> createCountryCodeMap() {
-        LOG.debug("Creating country code map.");
+
+        final String countryComponentUrl = MetadataImporter.config.getCountryComponentUrl();
+        LOG.info("Creating country code map from {}", countryComponentUrl);
         try {
-            Map<String, String> result = CommonUtils.createCMDIComponentItemMap(MetadataImporter.config.getCountryComponentUrl());
+            Map<String, String> result = CommonUtils.createCMDIComponentItemMap(countryComponentUrl);
             return result;
         } catch (Exception e) {
-            if (CommonUtils.SWALLOW_LOOKUP_ERRORS) {
+            if (CommonUtils.shouldSwallowLookupErrors()) {
                 return new HashMap<String, String>();
             } else {
                 throw new RuntimeException("Cannot instantiate postProcessor:", e);

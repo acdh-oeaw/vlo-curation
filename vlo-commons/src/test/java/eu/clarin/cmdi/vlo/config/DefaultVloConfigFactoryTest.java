@@ -427,7 +427,7 @@ public class DefaultVloConfigFactoryTest {
 
         System.out.println("getComponentRegistryProfileSchema");
 
-        String expResult = "http://catalog.clarin.eu/ds/ComponentRegistry/rest/registry/profiles/someId/xsd";
+        String expResult = "http://catalog.clarin.eu/ds/ComponentRegistry/rest/registry/1.x/profiles/someId/xsd";
         String result = config.getComponentRegistryProfileSchema("someId");
 
         assertEquals(expResult, result);
@@ -441,7 +441,7 @@ public class DefaultVloConfigFactoryTest {
 
         System.out.println("getComponentRegistryRESTURL");
 
-        String expResult = "http://catalog.clarin.eu/ds/ComponentRegistry/rest/registry/profiles/";
+        String expResult = "http://catalog.clarin.eu/ds/ComponentRegistry/rest/registry/1.x/profiles/";
         String result = config.getComponentRegistryRESTURL();
 
         assertEquals(expResult, result);
@@ -631,45 +631,43 @@ public class DefaultVloConfigFactoryTest {
                 "languageCode",
                 "collection",
                 "resourceClass",
-                "resourceClassOrig",
-                "country",
                 "modality",
+                "format",
+                "keywords",
                 "genre",
                 "subject",
-                "format",
+                "country",
                 "organisation",
-                "availability",
                 "nationalProject",
-                "keywords",
-                "dataProvider",
-                "profileName",
-                "profileId");
+                "dataProvider");
 
         List<String> result = config.getFacetFields();
 
+        //skip this
+        //custom facets are added
         //assertEquals(expResult, result);
     }
 
     @Test
-    public void testGetAllFacetsField() {
+    public void testGetFacetsInSearch() {
         final String[] expItems = new String[]{
             "languageCode",
             "collection",
             "resourceClass",
             "modality",
-            "genre",
-            "country",
-            "subject",
-            "organisation",
             "format",
-            "dataProvider",
-            "nationalProject",
             "keywords",
-            "collection"};
-        List<String> result = config.getAllFacetFields();
+            "genre",
+            "subject",
+            "country",
+            "organisation",
+            "dataProvider",
+            "nationalProject"
+        };
+        List<String> result = config.getFacetsInSearch();
 
         //order is not important in this case
-       // assertThat(result, hasItems(expItems));
+        assertThat(result, hasItems(expItems));
     }
 
     /**
@@ -798,7 +796,8 @@ public class DefaultVloConfigFactoryTest {
 
         System.out.println("getSilToISO639CodesUrl");
 
-        String expResult = "http://www.clarin.eu/cmd/xslt/sil_to_iso6393.xml";
+        String expResult = "https://infra.clarin.eu/CMDI/1.1/xslt/sil_to_iso6393.xml";
+        
         String result = config.getSilToISO639CodesUrl();
 
         assertEquals(expResult, result);
@@ -812,7 +811,7 @@ public class DefaultVloConfigFactoryTest {
 
         System.out.println("setSilToISO639CodesUrl");
 
-        String param = "http://www.clarin.eu/cmd/xslt/sil_to_iso6393.xml";
+        String param = "http://www.clarin.eu/CMDI/1.1/xslt/sil_to_iso6393.xml";
 
         config.setSilToISO639CodesUrl(param);
 
@@ -923,7 +922,9 @@ public class DefaultVloConfigFactoryTest {
     @Test
     public void testGetIgnoredFields() {
         Set<String> result = config.getIgnoredFields();
-        assertEquals(2, result.size());
+
+        assertEquals(5, result.size());
+
     }
 
     @Test
@@ -936,5 +937,11 @@ public class DefaultVloConfigFactoryTest {
     public void testGetSimpleSearchFacetFields() {
         List<String> result = config.getSimpleSearchFacetFields();
         assertEquals(5, result.size());
+    }
+    
+    @Test 
+    public void testGetLrSwitchboardBaseUrl() {
+        String result = config.getLrSwitchboardBaseUrl();
+        assertEquals("http://weblicht.sfs.uni-tuebingen.de/clrs/", result);
     }
 }

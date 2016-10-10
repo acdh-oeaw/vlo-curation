@@ -15,8 +15,10 @@ import org.slf4j.LoggerFactory;
 /**
  * Takes the value of the componentprofileid and uses the componentregistry REST service to transform this to the name of the componentprofile.
  */
+
 public class CMDIComponentProfileNamePostProcessor extends PostProcessorsWithVocabularyMap {
-    private static final String XPATH = "/CMD_ComponentSpec/Header/Name/text()";
+	private static final String XPATH = "/ComponentSpec/Header/Name/text()";
+	
     private String BASE_URL = null;
     private AutoPilot ap = null;
     private VTDGen vg = null;
@@ -89,4 +91,5 @@ public class CMDIComponentProfileNamePostProcessor extends PostProcessorsWithVoc
 	public String getNormalizationMapURL() {
 		return MetadataImporter.config.getProfileNameMapUrl();
 	}
+
 }

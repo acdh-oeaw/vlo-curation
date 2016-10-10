@@ -18,15 +18,15 @@ package eu.clarin.cmdi.vlo.wicket.panels.search;
 
 import com.google.common.collect.ImmutableSet;
 import eu.clarin.cmdi.vlo.JavaScriptResources;
-import eu.clarin.cmdi.vlo.pojo.FacetSelection;
 import eu.clarin.cmdi.vlo.pojo.FieldValuesFilter;
+import eu.clarin.cmdi.vlo.pojo.NameAndCountFieldValuesFilter;
 import eu.clarin.cmdi.vlo.pojo.FieldValuesOrder;
 import eu.clarin.cmdi.vlo.pojo.QueryFacetsSelection;
 import eu.clarin.cmdi.vlo.wicket.components.FieldValueLabel;
 import eu.clarin.cmdi.vlo.wicket.provider.PartitionedDataProvider;
-import eu.clarin.cmdi.vlo.wicket.model.FacetFieldModel;
 import eu.clarin.cmdi.vlo.wicket.model.SolrFieldNameModel;
 import eu.clarin.cmdi.vlo.wicket.pages.AllFacetValuesPage;
+import eu.clarin.cmdi.vlo.wicket.panels.BootstrapModal;
 import eu.clarin.cmdi.vlo.wicket.provider.FacetFieldValuesProvider;
 import eu.clarin.cmdi.vlo.wicket.provider.FieldValueConverterProvider;
 import java.util.Collection;
@@ -34,10 +34,10 @@ import java.util.Collections;
 import java.util.List;
 import org.apache.solr.client.solrj.response.FacetField;
 import org.apache.solr.client.solrj.response.FacetField.Count;
+import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.extensions.ajax.markup.html.IndicatingAjaxFallbackLink;
-import org.apache.wicket.extensions.ajax.markup.html.modal.ModalWindow;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -65,15 +65,15 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 public abstract class FacetValuesPanel extends GenericPanel<FacetField> {
 
     public final static int MAX_NUMBER_OF_FACETS_TO_SHOW = 10; //TODO: get from config
-    public final static Collection<String> LOW_PRIORITY_VALUES = ImmutableSet.of("unknown", "unspecified", "", "[missing value]");
+    public final static Collection<String> LOW_PRIORITY_VALUES = ImmutableSet.of("unknown", "unspecified", "");
 
-    private final ModalWindow valuesWindow;
+    private final BootstrapModal valuesWindow;
     private final IModel<QueryFacetsSelection> selectionModel;
     private final WebMarkupContainer valuesContainer;
     private final IModel<FieldValuesFilter> filterModel;
     private final int subListSize;
     private final IModel<String> fieldNameModel;
-    
+
     @SpringBean
     private FieldValueConverterProvider fieldValueConverterProvider;
 
@@ -103,7 +103,7 @@ public abstract class FacetValuesPanel extends GenericPanel<FacetField> {
         this.subListSize = subListSize;
 
         // shared model that holds the string for filtering the values (quick search)
-        filterModel = Model.of(new FieldValuesFilter());
+        filterModel = new Model<FieldValuesFilter>(new NameAndCountFieldValuesFilter());
         // create a form with an input bound to the filter model
         add(createFilterForm("filter"));
 
@@ -199,12 +199,12 @@ public abstract class FacetValuesPanel extends GenericPanel<FacetField> {
             @Override
             public void onClick(AjaxRequestTarget target) {
                 // reset filter
-                filterModel.getObject().setName(null);
+                ((NameAndCountFieldValuesFilter) filterModel.getObject()).setName(null);
 
                 // call callback
                 onValuesSelected(
                         // for now only single values can be selected
-                		Collections.singleton(item.getModelObject().getName()),
+                        Collections.singleton(item.getModelObject().getName()),
                         target);
             }
         };
@@ -256,18 +256,16 @@ public abstract class FacetValuesPanel extends GenericPanel<FacetField> {
      * @param id component id
      * @return 'all facet values' modal window component
      */
-    private ModalWindow createAllValuesWindow(String id) {
-        final ModalWindow window = new ModalWindow(id) {
+    private BootstrapModal createAllValuesWindow(String id) {
+        final BootstrapModal window = new BootstrapModal(id) {
 
             @Override
             public IModel<String> getTitle() {
                 return new SolrFieldNameModel(getModel(), "name");
             }
-
         };
-        window.showUnloadConfirmation(false);
 
-        final AllFacetValuesPanel allValuesPanel = new AllFacetValuesPanel(window.getContentId(), getModel(), filterModel) {
+        final Component modalContent = new AllFacetValuesPanel(window.getContentId(), getModel(), filterModel) {
 
             @Override
             protected void onValuesSelected(Collection<String> values, AjaxRequestTarget target) {
@@ -278,17 +276,23 @@ public abstract class FacetValuesPanel extends GenericPanel<FacetField> {
                 FacetValuesPanel.this.onValuesSelected(values, target);
             }
         };
-        window.addOrReplace(allValuesPanel);
+
+        window.addOrReplace(modalContent);
         return window;
     }
 
     @Override
     public void detachModels() {
         super.detachModels();
-        selectionModel.detach();
-        filterModel.detach();
+
+        if (selectionModel != null) {
+            selectionModel.detach();
+        }
+
+        if (filterModel != null) {
+            filterModel.detach();
+        }
     }
-    
 
     /**
      * Callback triggered when values have been selected on this facet
@@ -299,12 +303,6 @@ public abstract class FacetValuesPanel extends GenericPanel<FacetField> {
      * (fallback)!
      */
     protected abstract void onValuesSelected(Collection<String> values, AjaxRequestTarget target);
-    
-    @Override
-    protected void onConfigure() {
-    	// TODO Auto-generated method stub
-    	super.onConfigure();
-    }
 
     @Override
     protected void onBeforeRender() {

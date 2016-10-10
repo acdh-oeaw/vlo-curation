@@ -16,52 +16,101 @@
  */
 package eu.clarin.cmdi.vlo.wicket.panels;
 
+import com.google.common.collect.Lists;
 import eu.clarin.cmdi.vlo.config.VloConfig;
+import eu.clarin.cmdi.vlo.wicket.panels.BootstrapDropdown.DropdownMenuItem;
+import java.io.Serializable;
+import java.util.List;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.ajax.markup.html.form.AjaxFallbackButton;
-import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.form.TextField;
-import org.apache.wicket.markup.html.link.ExternalLink;
+import org.apache.wicket.ajax.markup.html.AjaxFallbackLink;
+import org.apache.wicket.behavior.AttributeAppender;
+import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.link.Link;
-import org.apache.wicket.markup.html.panel.GenericPanel;
+import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.model.util.ListModel;
+import org.apache.wicket.request.flow.RedirectToUrlException;
 import org.apache.wicket.request.http.handler.RedirectRequestHandler;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.util.encoding.UrlEncoder;
 import org.slf4j.LoggerFactory;
 
 /**
- * A panel with three links:
+ * A panel with two components:
  * <ul>
- * <li>A link to toggle a text input which shows a bookmarkable link to the
- * current page with parameters representing the current model (permalink)</li>
- * <li>A link to the help pages (URL taken from {@link VloConfig#getHelpUrl()
- * })</li>
+ * <li>A dropdown menu with various share options, including two that trigger
+ * {@link BookmarkLinkPanel}</li>
  * <li>A feedback link for the current page (base URL taken from {@link VloConfig#getFeedbackFromUrl()
  * })</li>
  * </ul>
  *
  * @author twagoo
  */
-public class TopLinksPanel extends GenericPanel<String> {
+public class TopLinksPanel extends Panel {
 
     @SpringBean
     private VloConfig vloConfig;
 
-    private final Model<Boolean> linkVisibilityModel;
+    private final IModel<String> linkModel;
+    private final IModel<String> pageTitleModel;
+    private final IModel<Boolean> inlineBookmarkLinkPanelVisibilityModel;
 
-    public TopLinksPanel(String id, final IModel<String> linkModel) {
-        super(id, linkModel);
-        this.linkVisibilityModel = new Model<>(false);
+    private final BookmarkLinkPanel modalBookmarkLinkPanel;
+    private final BookmarkLinkPanel inlineBookmarkLinkPanel;
+    private final BootstrapModal linkModal;
+    private final BootstrapDropdown shareMenu;
 
-        // action to link to request the permalink
-        add(createPermaLink("linkRequest"));
-        // field that holds the actual link
-        add(createLinkField("linkfield", linkModel));
+    public TopLinksPanel(String id, final IModel<String> linkModel, final IModel<String> pageTitleModel) {
+        super(id);
+        this.linkModel = linkModel;
+        this.pageTitleModel = pageTitleModel != null ? pageTitleModel : new Model<String>(null);
+        shareMenu = new BootstrapDropdown("shareOptions", new ListModel<>(getShareMenuOptions())) {
+            @Override
+            protected Component createDropDownLink(String id) {
 
-        add(new ExternalLink("help", vloConfig.getHelpUrl()));
+                return super.createDropDownLink(id)
+                        .add(new AttributeAppender("class", "btn-sm", " "));
+            }
+
+            @Override
+            protected Serializable getButtonIconClass() {
+                return "fa fa-share-alt";
+            }
+
+        };
+
+        add(shareMenu);
+
+        // modal dialogue for bookmark/copy link
+        linkModal = new BootstrapModal("linkPanel") {
+            @Override
+            protected IModel<String> getTitle() {
+                return Model.of("Page link");
+            }
+        };
+        modalBookmarkLinkPanel = new BookmarkLinkPanel(linkModal.getContentId(), linkModel, pageTitleModel);
+        add(linkModal.add(modalBookmarkLinkPanel));
+
+        // inline 'dialogue' for bookmark/copy link (non-js alternative for modal)
+        inlineBookmarkLinkPanelVisibilityModel = Model.of(false);
+        add(new WebMarkupContainer("inlineBookmarkPanel") {
+            @Override
+            protected void onConfigure() {
+                setVisible(inlineBookmarkLinkPanelVisibilityModel.getObject());
+            }
+        }
+                .add(inlineBookmarkLinkPanel = new BookmarkLinkPanel("linkPanel", linkModel, pageTitleModel))
+                .add(new Link("close") {
+                    @Override
+                    public void onClick() {
+                        inlineBookmarkLinkPanelVisibilityModel.setObject(false);
+                    }
+                })
+        );
+
+        // feedback link
         add(new Link("feedback") {
 
             @Override
@@ -76,48 +125,13 @@ public class TopLinksPanel extends GenericPanel<String> {
         });
     }
 
-    private Component createPermaLink(String id) {
-        // Create a form with a button to toggle permalink rather than an action link
-        // to prevent people from confusing the link generated by wicket with
-        // the actual permalink generated by the application
-        final Form form = new Form(id) {
-
-            @Override
-            protected void onConfigure() {
-                setVisible(TopLinksPanel.this.getModel() != null);
-            }
-        };
-
-        form.add(new AjaxFallbackButton("linkRequestButton", form) {
-
-            @Override
-            protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
-                // toggle
-                linkVisibilityModel.setObject(!linkVisibilityModel.getObject());
-
-                if (target != null && linkVisibilityModel.getObject()) {
-                    target.appendJavaScript("permalinkShown();");
-                }
-
-                // callback to react to change
-                onChange(target);
-            }
-
-        });
-
-        return form;
-    }
-
-    private TextField<String> createLinkField(String id, final IModel<String> linkModel) {
-        final TextField<String> linkField = new TextField<String>(id, linkModel) {
-
-            @Override
-            protected void onConfigure() {
-                setVisible(linkVisibilityModel.getObject());
-            }
-
-        };
-        return linkField;
+    private void showLinkModal(AjaxRequestTarget target) {
+        if (target == null) {
+            inlineBookmarkLinkPanelVisibilityModel.setObject(Boolean.TRUE);
+        } else {
+            target.appendJavaScript("onModalShown();");
+            linkModal.show(target);
+        }
     }
 
     protected void onChange(AjaxRequestTarget target) {
@@ -130,7 +144,130 @@ public class TopLinksPanel extends GenericPanel<String> {
     protected void onConfigure() {
         LoggerFactory.getLogger(getClass()).debug("top links panel onconfigure");
     }
-    
-    
+
+    @Override
+    public void detachModels() {
+        super.detachModels();
+        if (linkModel != null) {
+            linkModel.detach();
+        }
+        if (pageTitleModel != null) {
+            pageTitleModel.detach();
+        }
+    }
+
+    private List<DropdownMenuItem> getShareMenuOptions() {
+        return Lists
+                .newArrayList(new DropdownMenuItem("Bookmark this", "fa fa-bookmark fw") { //Bookmark
+                    @Override
+                    protected Link getLink(String id) {
+                        return new AjaxFallbackLink(id) {
+
+                            @Override
+                            public void onClick(AjaxRequestTarget target) {
+                                shareMenu.close();
+                                modalBookmarkLinkPanel.setBookmarkMode();
+                                inlineBookmarkLinkPanel.setBookmarkMode();
+                                showLinkModal(target);
+                            }
+                        };
+                    }
+                }, new DropdownMenuItem("Copy link", "fa fa-clipboard fw") { //Clipboard
+                    @Override
+                    protected Link getLink(String id) {
+                        return new AjaxFallbackLink(id) {
+
+                            @Override
+                            public void onClick(AjaxRequestTarget target) {
+                                shareMenu.close();
+                                modalBookmarkLinkPanel.setCopyMode();
+                                inlineBookmarkLinkPanel.setCopyMode();
+                                showLinkModal(target);
+                            }
+                        };
+                    }
+                }, new DropdownMenuItem("Send link by e-mail", "fa fa-envelope fw") { //E-mail
+                    @Override
+                    protected Link getLink(String id) {
+                        return new Link(id) {
+                            @Override
+                            public void onClick() {
+                                final String url
+                                        = String.format("mailto:?subject=%s&body=%s",
+                                                //interestingly, for 'mailto' links it seems that the parameters need to be encoded using the path strategy...
+                                                //see http://stackoverflow.com/a/1211256 and https://en.wikipedia.org/wiki/Mailto
+                                                encodePath(pageTitleModel.getObject()),
+                                                encodePath(linkModel.getObject()));
+                                throw new RedirectToUrlException(url);
+                            }
+                        };
+                    }
+                }
+//              , new DropdownMenuItem("Share this on Twitter", "fa fa-twitter-square fw") { //Twitter
+//                    @Override
+//                    protected Link getLink(String id) {
+//                        return (Link) new Link(id) {
+//                            @Override
+//                            public void onClick() {
+//                                final String url
+//                                        = String.format("https://twitter.com/home?status=%s",
+//                                                encodeParam(String.format("%s %s",
+//                                                        pageTitleModel.getObject(),
+//                                                        linkModel.getObject())));
+//                                throw new RedirectToUrlException(url);
+//                            }
+//                        }.add(new AttributeAppender("target", "_blank"));
+//                    }
+//                }, new DropdownMenuItem("Share this on Facebook", "fa fa-facebook-square fw") { // Facebook
+//                    @Override
+//                    protected Link getLink(String id) {
+//                        return (Link) new Link(id) {
+//                            @Override
+//                            public void onClick() {
+//                                final String url
+//                                        = String.format("http://www.facebook.com/sharer/sharer.php?u=%s",
+//                                                encodeParam(linkModel.getObject()));
+//                                throw new RedirectToUrlException(url);
+//                            }
+//                        }.add(new AttributeAppender("target", "_blank"));
+//                    }
+//                }, new DropdownMenuItem("Share this on Google+", "fa fa-google-plus-square fw") { // Google+
+//                    @Override
+//                    protected Link getLink(String id) {
+//                        return (Link) new Link(id) {
+//                            @Override
+//                            public void onClick() {
+//                                final String url
+//                                        = String.format("https://plus.google.com/share?url=%s",
+//                                                encodeParam(linkModel.getObject()));
+//                                throw new RedirectToUrlException(url);
+//                            }
+//                        }.add(new AttributeAppender("target", "_blank"));
+//                    }
+//                }, new DropdownMenuItem("Share this on LinkedIn", "fa fa-linkedin-square fw") { // LinkedIn
+//                    @Override
+//                    protected Link getLink(String id) {
+//                        return (Link) new Link(id) {
+//                            @Override
+//                            public void onClick() {
+//                                final String url
+//                                        = String.format("https://www.linkedin.com/shareArticle?url=%s&title=%s",
+//                                                encodeParam(linkModel.getObject()),
+//                                                encodeParam(pageTitleModel.getObject()));
+//                                throw new RedirectToUrlException(url);
+//                            }
+//                        }.add(new AttributeAppender("target", "_blank"));
+//                    }
+//                }
+                );
+    }
+
+//    private static String encodeParam(String param) {
+//        return UrlEncoder.QUERY_INSTANCE.encode(param, "UTF-8");
+//    }
+
+    private static String encodePath(String param) {
+        return UrlEncoder.PATH_INSTANCE.encode(param, "UTF-8");
+    }
 
 }

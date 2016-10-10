@@ -16,7 +16,27 @@
  */
 package eu.clarin.cmdi.vlo.wicket.panels.search;
 
+import java.io.Serializable;
+import java.util.Collection;
+
+import org.apache.wicket.MarkupContainer;
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.IAjaxIndicatorAware;
+import org.apache.wicket.ajax.attributes.AjaxCallListener;
+import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
+import org.apache.wicket.ajax.form.OnChangeAjaxBehavior;
+import org.apache.wicket.extensions.ajax.markup.html.AjaxIndicatorAppender;
+import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.CheckBox;
+import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
+import org.apache.wicket.protocol.http.WebSession;
+import org.apache.wicket.spring.injection.annot.SpringBean;
+
 import com.google.common.collect.ImmutableSet;
+
 import eu.clarin.cmdi.vlo.FacetConstants;
 import eu.clarin.cmdi.vlo.config.VloConfig;
 import eu.clarin.cmdi.vlo.pojo.ExpansionState;
@@ -26,16 +46,6 @@ import eu.clarin.cmdi.vlo.pojo.QueryFacetsSelection;
 import eu.clarin.cmdi.vlo.wicket.model.FacetSelectionModel;
 import eu.clarin.cmdi.vlo.wicket.model.ToggleModel;
 import eu.clarin.cmdi.vlo.wicket.panels.ExpandablePanel;
-import java.util.Collection;
-import org.apache.wicket.MarkupContainer;
-import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.ajax.form.OnChangeAjaxBehavior;
-import org.apache.wicket.markup.html.WebMarkupContainer;
-import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.form.CheckBox;
-import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.model.IModel;
-import org.apache.wicket.spring.injection.annot.SpringBean;
 
 /**
  * A panel showing advanced search options:
@@ -46,11 +56,18 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
  *
  * @author twagoo
  */
-public abstract class AdvancedSearchOptionsPanel extends ExpandablePanel<QueryFacetsSelection> {
+public abstract class AdvancedSearchOptionsPanel extends ExpandablePanel<QueryFacetsSelection> implements IAjaxIndicatorAware{
+	
+	public static final String SELECTION_TYPE_ATTRIBUTE_NAME = "selectionType";
 
     @SpringBean
     private VloConfig config;
+
+    private final Form optionsForm;
+
+    private final AjaxIndicatorAppender indicatorAppender = new AjaxIndicatorAppender();
     
+    private boolean filterQuerySelectionType = false;
     /**
      * The fields that this panel provides options for
      */
@@ -60,19 +77,30 @@ public abstract class AdvancedSearchOptionsPanel extends ExpandablePanel<QueryFa
 
     public AdvancedSearchOptionsPanel(String id, IModel<QueryFacetsSelection> model) {
         super(id, model);
-        final Form options = new Form("options");
+        optionsForm = new Form("options");
+        
+        final CheckBox selectionType = new CheckBox("selectionType", new Model(filterQuerySelectionType));
+        selectionType.add(new OnChangeAjaxBehavior(){
+			@Override
+			protected void onUpdate(AjaxRequestTarget target) {
+				filterQuerySelectionType = !filterQuerySelectionType;
+				WebSession.get().setAttribute(SELECTION_TYPE_ATTRIBUTE_NAME, filterQuerySelectionType);
+			}        	
+        });
+        optionsForm.add(selectionType);
 
         final CheckBox fcsCheck = createFieldNotEmptyOption("fcs", FacetConstants.FIELD_SEARCH_SERVICE);
-        options.add(fcsCheck);
-        
+        optionsForm.add(fcsCheck);
+
         final MarkupContainer collectionsSection = new WebMarkupContainer("collectionsSection");
         final CheckBox collectionCheck = createFieldNotEmptyOption("collection", FacetConstants.FIELD_HAS_PART_COUNT);
         collectionsSection.add(collectionCheck);
         collectionsSection.setVisible(config.isProcessHierarchies());
-        options.add(collectionsSection);
+        optionsForm.add(collectionsSection);
         
-        
-        add(options);
+        optionsForm.add(indicatorAppender);
+
+        add(optionsForm);
     }
 
     private CheckBox createFieldNotEmptyOption(String id, String fieldName) {
@@ -88,17 +116,32 @@ public abstract class AdvancedSearchOptionsPanel extends ExpandablePanel<QueryFa
             protected void onUpdate(AjaxRequestTarget target) {
                 selectionChanged(target);
             }
+
+            @Override
+            protected void updateAjaxAttributes(AjaxRequestAttributes attributes) {
+                super.updateAjaxAttributes(attributes);
+                attributes.getAjaxCallListeners().add(new AjaxCallListener()
+                        //disable checkboxes while updating via AJAX
+                        .onBeforeSend("$('form#advancedoptions input').prop('disabled', true);")
+                        //re-enable checkboxes afterwards
+                        .onDone("$('form#advancedoptions input').prop('disabled', false);"));
+            }
         });
         // should initially be epxanded if one of the options was selected
         if (toggleModel.getObject()) {
             getExpansionModel().setObject(ExpansionState.EXPANDED);
         }
         return checkBox;
-    }
+    }    
 
     @Override
     protected Label createTitleLabel(String id) {
         return new Label(id, "Search options");
+    }
+
+    @Override
+    public String getAjaxIndicatorMarkupId() {
+        return indicatorAppender.getMarkupId();
     }
 
     protected abstract void selectionChanged(AjaxRequestTarget target);

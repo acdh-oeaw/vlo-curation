@@ -30,14 +30,6 @@ public interface SearchResultsDao {
 
     SolrDocumentList getDocuments(SolrQuery query);
 
-    /*
-     * To support multi selection for single facet the idea is to fire another query 
-     * to fetch all values for facet which is the first in the fq parameter
-     * and to merge the 2 result sets
-     * 
-     * another would be to replace the model itself, but where to keep it???
-     */
+    List<FacetField> getFacets(SolrQuery query);
     
-    List<FacetField> getFacets(SolrQuery... query);
-        
 }

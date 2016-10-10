@@ -21,6 +21,8 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.xpath.XPath;
@@ -41,6 +43,8 @@ import org.w3c.dom.NodeList;
 public class LanguageCodeUtils {
 
     private final static Logger LOG = LoggerFactory.getLogger(LanguageCodeUtils.class);
+
+    private final static Pattern LANGUAGE_CODE_PATTERN = Pattern.compile(eu.clarin.cmdi.vlo.FacetConstants.LANGUAGE_CODE_PATTERN);
 
     private Map<String, String> twoLetterCodesMap;
     private Map<String, String> threeLetterCodesMap;
@@ -144,12 +148,12 @@ public class LanguageCodeUtils {
     }
 
     private Map<String, String> createCodeMap(String url) {
-        LOG.debug("Creating language code map.");
+        LOG.info("Creating language code map from {}", url);
         try {
             Map<String, String> result = new ConcurrentHashMap<String, String>(CommonUtils.createCMDIComponentItemMap(url));
             return result;
         } catch (Exception e) {
-            if (CommonUtils.SWALLOW_LOOKUP_ERRORS) {
+            if (CommonUtils.shouldSwallowLookupErrors()) {
                 LOG.warn("Ignoring exception", e);
                 return new HashMap<String, String>();
             } else {
@@ -164,7 +168,7 @@ public class LanguageCodeUtils {
             Map<String, String> result = new ConcurrentHashMap<String, String>(CommonUtils.createReverseCMDIComponentItemMap(url));
             return result;
         } catch (Exception e) {
-            if (CommonUtils.SWALLOW_LOOKUP_ERRORS) {
+            if (CommonUtils.shouldSwallowLookupErrors()) {
                 LOG.warn("Ignoring exception", e);
                 return new HashMap<String, String>();
             } else {
@@ -181,6 +185,7 @@ public class LanguageCodeUtils {
             DocumentBuilderFactory domFactory = DocumentBuilderFactory.newInstance();
             domFactory.setNamespaceAware(true);
             URL url = new URL(urlString);
+            //TODO: Process XML as stream for much better performance (no need to build entire DOM)
             DocumentBuilder builder = domFactory.newDocumentBuilder();
             Document doc = builder.parse(url.openStream());
             XPath xpath = XPathFactory.newInstance().newXPath();
@@ -193,7 +198,8 @@ public class LanguageCodeUtils {
             }
             return result;
         } catch (Exception e) {
-            if (CommonUtils.SWALLOW_LOOKUP_ERRORS) {
+
+            if (CommonUtils.shouldSwallowLookupErrors()) {
                 LOG.warn("Ignoring exception", e);
                 return new HashMap<String, String>();
             } else {
@@ -202,4 +208,52 @@ public class LanguageCodeUtils {
         }
     }
 
+
+    public LanguageInfo decodeLanguageCodeString(String fieldValue) {
+        if (fieldValue != null) {
+            final Matcher matcher = LANGUAGE_CODE_PATTERN.matcher(fieldValue);
+            if (matcher.matches() && matcher.groupCount() == 2) {
+                final String type = matcher.group(1);
+                final String value = matcher.group(2);
+                switch (type) {
+                    case "code":
+                        // value is a language code, look up
+                        return new LanguageInfo(LanguageInfo.Type.CODE, value.toUpperCase());
+                    case "name":
+                        // value is the name to be shown
+                        return new LanguageInfo(LanguageInfo.Type.NAME, value);
+                }
+            }
+        }
+        return null;
+    }
+
+    public static class LanguageInfo {
+
+        public static enum Type {
+            CODE, NAME
+        }
+
+        private final Type type;
+        private final String value;
+
+        private LanguageInfo(Type type, String value) {
+            this.type = type;
+            this.value = value;
+        }
+
+        public Type getType() {
+            return type;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+    }
+    
+    protected LanguageCodeUtils() {
+        //for proxying
+        this(null);
+    }
 }

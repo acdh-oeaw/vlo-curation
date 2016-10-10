@@ -1,5 +1,7 @@
 #!/bin/sh
 
+VMOPTS="-Xmx4G"
+
 # Get the script's source directory
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
@@ -15,6 +17,10 @@ fi
 DFLT_CONFIG=${DIR}/"../config/VloConfig.xml"
 
 LOGDIR=${DIR}/../log/
+
+#remove old logs
+rm $LOGDIR*
+
 echo Logging in ${LOGDIR}
 
 # Please specify the configuration to the importer via a system property or via
@@ -33,8 +39,8 @@ echo Logging in ${LOGDIR}
 # -l path OR -l "path1 path2 ..."
 #
 
-$JAVA -Xmx3G \
-    -cp "${DIR}:${DIR}/vlo-importer-3.4-SNAPSHOT-importer.jar" \
+$JAVA ${VMOPTS} \
+    -cp "${DIR}:${DIR}/vlo-importer-${project.version}-importer.jar" \
 	-DconfigFile=${DFLT_CONFIG} \
     -DIMPORTER_LOG_DIR=${LOGDIR} \
     eu.clarin.cmdi.vlo.importer.MetadataImporter "$@"

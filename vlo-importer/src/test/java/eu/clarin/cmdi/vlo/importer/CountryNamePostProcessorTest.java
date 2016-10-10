@@ -1,9 +1,11 @@
 package eu.clarin.cmdi.vlo.importer;
 
-import eu.clarin.cmdi.vlo.config.DefaultVloConfigFactory;
 import static org.junit.Assert.assertEquals;
+
 import org.junit.Before;
 import org.junit.Test;
+
+import eu.clarin.cmdi.vlo.config.DefaultVloConfigFactory;
 
 public class CountryNamePostProcessorTest extends ImporterTestcase {
 

@@ -16,56 +16,66 @@
  */
 package eu.clarin.cmdi.vlo.wicket.panels.search;
 
+import com.google.common.collect.Ordering;
+import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.ajax.BootstrapAjaxPagingNavigator;
+import eu.clarin.cmdi.vlo.config.FieldValueDescriptor;
+import eu.clarin.cmdi.vlo.config.PiwikConfig;
+import eu.clarin.cmdi.vlo.config.VloConfig;
 import eu.clarin.cmdi.vlo.pojo.QueryFacetsSelection;
+import eu.clarin.cmdi.vlo.wicket.AjaxPiwikTrackingBehavior;
 import eu.clarin.cmdi.vlo.wicket.HighlightSearchTermBehavior;
-import eu.clarin.cmdi.vlo.wicket.HighlightSearchTermScriptFactory;
+import eu.clarin.cmdi.vlo.wicket.PreferredExplicitOrdering;
 import eu.clarin.cmdi.vlo.wicket.model.SearchContextModel;
 import eu.clarin.cmdi.vlo.wicket.model.SearchResultExpansionStateModel;
-import eu.clarin.cmdi.vlo.wicket.provider.SolrDocumentProvider;
+import static eu.clarin.cmdi.vlo.wicket.pages.FacetedSearchPage.TRACKING_EVENT_TITLE;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import org.apache.solr.common.SolrDocument;
 import org.apache.wicket.Component;
-import org.apache.wicket.ajax.AbstractDefaultAjaxBehavior;
-import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
-import org.apache.wicket.ajax.markup.html.navigation.paging.AjaxPagingNavigator;
-import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.form.DropDownChoice;
-import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.navigation.paging.IPageableItems;
-import org.apache.wicket.markup.html.panel.Panel;
+import org.apache.wicket.markup.html.panel.GenericPanel;
+import org.apache.wicket.markup.repeater.AbstractPageableView;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.markup.repeater.data.IDataProvider;
-import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
-import org.apache.wicket.model.PropertyModel;
-import org.apache.wicket.util.string.StringValue;
+import org.apache.wicket.spring.injection.annot.SpringBean;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Panel that has a data view on the current search results
  *
  * @author twagoo
  */
-public class SearchResultsPanel extends Panel {
+public class SearchResultsPanel extends GenericPanel<QueryFacetsSelection> {
+
+    public static final Logger log = LoggerFactory.getLogger(SearchResultsPanel.class);
 
     public static final List<Long> ITEMS_PER_PAGE_OPTIONS = Arrays.asList(5L, 10L, 25L, 50L, 100L);
 
-    private final IDataProvider<SolrDocument> solrDocumentProvider;
+    @SpringBean
+    private VloConfig vloConfig;
+    @SpringBean
+    private PiwikConfig piwikConfig;
+
     private final DataView<SolrDocument> resultsView;
     private final IModel<Set<Object>> expansionsModel;
-    
-    public SearchResultsPanel(String id, final IModel<QueryFacetsSelection> selectionModel) {
+
+    private final Component navigatorBottom;
+    private final Component navigatorTop;
+
+    public SearchResultsPanel(String id, final IModel<QueryFacetsSelection> selectionModel, IDataProvider<SolrDocument> solrDocumentProvider) {
         super(id, selectionModel);
-        add(new Label("title", new SearchResultsTitleModel(selectionModel)));
+        this.expansionsModel = new Model(new HashSet<Object>());
 
-        solrDocumentProvider = new SolrDocumentProvider(selectionModel);
+        //define the order for availability values
+        final Ordering<String> availabilityOrdering = new PreferredExplicitOrdering(
+                //extract the 'primary' availability values from the configuration
+                FieldValueDescriptor.valuesList(vloConfig.getAvailabilityValues()));
 
-        expansionsModel = new Model(new HashSet<Object>());
         // data view for search results
         resultsView = new DataView<SolrDocument>("resultItem", solrDocumentProvider, 10) {
 
@@ -76,29 +86,16 @@ public class SearchResultsPanel extends Panel {
                 final SearchContextModel contextModel = new SearchContextModel(index, size, selectionModel);
                 // single result item
                 item.add(new SearchResultItemPanel("resultItemDetails", item.getModel(), contextModel,
-                        new SearchResultExpansionStateModel(expansionsModel, item.getModel())
+                        new SearchResultExpansionStateModel(expansionsModel, item.getModel()), availabilityOrdering
                 ));
             }
         };
         add(resultsView);
 
-        // pagination navigators
-        add(new AjaxPagingNavigator("pagingTop", resultsView));
-        add(new AjaxPagingNavigator("pagingBottom", resultsView));
-
-        // total result counter
-        add(createResultCount("resultCount"));
-
-        // page result indicater
-        add(createResultPageIndicator("resultPageIndicator", resultsView));
-
-        // form to select number of results per page
-        add(createResultPageSizeForm("resultPageSizeForm", resultsView));
-
         //For Ajax updating of search results
         setOutputMarkupId(true);
-        
-        add(new HighlightSearchTermBehavior(){
+
+        add(new HighlightSearchTermBehavior() {
 
             @Override
             protected String getComponentSelector(String componentId) {
@@ -109,12 +106,28 @@ public class SearchResultsPanel extends Panel {
             protected String getWordList(Component component) {
                 return selectionModel.getObject().getQuery();
             }
-            
+
         });
+
+        // pagination navigators
+        navigatorTop = new BootstrapAjaxPagingNavigator("pagingTop", resultsView);
+        add(navigatorTop);
+        navigatorBottom = new BootstrapAjaxPagingNavigator("pagingBottom", resultsView);
+        add(navigatorBottom);
+
+        // add Piwik tracking behavior
+        if (piwikConfig.isEnabled()) {
+            navigatorTop.add(AjaxPiwikTrackingBehavior.newEventTrackingBehavior(TRACKING_EVENT_TITLE));
+            navigatorBottom.add(AjaxPiwikTrackingBehavior.newEventTrackingBehavior(TRACKING_EVENT_TITLE));
+        }
     }
-    
+
     public void resetExpansion() {
         expansionsModel.getObject().clear();
+    }
+
+    public AbstractPageableView<SolrDocument> getResultsView() {
+        return resultsView;
     }
 
     /**
@@ -125,81 +138,9 @@ public class SearchResultsPanel extends Panel {
         super.onConfigure();
 
         // only show pagination navigators if there's more than one page
-        final boolean showPaging = resultsView.getPageCount() > 1;
-        this.get("pagingTop").setVisible(showPaging);
-        this.get("pagingBottom").setVisible(showPaging);
-    }
-
-    private Label createResultCount(String id) {
-        final IModel<String> resultCountModel = new AbstractReadOnlyModel<String>() {
-
-            @Override
-            public String getObject() {
-                return String.format("%d results", solrDocumentProvider.size());
-            }
-        };
-        return new Label(id, resultCountModel);
-    }
-
-    private Label createResultPageIndicator(String id, final IPageableItems resultsView) {
-        IModel<String> indicatorModel = new AbstractReadOnlyModel<String>() {
-
-            @Override
-            public String getObject() {
-                final long firstShown = 1 + resultsView.getCurrentPage() * resultsView.getItemsPerPage();
-                final long lastShown = Math.min(resultsView.getItemCount(), firstShown + resultsView.getItemsPerPage() - 1);
-                return String.format("Showing %d to %d", firstShown, lastShown);
-            }
-        };
-        return new Label(id, indicatorModel) {
-
-            @Override
-            protected void onConfigure() {
-                // hide if no results
-                setVisible(resultsView.getItemCount() > 0);
-            }
-            
-        };
-    }
-
-    private Form createResultPageSizeForm(String id, final IPageableItems resultsView) {
-        final Form resultPageSizeForm = new Form(id);
-
-        final DropDownChoice<Long> pageSizeDropDown
-                = new DropDownChoice<Long>("resultPageSize",
-                        // bind to items per page property of pageable
-                        new PropertyModel<Long>(resultsView, "itemsPerPage"),
-                        ITEMS_PER_PAGE_OPTIONS);
-        pageSizeDropDown.add(new AjaxFormComponentUpdatingBehavior("onchange") {
-
-            @Override
-            protected void onUpdate(AjaxRequestTarget target) {
-                target.add(SearchResultsPanel.this);
-            }
-        });
-        resultPageSizeForm.add(pageSizeDropDown);
-
-        return resultPageSizeForm;
-    }
-
-    private static class SearchResultsTitleModel extends AbstractReadOnlyModel<String> {
-
-        private final IModel<QueryFacetsSelection> selectionModel;
-
-        public SearchResultsTitleModel(IModel<QueryFacetsSelection> selectionModel) {
-            this.selectionModel = selectionModel;
-        }
-
-        @Override
-        public String getObject() {
-            final QueryFacetsSelection selection = selectionModel.getObject();
-            if ((selection.getQuery() == null || selection.getQuery().isEmpty())
-                    && (selection.getSelection() == null || selection.getSelection().isEmpty())) {
-                return "All records";
-            } else {
-                return "Search results";
-            }
-        }
+        final boolean multiplePages = resultsView.getPageCount() > 1;
+        navigatorTop.setVisible(multiplePages);
+        navigatorBottom.setVisible(multiplePages);
     }
 
 }

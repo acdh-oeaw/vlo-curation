@@ -15,7 +15,9 @@ public class FacetConfiguration {
     private String name;
     private boolean caseInsensitive = false;
     private List<String> patterns = new ArrayList<String>();
+
     private Map<String, String> patternsMap = new HashMap<String, String>(); //Map<pattern, conceptUrl>
+
     private List<String> fallbackPatterns = new ArrayList<String>();
     private List<String> derivedFacets = new ArrayList<String>();
     private boolean allowMultipleValues = true;
@@ -90,8 +92,6 @@ public class FacetConfiguration {
 
 	public void setPatternsMap(Map<String, String> patternsMap) {
 		this.patternsMap = patternsMap;
-	}
-    
-    
+	} 
 
 }

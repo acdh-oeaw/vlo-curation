@@ -57,10 +57,16 @@ xxx             - VLO version number
                         $CATALINA_HOME/conf/Catalina/localhost/vlo.xml
 		» cp $CATALINA_HOME /webapps/vlo-solr/META-INF/context.xml\
                         $CATALINA_HOME/conf/Catalina/localhost/vlo-solr.xml
-		
-	Add following line to the $CATALINA_HOME/bin/setenv.sh:
-		» echo 'export JAVA_OPTS="$JAVA_OPTS -Dsolr.data.dir=$SOLR_DATA"'\
-                        >> $CATALINA_HOME/bin/setenv.sh
+	
+	Configure the java option "-Dsolr.data.dir=$SOLR_DATA" for Tomcat. Depending
+	on the operating system, this can be done by either
+	
+		- adding the following line to $CATALINA_HOME/conf/tomcat.conf
+			» echo 'JAVA_OPTS="$JAVA_OPTS -Dsolr.data.dir=/srv/webapps/vlo/solrdata"'\
+							>> $CATALINA_HOME/conf/tomcat.conf
+		- _OR_ adding the following line to $CATALINA_HOME/bin/setenv.sh:
+			» echo 'export JAVA_OPTS="$JAVA_OPTS -Dsolr.data.dir=$SOLR_DATA"'\
+							>> $CATALINA_HOME/bin/setenv.sh
 		
 	Optional:
 		
@@ -75,6 +81,14 @@ xxx             - VLO version number
 		or set a context parameter 'configuration' to the value 
                 'deployment' in the application's context fragment.
 		
+                Piwik access statistics can be configured by setting the 
+                following context parameters:
+                    - eu.clarin.cmdi.vlo.piwik.enableTracker (set true to enable)
+                    - eu.clarin.cmdi.vlo.piwik.siteId (defaults to production value)
+                    - eu.clarin.cmdi.vlo.piwik.host (defaults to production value)
+                    - eu.clarin.cmdi.vlo.piwik.domains (defaults to production value)
+                See packaged context.xml for details and examples.
+
 4. Importer configuration
 	
 	Modify DataRoot for importer directly in $VLO/config/VloConfig.xml or in

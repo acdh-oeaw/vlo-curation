@@ -16,14 +16,12 @@
  */
 package eu.clarin.cmdi.vlo.pojo;
 
+import com.google.common.collect.Maps;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
-
-import com.google.common.collect.Maps;
 
 /**
  * Represents a query and any number of selected values for zero or more facets
@@ -34,10 +32,6 @@ public class QueryFacetsSelection implements Serializable {
 
     private String queryString;
     private final Map<String, FacetSelection> selection;
-    
-    
-    //multi selection for single facet
-    private String excludedFacet = null;
 
     /**
      * Creates an empty selection (no string, no facet values)
@@ -116,38 +110,22 @@ public class QueryFacetsSelection implements Serializable {
         this.queryString = queryString;
     }
 
-    
     public void selectValues(String facet, FacetSelection values) {
-    	// allow multi value selection for single facet only if user has selected one value
         if (values == null || values.isEmpty()) {
             selection.remove(facet);
-            
-            switch(selection.size()){
-            case 0:
-            	excludedFacet = null;
-            	break;
-            case 1:
-            	excludedFacet = selection.keySet().iterator().next(); //set it to the only element
-            	break;
-            }
         } else {
             if (values instanceof Serializable) {
-            	selection.put (facet, values);
+                selection.put(facet, values);
             } else {
-            	selection.put (facet, values);
+                selection.put(facet, values);
             }
-            
-            if(selection.size() == 1)
-            	excludedFacet = facet;
-            else
-            	excludedFacet = null;
         }
     }
     
     public void addNewFacetValue(String facet, Collection<String> values){
     	FacetSelection curSel = selection.get(facet);
     	if(curSel != null){
-    		curSel.mergeValues(values);
+    		curSel.setValues(values);
     	}else{
     		curSel = new FacetSelection(values);    		
     	}
@@ -176,15 +154,5 @@ public class QueryFacetsSelection implements Serializable {
         }
         return new QueryFacetsSelection(queryString, selectionClone);
     }
-
-	public String getExcludedFacet() {
-		return excludedFacet;
-	}
-
-	public void setExcludedFacet(String excludedFacet) {
-		this.excludedFacet = excludedFacet;
-	}
-    
-    
 
 }

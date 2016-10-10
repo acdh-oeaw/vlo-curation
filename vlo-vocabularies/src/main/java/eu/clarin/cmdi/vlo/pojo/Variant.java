@@ -58,5 +58,4 @@ public class Variant{
 		return value + " " + (isRegExp ? "isRegEx = true" : "") + " " + "cross-mappings["+ crossMappings.toString() + "]";
 	}
 
-	
 }

@@ -45,10 +45,4 @@ public interface SolrFacetQueryFactory {
      */
     SolrQuery createCountFacetsQuery(List<String> facets);
 
-    /* query that returns complete list of values for specified facet */
-	SolrQuery createExludedFacetQuery(QueryFacetsSelection selection, String facet, int valueLimit);
-	
-	/* query that returns number of documents that have unspecified value for given facet */
-	SolrQuery createNullQuery(String facet, QueryFacetsSelection selection);
-
 }

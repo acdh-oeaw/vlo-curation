@@ -23,19 +23,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </head>
     <body>
         <wicket:panel>
-            <p class="searchresultdescription" wicket:id="description">
+            <p class="searchresultdescription visible-xs" wicket:id="description-shorter">
                 [DESCRIPTION]
             </p>
-            <div wicket:id="resources" class="searchresultresources">
-                Resources: 
-                <ul>
-                    <li wicket:id="resourceCount">
-                        <a wicket:id="recordLink" href="record1.html">
-                            <wicket:container wicket:id="resourceCountLabel">1 text file</wicket:container>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            <p class="searchresultdescription hidden-xs" wicket:id="description">
+                [DESCRIPTION]
+            </p>
         </wicket:panel>
     </body>
 </html>

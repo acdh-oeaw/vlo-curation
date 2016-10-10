@@ -1,4 +1,76 @@
-Bug Fixes and Features
+Bug fixes and new features
+--------------------------
+VLO 4.0.1 (August 2016)
+* Fetching external fonts from https locations, preventing browser 
+warnings/issues
+* Fixed mapping of national project from collection display name
+* Removed redundant XPaths from mapping
+	<https://trac.clarin.eu/ticket/959>
+
+VLO 4.0.0 (July 2016)
+* VLO importer supports CMDI 1.2 instead of CMDI 1.1
+    <https://trac.clarin.eu/ticket/897>
+* Field values can be extracted from attributes with concept link
+    <https://trac.clarin.eu/ticket/836>
+* Extended mapping of the 'keyword' and 'rightsHolder' facets
+    <https://trac.clarin.eu/ticket/931>
+    <https://trac.clarin.eu/ticket/936>
+
+* Redesigned front end using bootstrap and the common CLARIN style
+    <https://trac.clarin.eu/ticket/757>
+* Added a link to process resources via the Language Resource Switchboard
+    <https://trac.clarin.eu/ticket/939>
+* Fixed facet value count issues when selecting availability level(s)
+    <https://trac.clarin.eu/ticket/900>
+* Proper 404 response for records that do not exist (anymore)
+    <https://trac.clarin.eu/ticket/928>
+
+
+VLO 3.4.1 (April 2016)
+
+* Fixed a critical querying performance issue
+	<https://trac.clarin.eu/ticket/906>
+* Fixed the sitemap generator
+* Small fixed in the icons
+* Included a report generator
+
+VLO 3.4 (March 2016)
+
+* Major revisions and improvements to the mapping of availability, licence and
+access information
+    <https://trac.clarin.eu/ticket/813>
+    <https://trac.clarin.eu/ticket/814>
+    <https://trac.clarin.eu/ticket/852>
+    <https://trac.clarin.eu/ticket/857>
+* Prominent presentation of availability and licence information in search
+result and the record page
+    <https://trac.clarin.eu/ticket/812>
+* Dedicated facet value selector for main availability levels (PUB/ACA/RES)
+* Added legal information about VLO to about page
+    <https://trac.clarin.eu/ticket/804>
+* More references to the landing page and rephrasing of label 'original context'
+    <https://trac.clarin.eu/ticket/751>
+* Visual indication of search activity
+    <https://trac.clarin.eu/ticket/800>
+* More recently imported records appear first
+    <https://trac.clarin.eu/ticket/815>
+* More files included in hierarchies
+    <https://trac.clarin.eu/ticket/828>
+* Uniform mapping/normalisation definition format
+    <https://trac.clarin.eu/ticket/773>
+* Improved Solr querying performance
+    <https://trac.clarin.eu/ticket/795>
+* Upgraded front end to Wicket 7
+    <https://trac.clarin.eu/ticket/785>
+* Improved Piwik reporting and, also for AJAX requests, and better configuration
+    <https://trac.clarin.eu/ticket/752>
+* Fixed issue with indexing of files in metadata hierarchies
+    <https://trac.clarin.eu/ticket/831>
+* The 'continent' facet was removed from the search interface
+* The importer can now request up to 4 gigabytes of heap space
+* A sitemap generator has been added (separate tool than can be run after
+import to generate a sitemap for search engines)
+
 
 VLO 3.3.2 (November 2015)
 

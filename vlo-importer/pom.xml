@@ -1,22 +1,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" 
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
-
 >
+
+	<modelVersion>4.0.0</modelVersion>
+	
     <parent>
         <groupId>eu.clarin.cmdi</groupId>
         <artifactId>vlo</artifactId>
-        <version>3.4-SNAPSHOT</version>
+		<version>4.0.1-CURATION</version>
     </parent>
     
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>eu.clarin.cmdi</groupId>
     <artifactId>vlo-importer</artifactId> 
-    <version>3.4-SNAPSHOT</version>
     <packaging>jar</packaging>
-
     <name>VLO Importer</name>
-    <description></description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -83,8 +80,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.3.2</version>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -190,7 +187,7 @@
             <artifactId>jgrapht-core</artifactId>
             <version>0.9.1</version>
         </dependency>
-        <dependency>
+		<dependency>
         	<groupId>org.apache.httpcomponents</groupId>
         	<artifactId>httpclient</artifactId>
         	<version>4.3.4</version>

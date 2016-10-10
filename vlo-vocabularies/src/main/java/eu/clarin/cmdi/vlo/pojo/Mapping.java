@@ -54,6 +54,4 @@ public class Mapping{
 	public String toString() {
 		return normalizedVlalue + " variants[" + variants + "]";
 	}
-	
-	
 }

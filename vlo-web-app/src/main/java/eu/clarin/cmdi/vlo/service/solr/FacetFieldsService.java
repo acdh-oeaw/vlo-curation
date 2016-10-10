@@ -44,13 +44,4 @@ public interface FacetFieldsService {
      * @return the total number of facets
      */
     long getFacetFieldCount(List<String> facets);
-    
-    
-    /**
-    *
-    * @param facet
-    * @return the total number of documents that don't have specified value for this facet
-    */
-    
-	long getNullCount(String facet, QueryFacetsSelection selection);
 }

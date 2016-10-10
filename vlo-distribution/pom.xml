@@ -3,17 +3,17 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
+	<modelVersion>4.0.0</modelVersion>
+    
     <parent>
         <groupId>eu.clarin.cmdi</groupId>
         <artifactId>vlo</artifactId>
-        <version>3.4-SNAPSHOT</version>
+		<version>4.0.1-CURATION</version>
     </parent>
     
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>eu.clarin.cmdi</groupId>
+    
     <artifactId>vlo-distribution</artifactId>
     <packaging>pom</packaging>
-    <version>3.4-SNAPSHOT</version>
     <name>VLO Distribution</name>
     <description>
         Creates a package for server distribution of the VLO. It includes WAR

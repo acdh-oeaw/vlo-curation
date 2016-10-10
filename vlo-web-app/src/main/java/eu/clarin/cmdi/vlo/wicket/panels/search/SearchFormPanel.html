@@ -23,16 +23,28 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </head>
     <body>
         <wicket:panel>
-            <form wicket:id="search" action="" id="search">
-                <p>
-                    <span id="searchcontrols">
-                        <input wicket:id="query" id="searchbox" type="text" value="democratie" />
-                        <input wicket:id="searchSubmit" id="searchbutton" type="submit" value="Search"/>
+            <form id="search-form" wicket:id="search" role="search">
+                <div class="input-group">
+                    <input wicket:id="query" class="search-box form-control form-text" type="text" role="searchbox" placeholder="Search" />
+                    <span class="input-group-btn">
+                        <button type="submit" wicket:id="searchSubmit" class="search-button btn btn-primary">
+                            <span class="search-icon glyphicon glyphicon-search" aria-hidden="true"></span>
+                            <span class="loading-indicator">
+                                <i class="loading-icon fa fa-spinner fa-pulse" aria-hidden="true"></i>
+                                <span class="sr-only">Searching...</span>
+                            </span>
+                        </button>
+                        <wicket:link>
+                            <a class="btn btn-default" id="syntax-help" href="HelpPage.html#syntax" 
+                               data-toggle="tooltip" data-placement="bottom"
+                               data-container="body"
+                               title="Enter one or more search terms or an advanced query, for example by using the keywords AND, OR and NOT. Click for more information.">
+                                <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+                            </a>
+                        </wicket:link>
                     </span>
-                    <wicket:link>
-                        <a id="syntax-help" href="HelpPage.html#syntax" title="Enter one or more search terms or an advanced query, for example by using the keywords AND, OR and NOT. &lt;strong&gt;Click for more information.&lt;/strong&gt;"><span>?</span></a>
-                    </wicket:link>
-                </p>
+                </div>
+
             </form>
         </wicket:panel>
     </body>

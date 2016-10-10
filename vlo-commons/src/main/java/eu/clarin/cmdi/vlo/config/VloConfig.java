@@ -76,6 +76,8 @@ public class VloConfig {
     
     private String profileNameMapUrl;
 
+    private String licenseURIMapUrl;
+
     private String countryComponentUrl = "";
 
     private String language2LetterCodeComponentUrl = "";
@@ -116,6 +118,7 @@ public class VloConfig {
     
     private boolean useCrossMapping = false;
 
+
     /**
      * A set of fields to be excluded from display<br><br>
      *
@@ -152,6 +155,9 @@ public class VloConfig {
     @XmlElementWrapper(name = "simpleSearchFacetFields")
     private List<String> simpleSearchFacetField;
 
+    @XmlElementWrapper(name = "primaryFacetFields")
+    private Set<String> primaryFacetField;
+
     private String collectionFacet;
 
     // test related parameters
@@ -165,6 +171,9 @@ public class VloConfig {
     private String cqlEndpointAlternative = "";
 
     private URI configLocation;
+    
+    private String lrSwitchboardBaseUrl = "http://weblicht.sfs.uni-tuebingen.de/clrs/";
+
 
     /**
      * Get and set methods for web application parameter members<br><br>
@@ -722,6 +731,15 @@ public class VloConfig {
         this.simpleSearchFacetField = simpleSearchFacetField;
     }
 
+
+    public Set<String> getPrimaryFacetFields() {
+        return primaryFacetField;
+    }
+
+    public void setPrimaryFacetFields(Set<String> primaryFacetField) {
+        this.primaryFacetField = primaryFacetField;
+    }
+
     /**
      *
      * @return all facet fields, including collection facet (arbitrary order
@@ -729,7 +747,8 @@ public class VloConfig {
      * @see #getFacetFields()
      * @see #getCollectionFacet()
      */
-    public List<String> getAllFacetFields() {
+
+    public List<String> getFacetsInSearch() {
         final ArrayList<String> allFacets = new ArrayList<String>(facetField);
         final String collection = getCollectionFacet();
         if (collection != null) {
@@ -1032,6 +1051,13 @@ public class VloConfig {
         licenseAvailabilityMapUrl = param;
     }
 
+    public String getLicenseURIMapUrl() {
+        return licenseURIMapUrl;
+    }
+
+    public void setLicenseURIMapUrl(String licenseURIMapUrl) {
+        this.licenseURIMapUrl = licenseURIMapUrl;
+    }
     /**
      * Get the value of the cqlEndpointFilter parameter<br><br>
      *
@@ -1121,10 +1147,6 @@ public class VloConfig {
 		this.profileNameMapUrl = profileNameMapUrl;
 	}
 	
-	
-    
-    
-
     /**
      * Get the value of processHierarchies
      *
@@ -1152,4 +1174,23 @@ public class VloConfig {
 		this.useCrossMapping = useCrossMapping;
 	}
     
+    private List<FieldValueDescriptor> availabilityValue;
+
+    @XmlElementWrapper(name = "availability")
+    @XmlElement(name = "availabilityValue")
+    public List<FieldValueDescriptor> getAvailabilityValues() {
+        return availabilityValue;
+    }
+
+    public void setAvailabilityValues(List<FieldValueDescriptor> availabilityValues) {
+        this.availabilityValue = availabilityValues;
+    }
+
+    public String getLrSwitchboardBaseUrl() {
+        return lrSwitchboardBaseUrl;
+    }
+
+    public void setLrSwitchboardBaseUrl(String lrSwitchboardBaseUrl) {
+        this.lrSwitchboardBaseUrl = lrSwitchboardBaseUrl;
+    }
 }

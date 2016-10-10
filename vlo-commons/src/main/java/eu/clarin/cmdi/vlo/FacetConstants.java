@@ -1,9 +1,15 @@
 package eu.clarin.cmdi.vlo;
 
+
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
+
+
 /**
  * Definition of facet, resource type and URL constants.
  */
 public class FacetConstants {
+
 
     public static final String FIELD_NAME = "name";
     public static final String FIELD_ID = "id";
@@ -27,7 +33,8 @@ public class FacetConstants {
     public static final String FIELD_NATIONAL_PROJECT = "nationalProject";
     public static final String FIELD_KEYWORDS = "keywords";
     public static final String FIELD_PROFILE = "profileName";
-    
+    public static final String FIELD_ACCESS_INFO = "accessInfo";
+
     /**
      * Solr pseudo-field that reveals the ranking score
      *
@@ -44,10 +51,16 @@ public class FacetConstants {
     public static final String FIELD_CLARIN_PROFILE = "_componentProfile";
     public static final String FIELD_SEARCH_SERVICE = "_contentSearchRef";
     public static final String FIELD_LAST_SEEN = "_lastSeen";
+
+    public static final String FIELD_DAYS_SINCE_LAST_SEEN = "_daysSinceLastSeen";
+
     public static final String FIELD_HIERARCHY_WEIGHT = "_hierarchyWeight";
     public static final String FIELD_IS_PART_OF = "_isPartOf";
     public static final String FIELD_HAS_PART = "_hasPart";
     public static final String FIELD_HAS_PART_COUNT = "_hasPartCount";
+
+    public static final String FIELD_HAS_PART_COUNT_WEIGHT = "_hasPartCountWeight";
+
     public static final String FIELD_LANGUAGE_NAME = "_languageName";
 
     /**
@@ -58,6 +71,38 @@ public class FacetConstants {
      * Facet constant associated with the search page type.
      */
     public static final String FIELD_SEARCHPAGE = "_searchPageRef";
+
+
+    /**
+     * Fields for which a selection (by the user) should be allowed
+     */
+    public static final Set<String> AVAILABLE_FACETS = ImmutableSet.of(
+            FIELD_ACCESS_INFO,
+            FIELD_AVAILABILITY,
+            FIELD_COLLECTION,
+            FIELD_COMPLETE_METADATA,
+            FIELD_CONTINENT,
+            FIELD_COUNTRY,
+            FIELD_DATA_PROVIDER,
+            FIELD_DESCRIPTION,
+            FIELD_FORMAT,
+            FIELD_GENRE,
+            FIELD_HAS_PART_COUNT,
+            FIELD_ID,
+            FIELD_KEYWORDS,
+            FIELD_LANGUAGE_CODE,
+            FIELD_LICENSE,
+            FIELD_MODALITY,
+            FIELD_NAME,
+            FIELD_NATIONAL_PROJECT,
+            FIELD_ORGANISATION,
+            FIELD_PROJECT_NAME,
+            FIELD_RESOURCE_CLASS,
+            FIELD_SUBJECT,
+            FIELD_TEMPORAL_COVERAGE,
+            FIELD_SEARCH_SERVICE
+    );
+
 
     //Deprecated fields
     public static final String DEPRECATED_FIELD_LANGUAGE = "language";
@@ -85,17 +130,41 @@ public class FacetConstants {
      * regular expression that matches the language prefix in description (group
      * 1 matches the ISO639-3 language code)
      */
-    public static final String DESCRIPTION_LANGUAGE_PATTERN = "^\\{lang='([A-z-]+)'\\}";
+
+
+    public static final String DESCRIPTION_LANGUAGE_PATTERN = "^\\{(name|code):.*\\}";
+
 
     /**
      * regular expression that matches the syntax of the 'languageCode' field
      * (with either a language code or a name as indicated by the prefix)
      */
     public static final String LANGUAGE_CODE_PATTERN = "(name|code):(.*)";
+
     
     
     /**
      * Name of the Solr request handler for fast queries (no sorting, boosting or aliases)
      */
     public static final String SOLR_REQUEST_HANDLER_FAST = "fast";
+
+    /**
+     * PUB level for the 'availability' facet
+     *
+     * @see #FIELD_AVAILABILITY
+     */
+    public static final String AVAILABILITY_LEVEL_PUB = "PUB";
+    /**
+     * ACA level for the 'availability' facet
+     *
+     * @see #FIELD_AVAILABILITY
+     */
+    public static final String AVAILABILITY_LEVEL_ACA = "ACA";
+    /**
+     * RES level for the 'availability' facet
+     *
+     * @see #FIELD_AVAILABILITY
+     */
+    public static final String AVAILABILITY_LEVEL_RES = "RES";
+
 }

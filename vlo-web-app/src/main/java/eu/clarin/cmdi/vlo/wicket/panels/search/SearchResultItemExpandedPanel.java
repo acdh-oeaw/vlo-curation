@@ -16,13 +16,14 @@
  */
 package eu.clarin.cmdi.vlo.wicket.panels.search;
 
+import com.google.common.collect.Ordering;
 import eu.clarin.cmdi.vlo.FacetConstants;
 import eu.clarin.cmdi.vlo.pojo.SearchContext;
 import eu.clarin.cmdi.vlo.service.FieldFilter;
 import eu.clarin.cmdi.vlo.service.ResourceStringConverter;
 import eu.clarin.cmdi.vlo.wicket.LazyResourceInfoUpdateBehavior;
-import eu.clarin.cmdi.vlo.wicket.ResourceTypeCssBehaviour;
 import eu.clarin.cmdi.vlo.wicket.components.RecordPageLink;
+import eu.clarin.cmdi.vlo.wicket.components.ResourceTypeGlyphicon;
 import eu.clarin.cmdi.vlo.wicket.components.SmartLinkFieldValueLabel;
 import eu.clarin.cmdi.vlo.wicket.model.CollectionListModel;
 import eu.clarin.cmdi.vlo.wicket.model.HandleLinkModel;
@@ -30,8 +31,8 @@ import eu.clarin.cmdi.vlo.wicket.model.NullFallbackModel;
 import eu.clarin.cmdi.vlo.wicket.model.ResourceInfoModel;
 import eu.clarin.cmdi.vlo.wicket.model.SolrFieldModel;
 import eu.clarin.cmdi.vlo.wicket.model.SolrFieldStringModel;
+import eu.clarin.cmdi.vlo.wicket.pages.RecordPage;
 import eu.clarin.cmdi.vlo.wicket.panels.record.FieldsTablePanel;
-import eu.clarin.cmdi.vlo.wicket.panels.record.ResourceLinkDetailsPanel;
 import eu.clarin.cmdi.vlo.wicket.provider.DocumentFieldsProvider;
 import java.util.List;
 import org.apache.solr.common.SolrDocument;
@@ -66,13 +67,16 @@ public class SearchResultItemExpandedPanel extends GenericPanel<SolrDocument> {
     @SpringBean(name = "documentFieldOrder")
     private List<String> fieldOrder;
 
-    public SearchResultItemExpandedPanel(String id, final IModel<SolrDocument> documentModel, final IModel<SearchContext> searchContextModel) {
+    private final IModel<SearchContext> searchContextModel;
+
+    public SearchResultItemExpandedPanel(String id, final IModel<SolrDocument> documentModel, final IModel<SearchContext> searchContextModel, Ordering<String> availabilityOrdering) {
         super(id, documentModel);
+        this.searchContextModel = searchContextModel;
 
         // add untruncated description
         final NullFallbackModel descriptionModel = new NullFallbackModel(new SolrFieldStringModel(documentModel, FacetConstants.FIELD_DESCRIPTION), "");
         add(new SmartLinkFieldValueLabel("description", descriptionModel, Model.of(FacetConstants.FIELD_DESCRIPTION)));
-        
+
         // add link to record
         add(new RecordPageLink("recordLink", documentModel, searchContextModel));
 
@@ -107,7 +111,7 @@ public class SearchResultItemExpandedPanel extends GenericPanel<SolrDocument> {
         container.add(resourcesView);
 
         // create a link to the record page that is only visible when there are more resources than shown
-        final RecordPageLink moreLink = new RecordPageLink("more", getModel(), selectionModel) {
+        final RecordPageLink moreLink = new RecordPageLink("more", getModel(), selectionModel, RecordPage.RESOURCES_SECTION) {
 
             @Override
             protected void onConfigure() {
@@ -141,28 +145,22 @@ public class SearchResultItemExpandedPanel extends GenericPanel<SolrDocument> {
                 // get resource string converted into a ResourceInfo model
                 final ResourceInfoModel resourceInfoModel = new ResourceInfoModel(resourceStringConverter, item.getModel());
 
-                // add a link to the resource with the file name as its label
-                final ExternalLink resourceLink = new ExternalLink("resourceLink", new HandleLinkModel(new PropertyModel(resourceInfoModel, "href")));
-                resourceLink.add(new Label("resourceName", new PropertyModel(resourceInfoModel, "fileName")));
-                resourceLink.setOutputMarkupId(true);
-
+                final Label resourceName = new Label("resourceName", new PropertyModel(resourceInfoModel, "fileName"));
                 // once loaded, make Ajax request to resolve handles and update resource link
-                resourceLink.add(new LazyResourceInfoUpdateBehavior(resolvingResourceStringConverter, resourceInfoModel) {
+                resourceName.add(new LazyResourceInfoUpdateBehavior(resolvingResourceStringConverter, resourceInfoModel) {
 
                     @Override
                     protected void onUpdate(AjaxRequestTarget target) {
                         // update resource link
-                        target.add(resourceLink);
+                        target.add(resourceName);
                     }
                 });
+                resourceName.setOutputMarkupId(true);
+                item.add(new RecordPageLink("resourceLink", SearchResultItemExpandedPanel.this.getModel(), searchContextModel, RecordPage.RESOURCES_SECTION)
+                        .add(resourceName));
 
-                resourceLink.add(new ResourceLinkDetailsPanel("details", resourceInfoModel));
-
-                // sets the css class depending on the resource type
-                item.add(new ResourceTypeCssBehaviour(resourceInfoModel));
-
-                // add to list
-                item.add(resourceLink);
+                item.add(new ExternalLink("downloadLink", new HandleLinkModel(new PropertyModel(resourceInfoModel, "href"))));
+                item.add(new ResourceTypeGlyphicon("resourceTypeIcon", new PropertyModel<String>(resourceInfoModel, "resourceType")));
             }
         };
     }
@@ -170,6 +168,9 @@ public class SearchResultItemExpandedPanel extends GenericPanel<SolrDocument> {
     @Override
     public void detachModels() {
         super.detachModels();
+        if (searchContextModel != null) {
+            searchContextModel.detach();
+        }
     }
 
 }

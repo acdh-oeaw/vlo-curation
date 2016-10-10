@@ -73,14 +73,13 @@ public class AllFacetValuesPage extends VloBasePage<FacetField> {
 
         final String facet = facetParamMapper.getFacet(facetValue.toString());
 
-        if (vloConfig.getAllFacetFields().contains(facet)) {
+        if (vloConfig.getFacetsInSearch().contains(facet)) {
             // create a new model so that all values will be retrieved
-        	
             setModel(new FacetFieldModel(facet, facetFieldsService, selectionModel)); // gets all facet values
         }
         if (getModelObject() == null) {
-            final String message = String.format("Facet '%s' could not be found", facet);
-            throw new AbortWithHttpErrorCodeException(404, message);
+            Session.get().error(String.format("Facet '%s' could not be found", facet));
+            ErrorPage.triggerErrorPage(ErrorPage.ErrorType.PAGE_NOT_FOUND, params);
         }
 
         addComponents();
@@ -93,7 +92,7 @@ public class AllFacetValuesPage extends VloBasePage<FacetField> {
     }
 
     private void addComponents() {
-        add(new BreadCrumbPanel("breadcrumbs", selectionModel));
+        add(new BreadCrumbPanel("breadcrumbs", selectionModel, getModelObject().getName()));
 
         add(new Label("name", new SolrFieldNameModel(new PropertyModel<String>(getModel(), "name"))));
 

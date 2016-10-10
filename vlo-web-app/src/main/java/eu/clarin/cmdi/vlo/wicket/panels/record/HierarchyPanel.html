@@ -23,22 +23,21 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </head>
     <body>
         <wicket:panel>
-            <h2>Hierarchy</h2>
             <p>
                 Use the tree below to explore the hierarchy this record is part 
                 of. Click on the name of any of the records in this hierarchy to
                 navigate to that item.
             </p>
 
-            <div wicket:id="parents">
+            <div class="tree-header" wicket:id="parents">
                 <div class="tree-parent" wicket:id="parentsList">
-                    <a class="parent-up" wicket:id="up" title="Move up in hierarchy"><span>[up]</span></a>
+                    <a class="parent-up" wicket:id="up" title="Upwards expansion of hierarchy"><span class="glyphicon glyphicon-level-up" aria-hidden="true"></span></a>
                     <wicket:container wicket:id="link">[link]</wicket:container>
                 </div>
                 <a wicket:id="showAll">Show all... (<span wicket:id="itemCount">999</span>)</a>
             </div>
             <div wicket:id="treeContainer">
-                <div id="tree" wicket:id="tree">[TREE]</div>
+                <div class="tree" wicket:id="tree">[TREE]</div>
             </div>
         </wicket:panel>
     </body>

@@ -32,6 +32,7 @@ import eu.clarin.cmdi.vlo.wicket.model.SelectionModel;
 import eu.clarin.cmdi.vlo.wicket.model.SolrFieldDescriptionModel;
 import eu.clarin.cmdi.vlo.wicket.model.SolrFieldNameModel;
 import eu.clarin.cmdi.vlo.wicket.panels.ExpandablePanel;
+import org.apache.wicket.model.AbstractReadOnlyModel;
 
 /**
  * Panel that displays a single facet based on the current query/value
@@ -42,6 +43,7 @@ import eu.clarin.cmdi.vlo.wicket.panels.ExpandablePanel;
  * @author twagoo
  */
 public abstract class FacetPanel extends ExpandablePanel<String> {
+
     private final static Logger logger = LoggerFactory.getLogger(FacetPanel.class);
 
     private final SelectedFacetPanel selectedFacetPanel;
@@ -61,6 +63,13 @@ public abstract class FacetPanel extends ExpandablePanel<String> {
         // panel showing current selection, allowing for deselection
         selectedFacetPanel = createSelectedFacetPanel("facetSelection", facetNameModel.getObject(), selectionModel);
         add(selectedFacetPanel);
+
+        add(new AttributeAppender("class", new AbstractReadOnlyModel() {
+            @Override
+            public Object getObject() {
+                return (selectedFacetPanel.getModelObject().isEmpty()) ? "unselected" : "selected";
+            }
+        }, " "));
     }
 
     @Override
@@ -74,12 +83,17 @@ public abstract class FacetPanel extends ExpandablePanel<String> {
     protected void onConfigure() {
         super.onConfigure();
         
-        facetValuesPanel.setVisible((expansionModel.getObject() == ExpansionState.COLLAPSED)? false : true);
+        final boolean valuesSelected = !selectedFacetPanel.getModelObject().isEmpty();
+        //facetValuesPanel.setVisible(!valuesSelected);
+        selectedFacetPanel.setVisible(valuesSelected);
+        facetValuesPanel.setVisible(expansionModel.getObject() != ExpansionState.COLLAPSED);
+        
 
         // hide this entire panel if nothing is selected or there is nothing to be selected
+        //setVisible(!isHideIfNoValues() || valuesSelected || facetValuesPanel.getModelObject().getValueCount() > 0);
+        
         setVisible(!isHideIfNoValues() || !selectedFacetPanel.getModelObject().isEmpty() || facetValuesPanel.getModelObject().getValueCount() > 0);
     }
-    
 
     /**
      *
@@ -91,38 +105,46 @@ public abstract class FacetPanel extends ExpandablePanel<String> {
     }
 
     private FacetValuesPanel createFacetValuesPanel(String id, final String facetName, IModel<FacetField> facetFieldModel, final IModel<QueryFacetsSelection> selectionModel, int subListSize) {
-    	return new FacetValuesPanel(id, facetFieldModel, selectionModel, subListSize) {
-                    @Override
-                    public void onValuesSelected(Collection<String> values, AjaxRequestTarget target) {
-                        // A value has been selected on this facet's panel, update the model!
-                    	selectionModel.getObject().addNewFacetValue(facetName, values);
-                       
-                    	if (target != null) {
-                            // reload entire page for now
-                            selectionChanged(target);
-                        }
-                    }
-                };
-    }
-
-    private SelectedFacetPanel createSelectedFacetPanel(String id, final String facetName, final IModel<QueryFacetsSelection> selectionModel) {
-    	return new SelectedFacetPanel(id, facetName, new SelectionModel(facetName, selectionModel)) {
+        return new FacetValuesPanel(id, facetFieldModel, selectionModel, subListSize) {
             @Override
-            public void onValuesUnselected(Collection<String> valuesRemoved, AjaxRequestTarget target) {
-                // Values have been removed, calculate remainder
-                selectionModel.getObject().removeFacetValue(facetName, valuesRemoved);
+            public void onValuesSelected(Collection<String> values, AjaxRequestTarget target) {
+                // A value has been selected on this facet's panel, update the model!
+                selectionModel.getObject().addNewFacetValue(facetName, values);
 
-                //collapse if the last value from selection has been removed
-                if(selectionModel.getObject().getExcludedFacet() == null){
-                	expansionModel.setObject(ExpansionState.COLLAPSED);
-                }
-                
                 if (target != null) {
                     // reload entire page for now
                     selectionChanged(target);
                 }
             }
         };
+    }
+
+    private SelectedFacetPanel createSelectedFacetPanel(String id, final String facetName, final IModel<QueryFacetsSelection> selectionModel) {
+        return new SelectedFacetPanel(id, facetName, new SelectionModel(facetName, selectionModel)) {
+            @Override
+            public void onValuesUnselected(Collection<String> valuesRemoved, AjaxRequestTarget target) {
+                // Values have been removed, calculate remainder
+                selectionModel.getObject().removeFacetValue(facetName, valuesRemoved);
+
+                // collapse after removal
+                // TODO: should be removed, but then list of values
+                // does not seem to update correctly
+                expansionModel.setObject(ExpansionState.COLLAPSED);
+
+                if (target != null) {
+                    // reload entire page for now
+                    selectionChanged(target);
+                }
+            }
+        };
+    }
+
+    @Override
+    protected void onExpandCollapse(AjaxRequestTarget target) {
+        super.onExpandCollapse(target);
+        if (target != null) {
+            target.appendJavaScript("applyFacetTooltips();");
+        }
     }
 
     protected abstract void selectionChanged(AjaxRequestTarget target);

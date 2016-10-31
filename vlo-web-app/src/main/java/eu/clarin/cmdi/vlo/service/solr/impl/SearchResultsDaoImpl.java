@@ -21,7 +21,9 @@ public class SearchResultsDaoImpl extends SolrDaoImpl implements SearchResultsDa
 
     @Override
     public List<FacetField> getFacets(SolrQuery query) {
-        final QueryResponse response = fireQuery(sanitise(query));
+        //final QueryResponse response = fireQuery(sanitise(query));
+    	//curation instance doesnt sanitase queries
+        final QueryResponse response = fireQuery(query);
         final List<FacetField> facetFields = response.getFacetFields();
         if (logger.isDebugEnabled()) {
             if (facetFields.size() == 1) {

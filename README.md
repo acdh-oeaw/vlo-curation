@@ -24,8 +24,14 @@ For more information, see the [wiki page](https://trac.clarin.eu/wiki/CmdiVirtua
 	Instructions on how to upgrade an existing VLO installation
 - [CHANGES](CHANGES.txt)
 	A list of changes per release
-- [COPYING](COPYING.txt)
+- [LICENSE](LICENSE.md)
 	Licensing information
+
+# Licensing
+
+All code unless otherwise noted is licensed under the terms of the GNU GENERAL PUBLIC LICENSE 3 (GPL3).
+Please refer to the file LICENSE.md in the root directory of this repository.
+	
 
 # Development information 
 
@@ -134,3 +140,5 @@ rotated automatically by the import process.
 For a __fresh import__, even when the VLO is not configured to delete all documents
 from the index first, you can simply remove the contents of the Solr data 
 directory (check server configuration documentation for the exact location).
+
+
